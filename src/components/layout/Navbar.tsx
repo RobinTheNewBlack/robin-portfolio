@@ -62,10 +62,10 @@ export default function Navbar() {
           px: 2,
           py: 1,
           borderRadius: 50,
-          bgcolor: 'rgba(20, 20, 30, 0.85)',
-          backdropFilter: 'blur(20px)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+          bgcolor: 'rgba(20, 20, 30, 0.5)',
+          backdropFilter: 'blur(16px)',
+          border: '1px solid rgba(255, 255, 255, 0.08)',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)',
         }}
       >
 
@@ -114,10 +114,10 @@ export default function Navbar() {
           px: 2,
           py: 1,
           borderRadius: 50,
-          bgcolor: 'rgba(20, 20, 30, 0.9)',
-          backdropFilter: 'blur(20px)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+          bgcolor: 'rgba(20, 20, 30, 0.5)',
+          backdropFilter: 'blur(16px)',
+          border: '1px solid rgba(255, 255, 255, 0.08)',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)',
         }}
       >
         {/* Logo */}

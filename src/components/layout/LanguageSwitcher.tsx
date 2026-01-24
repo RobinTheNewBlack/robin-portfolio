@@ -42,11 +42,11 @@ export default function LanguageSwitcher() {
           fontWeight: 500,
           borderRadius: 50,
           '&.Mui-selected': {
-            bgcolor: 'white',
-            color: '#0a0a0f',
+            bgcolor: 'primary.main',
+            color: 'white',
             borderRadius: 50,
             '&:hover': {
-              bgcolor: 'rgba(255,255,255,0.9)',
+              bgcolor: 'primary.dark',
             },
           },
           '&:hover': {
