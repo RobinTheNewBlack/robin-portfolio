@@ -12,7 +12,7 @@ const fadeInUp = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: 'easeOut' },
+    transition: { duration: 0.6, ease: 'easeOut' as const },
   },
 };
 
@@ -20,7 +20,7 @@ const timelineLineVariants = {
   hidden: { scaleY: 0 },
   visible: {
     scaleY: 1,
-    transition: { duration: 1.2, ease: 'easeOut' },
+    transition: { duration: 1.2, ease: 'easeOut' as const },
   },
 };
 
@@ -29,7 +29,7 @@ const dotVariants = {
   visible: {
     scale: 1,
     opacity: 1,
-    transition: { duration: 0.4, ease: 'easeOut' },
+    transition: { duration: 0.4, ease: 'easeOut' as const },
   },
 };
 
@@ -46,7 +46,7 @@ export default function ExperienceSection() {
       x: 0,
       transition: {
         duration: 0.6,
-        ease: 'easeOut',
+        ease: 'easeOut' as const,
         delay: index * 0.2,
       },
     },
@@ -62,7 +62,7 @@ export default function ExperienceSection() {
       x: 0,
       transition: {
         duration: 0.6,
-        ease: 'easeOut',
+        ease: 'easeOut' as const,
         delay: index * 0.2 + 0.1,
       },
     },

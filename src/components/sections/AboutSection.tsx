@@ -18,7 +18,7 @@ const fadeInUp = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: 'easeOut' },
+    transition: { duration: 0.6, ease: 'easeOut' as const },
   },
 };
 
@@ -27,7 +27,7 @@ const fadeInLeft = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.6, ease: 'easeOut' },
+    transition: { duration: 0.6, ease: 'easeOut' as const },
   },
 };
 
@@ -36,7 +36,7 @@ const fadeInRight = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.6, ease: 'easeOut' },
+    transition: { duration: 0.6, ease: 'easeOut' as const },
   },
 };
 
@@ -45,7 +45,7 @@ const scaleIn = {
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.6, ease: 'easeOut' },
+    transition: { duration: 0.6, ease: 'easeOut' as const },
   },
 };
 
@@ -194,7 +194,7 @@ export default function AboutSection() {
           >
             <MotionAvatar
               src="/images/my_image_1.png"
-              alt="Eki Zulfar Rachman"
+              alt="Nattakit Kerdtalay"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
               sx={{

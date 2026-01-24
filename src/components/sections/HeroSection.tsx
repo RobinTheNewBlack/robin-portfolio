@@ -31,7 +31,7 @@ const itemVariants = {
     y: 0,
     transition: {
       duration: 0.6,
-      ease: 'easeOut',
+      ease: 'easeOut' as const,
     },
   },
 };
@@ -44,7 +44,7 @@ const illustrationVariants = {
     rotate: 0,
     transition: {
       duration: 0.8,
-      ease: 'easeOut',
+      ease: 'easeOut' as const,
       delay: 0.5,
     },
   },

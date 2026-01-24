@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Eki Zulfar Rachman | Frontend Developer",
-  description: "Portfolio website of Eki Zulfar Rachman - Frontend Developer and Network & Telecom Student. Creating innovative, functional, and user-friendly websites for digital solutions.",
+  title: "Nattakit K. | Frontend Developer",
+  description: "Portfolio website of Nattakit K. - Frontend Developer and Network & Telecom Student. Creating innovative, functional, and user-friendly websites for digital solutions.",
   keywords: ["Frontend Developer", "Web Developer", "React", "Next.js", "Portfolio"],
 };
 
