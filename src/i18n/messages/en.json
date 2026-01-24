@@ -1,0 +1,75 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "portfolio": "Portfolio",
+    "contact": "Contact"
+  },
+  "hero": {
+    "badge": "Ready to Innovate",
+    "title": "Frontend",
+    "titleHighlight": "Developer",
+    "subtitle": "Network & Telecom Student",
+    "description": "Creating innovative, functional, and user-friendly websites for digital solutions. Passionate about building beautiful web experiences with clean code.",
+    "projectsBtn": "Projects",
+    "contactBtn": "Contact"
+  },
+  "about": {
+    "title": "About Me",
+    "tagline": "Transforming ideas into digital experiences",
+    "greeting": "Hello, I'm",
+    "name": "Eki Zulfar Rachman",
+    "bio": "A Computer Network and Telecommunication student passionate about Front-End development. I focus on creating engaging digital experiences and always strive to deliver the best solutions in every project.",
+    "downloadCv": "Download CV",
+    "viewProjects": "View Projects",
+    "stats": {
+      "projects": "Total Projects",
+      "projectsDesc": "Innovative web solutions crafted",
+      "certificates": "Certificates",
+      "certificatesDesc": "Professional skills validated",
+      "experience": "Years of Experience",
+      "experienceDesc": "Continuous learning journey"
+    }
+  },
+  "portfolio": {
+    "title": "Portfolio Showcase",
+    "subtitle": "Explore my journey through projects, certifications, and technical expertise. Each section represents a milestone in my continuous learning path.",
+    "tabs": {
+      "projects": "Projects",
+      "certificates": "Certificates",
+      "techStack": "Tech Stack"
+    },
+    "liveDemo": "Live Demo",
+    "details": "Details",
+    "noProjects": "No projects to display",
+    "noCertificates": "No certificates to display"
+  },
+  "projects": {
+    "arithmeticSolver": {
+      "title": "Arithmetic Solver",
+      "description": "A program designed to help users solve arithmetic problems automatically with step-by-step solutions."
+    },
+    "autoChat": {
+      "title": "AutoChat-Discord",
+      "description": "AutoChat is an automation solution for sending messages to Discord channels on a scheduled basis."
+    },
+    "noteBook": {
+      "title": "Note Book",
+      "description": "A website that allows users to create, save, and manage their personal notes efficiently."
+    }
+  },
+  "certificates": {
+    "webDev": {
+      "title": "Web Development Fundamentals",
+      "issuer": "FreeCodeCamp"
+    },
+    "javascript": {
+      "title": "JavaScript Algorithms",
+      "issuer": "FreeCodeCamp"
+    },
+    "react": {
+      "title": "React Development",
+      "issuer": "Coursera"
+    }
+  }
+}
