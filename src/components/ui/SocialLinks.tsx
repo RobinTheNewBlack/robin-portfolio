@@ -29,7 +29,7 @@ export default function SocialLinks() {
             '&:hover': {
               color: 'primary.main',
               borderColor: 'primary.main',
-              bgcolor: 'rgba(139, 92, 246, 0.1)',
+              bgcolor: 'rgba(37, 99, 235, 0.1)',
             },
           }}
         >

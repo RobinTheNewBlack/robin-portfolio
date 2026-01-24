@@ -6,14 +6,14 @@ export const darkTheme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#8b5cf6',
-      light: '#a78bfa',
-      dark: '#7c3aed',
+      main: '#2563eb',
+      light: '#3b82f6',
+      dark: '#1d4ed8',
     },
     secondary: {
-      main: '#06b6d4',
-      light: '#22d3ee',
-      dark: '#0891b2',
+      main: '#0891b2',
+      light: '#06b6d4',
+      dark: '#0e7490',
     },
     background: {
       default: '#0a0a0f',
@@ -68,7 +68,7 @@ export const darkTheme = createTheme({
         },
         containedPrimary: {
           '&:hover': {
-            backgroundColor: '#7c3aed',
+            backgroundColor: '#1d4ed8',
           },
         },
       },
@@ -81,7 +81,7 @@ export const darkTheme = createTheme({
           border: '1px solid rgba(255,255,255,0.1)',
           transition: 'all 0.3s ease',
           '&:hover': {
-            borderColor: 'rgba(139, 92, 246, 0.5)',
+            borderColor: 'rgba(37, 99, 235, 0.5)',
             transform: 'translateY(-4px)',
           },
         },

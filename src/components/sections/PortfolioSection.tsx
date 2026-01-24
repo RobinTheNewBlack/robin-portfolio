@@ -107,8 +107,8 @@ export default function PortfolioSection() {
         >
           <Typography
             variant="h2"
+            className="text-gradient-blue"
             sx={{
-              color: 'primary.main',
               fontWeight: 700,
               mb: 2,
             }}

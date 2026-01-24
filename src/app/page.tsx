@@ -28,10 +28,10 @@ export default function Home() {
           <Box sx={{ maxWidth: 600, mx: "auto", px: 2 }}>
             <Box
               component="h2"
+              className="text-gradient-blue"
               sx={{
                 fontSize: { xs: "2rem", md: "2.5rem" },
                 fontWeight: 700,
-                color: "primary.main",
                 mb: 2,
               }}
             >

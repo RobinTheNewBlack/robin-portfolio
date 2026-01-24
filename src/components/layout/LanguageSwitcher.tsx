@@ -30,23 +30,27 @@ export default function LanguageSwitcher() {
       disabled={isPending}
       size="small"
       sx={{
-        bgcolor: 'rgba(255,255,255,0.05)',
+        bgcolor: 'rgba(255,255,255,0.1)',
+        borderRadius: 50,
+        overflow: 'hidden',
         '& .MuiToggleButton-root': {
-          color: 'text.secondary',
+          color: 'rgba(255,255,255,0.7)',
           border: 'none',
           px: 2,
           py: 0.5,
-          fontSize: '0.875rem',
+          fontSize: '0.8rem',
           fontWeight: 500,
+          borderRadius: 50,
           '&.Mui-selected': {
-            bgcolor: 'primary.main',
-            color: 'white',
+            bgcolor: 'white',
+            color: '#0a0a0f',
+            borderRadius: 50,
             '&:hover': {
-              bgcolor: 'primary.dark',
+              bgcolor: 'rgba(255,255,255,0.9)',
             },
           },
           '&:hover': {
-            bgcolor: 'rgba(255,255,255,0.1)',
+            bgcolor: 'rgba(255,255,255,0.15)',
           },
         },
       }}

@@ -89,8 +89,8 @@ export default function ExperienceSection() {
         >
           <Typography
             variant="h2"
+            className="text-gradient-blue"
             sx={{
-              color: 'primary.main',
               fontWeight: 700,
               mb: 2,
             }}
@@ -121,7 +121,7 @@ export default function ExperienceSection() {
               top: 0,
               bottom: 0,
               width: 3,
-              background: 'linear-gradient(180deg, rgba(139, 92, 246, 0.8) 0%, rgba(6, 182, 212, 0.8) 100%)',
+              background: 'linear-gradient(180deg, rgba(37, 99, 235, 0.8) 0%, rgba(6, 182, 212, 0.8) 100%)',
               borderRadius: 2,
               transformOrigin: 'top',
             }}
@@ -140,7 +140,7 @@ export default function ExperienceSection() {
               top: 0,
               bottom: 0,
               width: 3,
-              background: 'linear-gradient(180deg, rgba(139, 92, 246, 0.8) 0%, rgba(6, 182, 212, 0.8) 100%)',
+              background: 'linear-gradient(180deg, rgba(37, 99, 235, 0.8) 0%, rgba(6, 182, 212, 0.8) 100%)',
               borderRadius: 2,
               transformOrigin: 'top',
             }}
@@ -230,7 +230,7 @@ export default function ExperienceSection() {
                       bgcolor: 'primary.main',
                       border: '3px solid',
                       borderColor: 'background.default',
-                      boxShadow: '0 0 10px rgba(139, 92, 246, 0.5)',
+                      boxShadow: '0 0 10px rgba(37, 99, 235, 0.5)',
                       zIndex: 1,
                     }}
                   />
@@ -262,7 +262,7 @@ export default function ExperienceSection() {
                       bgcolor: 'primary.main',
                       border: '3px solid',
                       borderColor: 'background.default',
-                      boxShadow: '0 0 10px rgba(139, 92, 246, 0.5)',
+                      boxShadow: '0 0 10px rgba(37, 99, 235, 0.5)',
                       zIndex: 1,
                     }}
                   />
@@ -293,7 +293,7 @@ export default function ExperienceSection() {
                       transition: 'all 0.3s ease',
                       '&:hover': {
                         bgcolor: 'rgba(255,255,255,0.05)',
-                        borderColor: 'rgba(139, 92, 246, 0.3)',
+                        borderColor: 'rgba(37, 99, 235, 0.3)',
                       },
                     }}
                   >

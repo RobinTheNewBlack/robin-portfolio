@@ -36,7 +36,7 @@ export default function StatCard({ value, label, description, icon }: StatCardPr
             sx={{
               p: 1.5,
               borderRadius: 2,
-              bgcolor: 'rgba(139, 92, 246, 0.1)',
+              bgcolor: 'rgba(37, 99, 235, 0.1)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',

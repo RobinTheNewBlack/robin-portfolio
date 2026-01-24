@@ -90,8 +90,8 @@ export default function AboutSection() {
         >
           <Typography
             variant="h2"
+            className="text-gradient-blue"
             sx={{
-              color: 'primary.main',
               fontWeight: 700,
               mb: 2,
             }}
@@ -172,7 +172,7 @@ export default function AboutSection() {
                   borderColor: 'primary.main',
                   color: 'primary.main',
                   '&:hover': {
-                    bgcolor: 'rgba(139, 92, 246, 0.1)',
+                    bgcolor: 'rgba(37, 99, 235, 0.1)',
                   },
                 }}
               >
@@ -201,7 +201,7 @@ export default function AboutSection() {
                 width: { xs: 250, md: 300 },
                 height: { xs: 250, md: 300 },
                 border: '4px solid',
-                borderColor: 'rgba(139, 92, 246, 0.5)',
+                borderColor: 'rgba(37, 99, 235, 0.5)',
                 bgcolor: 'background.paper',
               }}
             />

@@ -97,7 +97,7 @@ export default function HeroSection() {
               label={t('badge')}
               sx={{
                 alignSelf: 'flex-start',
-                bgcolor: 'rgba(139, 92, 246, 0.2)',
+                bgcolor: 'rgba(37, 99, 235, 0.2)',
                 color: 'primary.light',
                 fontWeight: 500,
                 px: 1,
@@ -119,7 +119,7 @@ export default function HeroSection() {
             >
               {t('title')}
               <br />
-              <Box component="span" sx={{ color: 'primary.main' }}>
+              <Box component="span" className="text-gradient-blue">
                 {t('titleHighlight')}
               </Box>
             </MotionTypography>
@@ -175,7 +175,7 @@ export default function HeroSection() {
                   color: 'text.primary',
                   '&:hover': {
                     borderColor: 'primary.main',
-                    bgcolor: 'rgba(139, 92, 246, 0.1)',
+                    bgcolor: 'rgba(37, 99, 235, 0.1)',
                   },
                 }}
               >
@@ -212,9 +212,9 @@ export default function HeroSection() {
                 sx={{
                   width: 350,
                   height: 250,
-                  bgcolor: 'rgba(139, 92, 246, 0.1)',
+                  bgcolor: 'rgba(37, 99, 235, 0.1)',
                   borderRadius: 4,
-                  border: '2px solid rgba(139, 92, 246, 0.3)',
+                  border: '2px solid rgba(37, 99, 235, 0.3)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -237,9 +237,9 @@ export default function HeroSection() {
                     left: -30,
                     width: 80,
                     height: 80,
-                    bgcolor: 'rgba(139, 92, 246, 0.2)',
+                    bgcolor: 'rgba(37, 99, 235, 0.2)',
                     borderRadius: '50%',
-                    border: '2px solid rgba(139, 92, 246, 0.3)',
+                    border: '2px solid rgba(37, 99, 235, 0.3)',
                   },
                 }}
               >

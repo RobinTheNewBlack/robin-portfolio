@@ -65,7 +65,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               label={tech}
               size="small"
               sx={{
-                bgcolor: 'rgba(139, 92, 246, 0.2)',
+                bgcolor: 'rgba(37, 99, 235, 0.2)',
                 color: 'primary.light',
                 fontSize: '0.75rem',
               }}

@@ -1,7 +1,8 @@
 'use client';
 
-import { AppBar, Toolbar, Box, Button, Container, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
+import { Box, Button, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import EmailIcon from '@mui/icons-material/Email';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { navLinks } from '@/data/navigation';
@@ -46,63 +47,126 @@ export default function Navbar() {
 
   return (
     <>
-      <AppBar position="fixed" elevation={0}>
-        <Container maxWidth="lg">
-          <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
-            {/* Logo */}
-            <Box
-              component="a"
-              href="#home"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection('#home');
-              }}
-              sx={{
-                fontSize: '1.5rem',
-                fontWeight: 700,
-                color: 'primary.main',
-                textDecoration: 'none',
-                cursor: 'pointer',
-              }}
-            >
-              Ekizr
-            </Box>
+      {/* Floating Navbar */}
+      <Box
+        component="nav"
+        sx={{
+          position: 'fixed',
+          top: 20,
+          left: '50%',
+          transform: 'translateX(-50%)',
+          zIndex: 1100,
+          display: { xs: 'none', md: 'flex' },
+          alignItems: 'center',
+          gap: 1,
+          px: 2,
+          py: 1,
+          borderRadius: 50,
+          bgcolor: 'rgba(20, 20, 30, 0.85)',
+          backdropFilter: 'blur(20px)',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+        }}
+      >
 
-            {/* Desktop Navigation */}
-            <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 1 }}>
-              {navLinks.map((link) => (
-                <Button
-                  key={link.id}
-                  onClick={() => scrollToSection(link.href)}
-                  sx={{
-                    color: 'text.secondary',
-                    '&:hover': {
-                      color: 'text.primary',
-                      bgcolor: 'transparent',
-                    },
-                  }}
-                >
-                  {t(link.id)}
-                </Button>
-              ))}
-              <Box sx={{ ml: 2 }}>
-                <LanguageSwitcher />
-              </Box>
-            </Box>
+        {/* Navigation Links */}
+        {navLinks.map((link) => (
+          <Button
+            key={link.id}
+            onClick={() => scrollToSection(link.href)}
+            sx={{
+              color: 'rgba(255, 255, 255, 0.8)',
+              fontSize: '0.9rem',
+              fontWeight: 500,
+              px: 2,
+              py: 0.75,
+              borderRadius: 50,
+              textTransform: 'none',
+              '&:hover': {
+                color: 'white',
+                bgcolor: 'rgba(255, 255, 255, 0.1)',
+              },
+            }}
+          >
+            {t(link.id)}
+          </Button>
+        ))}
 
-            {/* Mobile Menu Button */}
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              edge="end"
-              onClick={handleDrawerToggle}
-              sx={{ display: { md: 'none' } }}
-            >
-              <MenuIcon />
-            </IconButton>
-          </Toolbar>
-        </Container>
-      </AppBar>
+        {/* Language Switcher */}
+        <Box sx={{ mx: 1 }}>
+          <LanguageSwitcher />
+        </Box>
+
+      </Box>
+
+      {/* Mobile Navbar */}
+      <Box
+        component="nav"
+        sx={{
+          position: 'fixed',
+          top: 16,
+          left: 16,
+          right: 16,
+          zIndex: 1100,
+          display: { xs: 'flex', md: 'none' },
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          px: 2,
+          py: 1,
+          borderRadius: 50,
+          bgcolor: 'rgba(20, 20, 30, 0.9)',
+          backdropFilter: 'blur(20px)',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+        }}
+      >
+        {/* Logo */}
+        <Box
+          component="a"
+          href="#home"
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToSection('#home');
+          }}
+          sx={{
+            width: 36,
+            height: 36,
+            borderRadius: '50%',
+            bgcolor: 'white',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            textDecoration: 'none',
+            cursor: 'pointer',
+          }}
+        >
+          <Box
+            component="span"
+            sx={{
+              fontSize: '1rem',
+              fontWeight: 700,
+              color: '#0a0a0f',
+            }}
+          >
+            E
+          </Box>
+        </Box>
+
+        {/* Mobile Menu Button */}
+        <IconButton
+          aria-label="open drawer"
+          onClick={handleDrawerToggle}
+          sx={{
+            color: 'white',
+            bgcolor: 'rgba(255, 255, 255, 0.1)',
+            '&:hover': {
+              bgcolor: 'rgba(255, 255, 255, 0.2)',
+            },
+          }}
+        >
+          <MenuIcon />
+        </IconButton>
+      </Box>
 
       {/* Mobile Drawer */}
       <Drawer
@@ -120,8 +184,8 @@ export default function Navbar() {
         {drawer}
       </Drawer>
 
-      {/* Toolbar spacer */}
-      <Toolbar />
+      {/* Spacer for content below navbar */}
+      <Box sx={{ height: { xs: 80, md: 100 } }} />
     </>
   );
 }

@@ -41,7 +41,7 @@ export default function TechStackGrid() {
               mx: 'auto',
               mb: 1.5,
               borderRadius: 2,
-              bgcolor: 'rgba(139, 92, 246, 0.1)',
+              bgcolor: 'rgba(37, 99, 235, 0.1)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
