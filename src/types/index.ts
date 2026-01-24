@@ -45,3 +45,12 @@ export interface StatItem {
   descKey: string;
   icon: string;
 }
+
+export interface Experience {
+  id: string;
+  positionKey: string;
+  companyKey: string;
+  year: string;
+  descriptionKey: string;
+  logo?: string;
+}

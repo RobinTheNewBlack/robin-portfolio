@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import Navbar from "@/components/layout/Navbar";
 import HeroSection from "@/components/sections/HeroSection";
 import AboutSection from "@/components/sections/AboutSection";
+import ExperienceSection from "@/components/sections/ExperienceSection";
 import PortfolioSection from "@/components/sections/PortfolioSection";
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       <main>
         <HeroSection />
         <AboutSection />
+        <ExperienceSection />
         <PortfolioSection />
 
         {/* Contact Section Placeholder */}

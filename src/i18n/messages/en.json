@@ -71,5 +71,30 @@
       "title": "React Development",
       "issuer": "Coursera"
     }
+  },
+  "experience": {
+    "title": "My Experience",
+    "items": {
+      "trainee": {
+        "position": "Student Trainee",
+        "company": "Datacom",
+        "description": "Attended a three-month workshop where we were taught about the fundamentals of MS Excel, the proficiency of keyboarding, and the main components of a computer system."
+      },
+      "scholar": {
+        "position": "External Scholar",
+        "company": "Security Bank Corporation",
+        "description": "One of the external scholars of the Security Bank Corporation. Inside this, we are tasked with attending related seminars and maintaining grades on our academic standings."
+      },
+      "intern": {
+        "position": "IT Intern",
+        "company": "Tech Solutions Inc.",
+        "description": "Gained hands-on experience in web development, assisting the development team with frontend tasks and learning industry best practices."
+      },
+      "developer": {
+        "position": "Junior Developer",
+        "company": "Digital Agency",
+        "description": "Working on various web projects using modern technologies like React and Next.js, collaborating with cross-functional teams to deliver quality solutions."
+      }
+    }
   }
 }

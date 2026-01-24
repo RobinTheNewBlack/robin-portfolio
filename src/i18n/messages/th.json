@@ -71,5 +71,30 @@
       "title": "การพัฒนา React",
       "issuer": "Coursera"
     }
+  },
+  "experience": {
+    "title": "ประสบการณ์ของฉัน",
+    "items": {
+      "trainee": {
+        "position": "นักศึกษาฝึกงาน",
+        "company": "Datacom",
+        "description": "เข้าร่วมการอบรมสามเดือนที่เรียนรู้เกี่ยวกับพื้นฐาน MS Excel ทักษะการพิมพ์ และส่วนประกอบหลักของระบบคอมพิวเตอร์"
+      },
+      "scholar": {
+        "position": "นักเรียนทุนภายนอก",
+        "company": "Security Bank Corporation",
+        "description": "หนึ่งในนักเรียนทุนภายนอกของ Security Bank Corporation มีหน้าที่เข้าร่วมสัมมนาที่เกี่ยวข้องและรักษาผลการเรียน"
+      },
+      "intern": {
+        "position": "นักศึกษาฝึกงาน IT",
+        "company": "Tech Solutions Inc.",
+        "description": "ได้รับประสบการณ์จริงในการพัฒนาเว็บ ช่วยเหลือทีมพัฒนาในงาน frontend และเรียนรู้แนวปฏิบัติที่ดีในอุตสาหกรรม"
+      },
+      "developer": {
+        "position": "นักพัฒนาจูเนียร์",
+        "company": "Digital Agency",
+        "description": "ทำงานในโปรเจกต์เว็บหลากหลายโดยใช้เทคโนโลยีสมัยใหม่เช่น React และ Next.js ร่วมมือกับทีมข้ามสายงานเพื่อส่งมอบโซลูชันคุณภาพ"
+      }
+    }
   }
 }
