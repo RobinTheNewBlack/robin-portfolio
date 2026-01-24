@@ -22,7 +22,7 @@ export default function HeroSection() {
     <Box
       id="home"
       component="section"
-      className="bg-hero-gradient"
+      className="bg-about-gradient"
       sx={{
         minHeight: '100vh',
         display: 'flex',

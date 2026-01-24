@@ -6,7 +6,7 @@ import { useTransition } from 'react';
 
 const locales = [
   { code: 'en', label: 'EN' },
-  { code: 'id', label: 'ID' },
+  { code: 'th', label: 'TH' },
 ];
 
 export default function LanguageSwitcher() {

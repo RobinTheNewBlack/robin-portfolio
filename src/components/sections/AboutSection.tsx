@@ -123,17 +123,16 @@ export default function AboutSection() {
             }}
           >
             <Avatar
+              src="/images/my_image_1.png"
+              alt="Eki Zulfar Rachman"
               sx={{
                 width: { xs: 250, md: 300 },
                 height: { xs: 250, md: 300 },
                 border: '4px solid',
                 borderColor: 'rgba(139, 92, 246, 0.5)',
                 bgcolor: 'background.paper',
-                fontSize: '4rem',
               }}
-            >
-              EZR
-            </Avatar>
+            />
           </Box>
         </Box>
 
