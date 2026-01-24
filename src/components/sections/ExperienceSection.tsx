@@ -1,11 +1,72 @@
 'use client';
 
 import { Box, Container, Typography } from '@mui/material';
+import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { experiences } from '@/data/experiences';
 
+const MotionBox = motion.create(Box);
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: 'easeOut' },
+  },
+};
+
+const timelineLineVariants = {
+  hidden: { scaleY: 0 },
+  visible: {
+    scaleY: 1,
+    transition: { duration: 1.2, ease: 'easeOut' },
+  },
+};
+
+const dotVariants = {
+  hidden: { scale: 0, opacity: 0 },
+  visible: {
+    scale: 1,
+    opacity: 1,
+    transition: { duration: 0.4, ease: 'easeOut' },
+  },
+};
+
 export default function ExperienceSection() {
   const t = useTranslations();
+
+  const getItemVariants = (index: number, isEven: boolean) => ({
+    hidden: {
+      opacity: 0,
+      x: isEven ? 50 : -50,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.6,
+        ease: 'easeOut',
+        delay: index * 0.2,
+      },
+    },
+  });
+
+  const getDescriptionVariants = (index: number, isEven: boolean) => ({
+    hidden: {
+      opacity: 0,
+      x: isEven ? -50 : 50,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.6,
+        ease: 'easeOut',
+        delay: index * 0.2 + 0.1,
+      },
+    },
+  });
 
   return (
     <Box
@@ -14,11 +75,18 @@ export default function ExperienceSection() {
       className="bg-about-gradient"
       sx={{
         py: { xs: 8, md: 12 },
+        overflow: 'hidden',
       }}
     >
       <Container maxWidth="lg">
         {/* Section Header */}
-        <Box sx={{ textAlign: 'center', mb: 8 }}>
+        <MotionBox
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeInUp}
+          sx={{ textAlign: 'center', mb: 8 }}
+        >
           <Typography
             variant="h2"
             sx={{
@@ -29,7 +97,7 @@ export default function ExperienceSection() {
           >
             {t('experience.title')}
           </Typography>
-        </Box>
+        </MotionBox>
 
         {/* Timeline Container */}
         <Box
@@ -40,7 +108,11 @@ export default function ExperienceSection() {
           }}
         >
           {/* Vertical Timeline Line - Desktop */}
-          <Box
+          <MotionBox
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={timelineLineVariants}
             sx={{
               display: { xs: 'none', md: 'block' },
               position: 'absolute',
@@ -51,11 +123,16 @@ export default function ExperienceSection() {
               width: 3,
               background: 'linear-gradient(180deg, rgba(139, 92, 246, 0.8) 0%, rgba(6, 182, 212, 0.8) 100%)',
               borderRadius: 2,
+              transformOrigin: 'top',
             }}
           />
 
           {/* Vertical Timeline Line - Mobile */}
-          <Box
+          <MotionBox
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={timelineLineVariants}
             sx={{
               display: { xs: 'block', md: 'none' },
               position: 'absolute',
@@ -65,6 +142,7 @@ export default function ExperienceSection() {
               width: 3,
               background: 'linear-gradient(180deg, rgba(139, 92, 246, 0.8) 0%, rgba(6, 182, 212, 0.8) 100%)',
               borderRadius: 2,
+              transformOrigin: 'top',
             }}
           />
 
@@ -83,7 +161,11 @@ export default function ExperienceSection() {
                 }}
               >
                 {/* Left/Right Content - Position Info */}
-                <Box
+                <MotionBox
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.5 }}
+                  variants={getItemVariants(index, isEven)}
                   sx={{
                     display: { xs: 'none', md: 'flex' },
                     flex: 1,
@@ -122,10 +204,15 @@ export default function ExperienceSection() {
                       {exp.year}
                     </Typography>
                   </Box>
-                </Box>
+                </MotionBox>
 
                 {/* Timeline Dot - Desktop */}
-                <Box
+                <MotionBox
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.5 }}
+                  variants={dotVariants}
+                  transition={{ delay: index * 0.2 }}
                   sx={{
                     display: { xs: 'none', md: 'flex' },
                     position: 'relative',
@@ -147,10 +234,15 @@ export default function ExperienceSection() {
                       zIndex: 1,
                     }}
                   />
-                </Box>
+                </MotionBox>
 
                 {/* Timeline Dot - Mobile */}
-                <Box
+                <MotionBox
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.5 }}
+                  variants={dotVariants}
+                  transition={{ delay: index * 0.2 }}
                   sx={{
                     display: { xs: 'flex', md: 'none' },
                     position: 'absolute',
@@ -174,10 +266,15 @@ export default function ExperienceSection() {
                       zIndex: 1,
                     }}
                   />
-                </Box>
+                </MotionBox>
 
                 {/* Right/Left Content - Description */}
-                <Box
+                <MotionBox
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.5 }}
+                  variants={getDescriptionVariants(index, isEven)}
+                  whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
                   sx={{
                     display: { xs: 'none', md: 'flex' },
                     flex: 1,
@@ -193,6 +290,11 @@ export default function ExperienceSection() {
                       bgcolor: 'rgba(255,255,255,0.03)',
                       borderRadius: 2,
                       border: '1px solid rgba(255,255,255,0.1)',
+                      transition: 'all 0.3s ease',
+                      '&:hover': {
+                        bgcolor: 'rgba(255,255,255,0.05)',
+                        borderColor: 'rgba(139, 92, 246, 0.3)',
+                      },
                     }}
                   >
                     <Typography
@@ -205,10 +307,21 @@ export default function ExperienceSection() {
                       {t(exp.descriptionKey)}
                     </Typography>
                   </Box>
-                </Box>
+                </MotionBox>
 
                 {/* Mobile Content */}
-                <Box
+                <MotionBox
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.5 }}
+                  variants={{
+                    hidden: { opacity: 0, x: 30 },
+                    visible: {
+                      opacity: 1,
+                      x: 0,
+                      transition: { duration: 0.5, delay: index * 0.15 },
+                    },
+                  }}
                   sx={{
                     display: { xs: 'block', md: 'none' },
                     pl: 6,
@@ -261,7 +374,7 @@ export default function ExperienceSection() {
                       {t(exp.descriptionKey)}
                     </Typography>
                   </Box>
-                </Box>
+                </MotionBox>
               </Box>
             );
           })}

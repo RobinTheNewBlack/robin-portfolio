@@ -1,12 +1,54 @@
 'use client';
 
 import { Box, Container, Typography, Button, Chip } from '@mui/material';
+import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import LaunchIcon from '@mui/icons-material/Launch';
 import EmailIcon from '@mui/icons-material/Email';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import TechBadges from '@/components/ui/TechBadges';
 import SocialLinks from '@/components/ui/SocialLinks';
+
+const MotionBox = motion.create(Box);
+const MotionTypography = motion.create(Typography);
+const MotionChip = motion.create(Chip);
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: 'easeOut',
+    },
+  },
+};
+
+const illustrationVariants = {
+  hidden: { opacity: 0, scale: 0.8, rotate: -5 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    rotate: 0,
+    transition: {
+      duration: 0.8,
+      ease: 'easeOut',
+      delay: 0.5,
+    },
+  },
+};
 
 export default function HeroSection() {
   const t = useTranslations('hero');
@@ -29,6 +71,7 @@ export default function HeroSection() {
         alignItems: 'center',
         pt: { xs: 4, md: 0 },
         pb: { xs: 8, md: 0 },
+        overflow: 'hidden',
       }}
     >
       <Container maxWidth="lg">
@@ -41,9 +84,15 @@ export default function HeroSection() {
           }}
         >
           {/* Left Content */}
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+          <MotionBox
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}
+          >
             {/* Badge */}
-            <Chip
+            <MotionChip
+              variants={itemVariants}
               icon={<AutoAwesomeIcon sx={{ fontSize: 16 }} />}
               label={t('badge')}
               sx={{
@@ -59,7 +108,8 @@ export default function HeroSection() {
             />
 
             {/* Title */}
-            <Typography
+            <MotionTypography
+              variants={itemVariants}
               variant="h1"
               sx={{
                 fontSize: { xs: '3rem', sm: '4rem', md: '5rem' },
@@ -72,31 +122,35 @@ export default function HeroSection() {
               <Box component="span" sx={{ color: 'primary.main' }}>
                 {t('titleHighlight')}
               </Box>
-            </Typography>
+            </MotionTypography>
 
             {/* Subtitle */}
-            <Typography
+            <MotionTypography
+              variants={itemVariants}
               variant="h5"
               color="text.secondary"
               sx={{ fontWeight: 400 }}
             >
               {t('subtitle')}
-            </Typography>
+            </MotionTypography>
 
             {/* Description */}
-            <Typography
+            <MotionTypography
+              variants={itemVariants}
               variant="body1"
               color="text.secondary"
               sx={{ maxWidth: 500 }}
             >
               {t('description')}
-            </Typography>
+            </MotionTypography>
 
             {/* Tech Stack Badges */}
-            <TechBadges />
+            <MotionBox variants={itemVariants}>
+              <TechBadges />
+            </MotionBox>
 
             {/* CTA Buttons */}
-            <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+            <MotionBox variants={itemVariants} sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
               <Button
                 variant="contained"
                 size="large"
@@ -127,14 +181,21 @@ export default function HeroSection() {
               >
                 {t('contactBtn')}
               </Button>
-            </Box>
+            </MotionBox>
 
             {/* Social Links */}
-            <SocialLinks />
-          </Box>
+            <MotionBox variants={itemVariants}>
+              <SocialLinks />
+            </MotionBox>
+          </MotionBox>
 
           {/* Right Content - Illustration */}
-          <Box sx={{ display: { xs: 'none', lg: 'flex' }, justifyContent: 'center' }}>
+          <MotionBox
+            variants={illustrationVariants}
+            initial="hidden"
+            animate="visible"
+            sx={{ display: { xs: 'none', lg: 'flex' }, justifyContent: 'center' }}
+          >
             <Box
               sx={{
                 position: 'relative',
@@ -194,7 +255,7 @@ export default function HeroSection() {
                 </Typography>
               </Box>
             </Box>
-          </Box>
+          </MotionBox>
         </Box>
       </Container>
     </Box>

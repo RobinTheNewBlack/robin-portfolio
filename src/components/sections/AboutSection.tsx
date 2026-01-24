@@ -1,12 +1,63 @@
 'use client';
 
 import { Box, Container, Typography, Button, Avatar } from '@mui/material';
+import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import DownloadIcon from '@mui/icons-material/Download';
 import CodeIcon from '@mui/icons-material/Code';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import StatCard from '@/components/ui/StatCard';
 import { stats } from '@/data/navigation';
+
+const MotionBox = motion.create(Box);
+const MotionTypography = motion.create(Typography);
+const MotionAvatar = motion.create(Avatar);
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: 'easeOut' },
+  },
+};
+
+const fadeInLeft = {
+  hidden: { opacity: 0, x: -50 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.6, ease: 'easeOut' },
+  },
+};
+
+const fadeInRight = {
+  hidden: { opacity: 0, x: 50 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.6, ease: 'easeOut' },
+  },
+};
+
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.6, ease: 'easeOut' },
+  },
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
 
 export default function AboutSection() {
   const t = useTranslations('about');
@@ -25,11 +76,18 @@ export default function AboutSection() {
       className="bg-about-gradient"
       sx={{
         py: { xs: 8, md: 12 },
+        overflow: 'hidden',
       }}
     >
       <Container maxWidth="lg">
         {/* Section Header */}
-        <Box sx={{ textAlign: 'center', mb: 8 }}>
+        <MotionBox
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeInUp}
+          sx={{ textAlign: 'center', mb: 8 }}
+        >
           <Typography
             variant="h2"
             sx={{
@@ -54,7 +112,7 @@ export default function AboutSection() {
             {t('tagline')}
             <AutoAwesomeIcon sx={{ fontSize: 20 }} />
           </Typography>
-        </Box>
+        </MotionBox>
 
         {/* Main Content */}
         <Box
@@ -66,17 +124,25 @@ export default function AboutSection() {
           }}
         >
           {/* Left Content - Text */}
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-            <Typography variant="h4" color="primary.light">
+          <MotionBox
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={staggerContainer}
+            sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}
+          >
+            <MotionTypography variants={fadeInLeft} variant="h4" color="primary.light">
               {t('greeting')}
-            </Typography>
-            <Typography
+            </MotionTypography>
+            <MotionTypography
+              variants={fadeInLeft}
               variant="h3"
               sx={{ fontWeight: 700 }}
             >
               {t('name')}
-            </Typography>
-            <Typography
+            </MotionTypography>
+            <MotionTypography
+              variants={fadeInLeft}
               variant="body1"
               color="text.secondary"
               sx={{
@@ -85,10 +151,10 @@ export default function AboutSection() {
               }}
             >
               {t('bio')}
-            </Typography>
+            </MotionTypography>
 
             {/* Buttons */}
-            <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', mt: 2 }}>
+            <MotionBox variants={fadeInLeft} sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', mt: 2 }}>
               <Button
                 variant="contained"
                 startIcon={<DownloadIcon />}
@@ -112,19 +178,25 @@ export default function AboutSection() {
               >
                 {t('viewProjects')}
               </Button>
-            </Box>
-          </Box>
+            </MotionBox>
+          </MotionBox>
 
           {/* Right Content - Profile Image */}
-          <Box
+          <MotionBox
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={fadeInRight}
             sx={{
               display: 'flex',
               justifyContent: 'center',
             }}
           >
-            <Avatar
+            <MotionAvatar
               src="/images/my_image_1.png"
               alt="Eki Zulfar Rachman"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
               sx={{
                 width: { xs: 250, md: 300 },
                 height: { xs: 250, md: 300 },
@@ -133,11 +205,15 @@ export default function AboutSection() {
                 bgcolor: 'background.paper',
               }}
             />
-          </Box>
+          </MotionBox>
         </Box>
 
         {/* Stats Cards */}
-        <Box
+        <MotionBox
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={staggerContainer}
           sx={{
             display: 'grid',
             gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' },
@@ -145,16 +221,22 @@ export default function AboutSection() {
             mt: 8,
           }}
         >
-          {stats.map((stat) => (
-            <StatCard
+          {stats.map((stat, index) => (
+            <MotionBox
               key={stat.id}
-              value={stat.value}
-              label={t(stat.labelKey.replace('about.', ''))}
-              description={t(stat.descKey.replace('about.', ''))}
-              icon={stat.icon}
-            />
+              variants={scaleIn}
+              custom={index}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+            >
+              <StatCard
+                value={stat.value}
+                label={t(stat.labelKey.replace('about.', ''))}
+                description={t(stat.descKey.replace('about.', ''))}
+                icon={stat.icon}
+              />
+            </MotionBox>
           ))}
-        </Box>
+        </MotionBox>
       </Container>
     </Box>
   );
