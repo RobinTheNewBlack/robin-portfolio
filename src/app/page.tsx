@@ -3,7 +3,9 @@ import Navbar from "@/components/layout/Navbar";
 import HeroSection from "@/components/sections/HeroSection";
 import AboutSection from "@/components/sections/AboutSection";
 import ExperienceSection from "@/components/sections/ExperienceSection";
-import PortfolioSection from "@/components/sections/PortfolioSection";
+import ProjectSection from "@/components/sections/ProjectSection";
+import CertificatesSection from "@/components/sections/CertificatesSection";
+import TechStackSection from "@/components/sections/TechStackSection";
 
 export default function Home() {
   return (
@@ -13,7 +15,9 @@ export default function Home() {
         <HeroSection />
         <AboutSection />
         <ExperienceSection />
-        <PortfolioSection />
+        <ProjectSection />
+        <CertificatesSection />
+        <TechStackSection />
 
         {/* Contact Section Placeholder */}
         <Box

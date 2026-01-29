@@ -2,7 +2,9 @@
   "nav": {
     "home": "Home",
     "about": "About",
-    "portfolio": "Portfolio",
+    "projects": "Projects",
+    "certificates": "Certificates",
+    "techStack": "Tech Stack",
     "contact": "Contact"
   },
   "hero": {
@@ -31,46 +33,149 @@
       "experienceDesc": "Continuous learning journey"
     }
   },
-  "portfolio": {
-    "title": "Portfolio Showcase",
-    "subtitle": "Explore my journey through projects, certifications, and technical expertise. Each section represents a milestone in my continuous learning path.",
+  "projectSection": {
+    "title": "Projects",
+    "subtitle": "Explore my development journey through various projects across different domains.",
     "tabs": {
-      "projects": "Projects",
-      "certificates": "Certificates",
-      "techStack": "Tech Stack"
+      "internal": "Internal Projects",
+      "freelance": "Freelance Projects",
+      "side": "Side Projects"
     },
     "liveDemo": "Live Demo",
     "details": "Details",
-    "noProjects": "No projects to display",
+    "noProjects": "No projects to display"
+  },
+  "certificateSection": {
+    "title": "Certificates",
+    "subtitle": "Professional certifications and achievements that validate my skills and knowledge.",
+    "tabs": {
+      "programming": "Programming",
+      "ai": "AI",
+      "computerFundamental": "Computer Fundamental",
+      "devops": "DevOps",
+      "mathematics": "Mathematics"
+    },
     "noCertificates": "No certificates to display"
   },
+  "techStackSection": {
+    "title": "Tech Stack",
+    "subtitle": "Technologies and tools I use to build amazing applications.",
+    "tabs": {
+      "programming": "Programming",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "database": "Database",
+      "cloudDevops": "Cloud & DevOps",
+      "ai": "AI",
+      "dataScience": "Data Science",
+      "testing": "Testing",
+      "tools": "Tools"
+    }
+  },
   "projects": {
-    "arithmeticSolver": {
-      "title": "Arithmetic Solver",
+    "pawCare": {
+      "title": "Paw Care",
       "description": "A program designed to help users solve arithmetic problems automatically with step-by-step solutions."
     },
-    "autoChat": {
-      "title": "AutoChat-Discord",
+    "orvia": {
+      "title": "Orvia",
+      "description": "A program designed to help users solve arithmetic problems automatically with step-by-step solutions."
+    },
+    "optSence": {
+      "title": "OptSence",
+      "description": "A program designed to help users solve arithmetic problems automatically with step-by-step solutions."
+    },
+    "eSign": {
+      "title": "E-sign",
+      "description": "A website that allows users to create, save, and manage their personal notes efficiently."
+    },
+    "univa": {
+      "title": "Univa",
+      "description": "A website that allows users to create, save, and manage their personal notes efficiently."
+    },
+    "genoCore": {
+      "title": "GenoCore",
+      "description": "A website that allows users to create, save, and manage their personal notes efficiently."
+    },
+    "agentic": {
+      "title": "Agentic",
       "description": "AutoChat is an automation solution for sending messages to Discord channels on a scheduled basis."
     },
-    "noteBook": {
-      "title": "Note Book",
-      "description": "A website that allows users to create, save, and manage their personal notes efficiently."
+    "goldBread": {
+      "title": "Gold Bread",
+      "description": "AutoChat is an automation solution for sending messages to Discord channels on a scheduled basis."
     }
   },
   "certificates": {
+    "python": {
+      "title": "Complete Python Zero to Hero",
+      "issuer": "Udemy"
+    },
     "webDev": {
-      "title": "Web Development Fundamentals",
-      "issuer": "FreeCodeCamp"
+      "title": "The Complete Web Development Bootcamp",
+      "issuer": "Udemy"
     },
-    "javascript": {
-      "title": "JavaScript Algorithms",
-      "issuer": "FreeCodeCamp"
+    "typescript": {
+      "title": "Understanding TypeScript",
+      "issuer": "Udemy"
     },
-    "react": {
-      "title": "React Development",
+    "sql": {
+      "title": "Data Science with SQL Server",
+      "issuer": "Datacamp"
+    },
+    "fastapi": {
+      "title": "FastAPI The Complete Course",
+      "issuer": "Udemy"
+    },
+    "dataScience": {
+      "title": "Data Science with Python Track",
+      "issuer": "Udemy"
+    },
+    "ml": {
+      "title": "Supervised and Unsupervised Learning with Scikit-Learn",
+      "issuer": "Udemy"
+    },
+    "tensorflow": {
+      "title": "Tensorflow for Deep Learning",
+      "issuer": "Udemy"
+    },
+    "pytorch": {
+      "title": "PyTorch for Deep Learning",
+      "issuer": "Udemy"
+    },
+    "mlops": {
+      "title": "Mastering MLOps complete course for ML Operations",
+      "issuer": "Udemy"
+    },
+    "aws": {
+      "title": "AWS Certified Machine Learning Specialty",
+      "issuer": "Udemy"
+    },
+    "githubAction": {
+      "title": "GitHub Actions - The Complete Guide",
+      "issuer": "Udemy"
+    },
+    "iac": {
+      "title": "Terraform Complete Course",
+      "issuer": "Udemy"
+    },
+    "comArchitecture": {
+      "title": "ComputerArchitecture & Organization",
+      "issuer": "Udemy"
+    },
+    "comNetwork": {
+      "title": "Computer Network",
+      "issuer": "Udemy"
+    },
+    "algebra": {
+      "title": "Linear Algebra for Machine Learning",
+      "issuer": "Coursera"
+    },
+    "calculus": {
+      "title": "Calculas for Machine Learning",
       "issuer": "Coursera"
     }
+
   },
   "experience": {
     "title": "My Experience",

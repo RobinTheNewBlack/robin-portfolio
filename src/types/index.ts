@@ -1,3 +1,5 @@
+export type ProjectCategory = 'internal' | 'freelance' | 'side';
+
 export interface Project {
   id: string;
   titleKey: string;
@@ -7,7 +9,10 @@ export interface Project {
   liveUrl?: string;
   detailsUrl?: string;
   featured: boolean;
+  category: ProjectCategory;
 }
+
+export type CertificateCategory = 'programming' | 'ai' | 'computerFundamental' | 'devops' | 'mathematics';
 
 export interface Certificate {
   id: string;
@@ -16,13 +21,25 @@ export interface Certificate {
   date: string;
   image: string;
   credentialUrl?: string;
+  category: CertificateCategory;
 }
+
+export type TechStackCategory =
+  | 'programming'
+  | 'backend'
+  | 'frontend'
+  | 'database'
+  | 'cloudDevops'
+  | 'ai'
+  | 'dataScience'
+  | 'testing'
+  | 'tools';
 
 export interface TechStackItem {
   id: string;
   name: string;
   icon: string;
-  category: 'frontend' | 'backend' | 'tools' | 'other';
+  category: TechStackCategory;
 }
 
 export interface NavLink {

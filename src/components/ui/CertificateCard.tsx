@@ -25,19 +25,17 @@ export default function CertificateCard({ certificate }: CertificateCardProps) {
       }}
     >
       <CardMedia
-        component="div"
+        component="img"
+        image={certificate.image}
+        alt={t(certificate.titleKey)}
         sx={{
-          height: 180,
-          bgcolor: 'background.paper',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+          width: '100%',
+          height: 'auto',
+          aspectRatio: '4/3',
+          objectFit: 'contain',
+          bgcolor: '#fff',
         }}
-      >
-        <Typography variant="body2" color="text.secondary">
-          Certificate Image
-        </Typography>
-      </CardMedia>
+      />
       <CardContent sx={{ flexGrow: 1 }}>
         <Typography variant="h6" component="h3" gutterBottom sx={{ fontWeight: 600 }}>
           {t(certificate.titleKey)}
