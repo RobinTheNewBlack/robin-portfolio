@@ -120,7 +120,7 @@
       "issuer": "Udemy"
     },
     "sql": {
-      "title": "Data Science with SQL Server",
+      "title": "Data Analyst with SQL Server Track",
       "issuer": "Datacamp"
     },
     "fastapi": {
@@ -131,8 +131,12 @@
       "title": "Data Science with Python Track",
       "issuer": "Udemy"
     },
-    "ml": {
-      "title": "Supervised and Unsupervised Learning with Scikit-Learn",
+    "mlSupervised": {
+      "title": "Supervised Learning with Scikit-Learn",
+      "issuer": "Udemy"
+    },
+    "mlUnsupervised": {
+      "title": "Unsupervised Learning with Scikit-Learn",
       "issuer": "Udemy"
     },
     "tensorflow": {
@@ -159,8 +163,16 @@
       "title": "Terraform Complete Course",
       "issuer": "Udemy"
     },
-    "comArchitecture": {
-      "title": "ComputerArchitecture & Organization",
+    "comArchitecture1": {
+      "title": "ComputerArchitecture & Organization 1",
+      "issuer": "Udemy"
+    },
+    "comArchitecture2": {
+      "title": "ComputerArchitecture & Organization 2",
+      "issuer": "Udemy"
+    },
+    "comArchitecture3": {
+      "title": "ComputerArchitecture & Organization 3",
       "issuer": "Udemy"
     },
     "comNetwork": {
