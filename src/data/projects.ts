@@ -5,7 +5,7 @@ export const projects: Project[] = [
     id: '1',
     titleKey: 'projects.pawCare.title',
     descriptionKey: 'projects.pawCare.description',
-    image: '/images/projects/paw-care.jpg',
+    image: '/images/projects/pawcare/pawcare.png',
     technologies: ['React', 'TypeScript', 'Tailwind CSS'],
     liveUrl: 'https://example.com/demo1',
     detailsUrl: 'https://github.com/example/arithmetic-solver',

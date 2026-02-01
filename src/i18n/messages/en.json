@@ -129,15 +129,15 @@
     },
     "dataScience": {
       "title": "Data Science with Python Track",
-      "issuer": "Udemy"
+      "issuer": "Datacamp"
     },
     "mlSupervised": {
       "title": "Supervised Learning with Scikit-Learn",
-      "issuer": "Udemy"
+      "issuer": "Datacamp"
     },
     "mlUnsupervised": {
       "title": "Unsupervised Learning with Scikit-Learn",
-      "issuer": "Udemy"
+      "issuer": "Datacamp"
     },
     "tensorflow": {
       "title": "Tensorflow for Deep Learning",

@@ -70,7 +70,7 @@ function TabPanel(props: TabPanelProps) {
       aria-labelledby={`techstack-tab-${index}`}
       {...other}
     >
-      {value === index && <Box sx={{ py: 4 }}>{children}</Box>}
+      {value === index && <Box sx={{ pt: 0 }}>{children}</Box>}
     </div>
   );
 }
@@ -115,7 +115,7 @@ export default function TechStackSection() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={fadeInUp}
-          sx={{ textAlign: 'center', mb: 6 }}
+          sx={{ textAlign: 'left', mb: 6 }}
         >
           <Typography
             variant="h2"
@@ -130,7 +130,7 @@ export default function TechStackSection() {
           <Typography
             variant="body1"
             color="text.secondary"
-            sx={{ maxWidth: 600, mx: 'auto' }}
+            sx={{ maxWidth: 600 }}
           >
             {t('subtitle')}
           </Typography>
@@ -141,17 +141,20 @@ export default function TechStackSection() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={fadeInUp}
-          sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}
+          sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4 }}
         >
           <Tabs
             value={tabValue}
             onChange={handleTabChange}
+            orientation="vertical"
             variant="scrollable"
             scrollButtons="auto"
             sx={{
               bgcolor: 'rgba(255,255,255,0.03)',
               borderRadius: 2,
               p: 0.5,
+              minWidth: { md: 200 },
+              flexShrink: 0,
               '& .MuiTabs-indicator': {
                 display: 'none',
               },
@@ -161,6 +164,9 @@ export default function TechStackSection() {
                 borderRadius: 1.5,
                 color: 'text.secondary',
                 transition: 'all 0.3s ease',
+                alignItems: 'flex-start',
+                justifyContent: 'flex-start',
+                textAlign: 'left',
                 '&.Mui-selected': {
                   bgcolor: 'rgba(255,255,255,0.05)',
                   color: 'text.primary',
@@ -182,12 +188,12 @@ export default function TechStackSection() {
               />
             ))}
           </Tabs>
-        </MotionBox>
 
-        <AnimatePresence mode="wait">
-          {techStackTabs.map((tab, index) => (
-            <TabPanel key={tab.key} value={tabValue} index={index}>
-              <MotionBox
+          <Box sx={{ flexGrow: 1 }}>
+            <AnimatePresence mode="wait">
+              {techStackTabs.map((tab, index) => (
+                <TabPanel key={tab.key} value={tabValue} index={index}>
+                  <MotionBox
                 key={`techstack-${tab.key}`}
                 initial="hidden"
                 animate="visible"
@@ -198,8 +204,8 @@ export default function TechStackSection() {
                   gridTemplateColumns: {
                     xs: 'repeat(2, 1fr)',
                     sm: 'repeat(3, 1fr)',
-                    md: 'repeat(4, 1fr)',
-                    lg: 'repeat(6, 1fr)',
+                    md: 'repeat(3, 1fr)',
+                    lg: 'repeat(4, 1fr)',
                   },
                   gap: 2,
                 }}
@@ -251,9 +257,11 @@ export default function TechStackSection() {
                   </Box>
                 )}
               </MotionBox>
-            </TabPanel>
-          ))}
-        </AnimatePresence>
+              </TabPanel>
+            ))}
+          </AnimatePresence>
+          </Box>
+        </MotionBox>
       </Container>
     </Box>
   );

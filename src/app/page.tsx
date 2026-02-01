@@ -15,9 +15,9 @@ export default function Home() {
         <HeroSection />
         <AboutSection />
         <ExperienceSection />
+        <TechStackSection />
         <ProjectSection />
         <CertificatesSection />
-        <TechStackSection />
 
         {/* Contact Section Placeholder */}
         <Box

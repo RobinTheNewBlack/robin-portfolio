@@ -27,19 +27,15 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       }}
     >
       <CardMedia
-        component="div"
+        component="img"
+        image={project.image}
+        alt={t(project.titleKey)}
         sx={{
           height: 200,
+          objectFit: 'cover',
           bgcolor: 'background.paper',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
         }}
-      >
-        <Typography variant="body2" color="text.secondary">
-          {t(project.titleKey)}
-        </Typography>
-      </CardMedia>
+      />
       <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
         <Typography variant="h6" component="h3" gutterBottom sx={{ fontWeight: 600 }}>
           {t(project.titleKey)}
