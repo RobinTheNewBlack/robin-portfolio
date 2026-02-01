@@ -2,8 +2,8 @@ import { TechStackItem } from '@/types';
 
 export const techStack: TechStackItem[] = [
   // Programming Languages
-  { id: 'typescript', name: 'TypeScript', icon: 'typescript', category: 'programming' },
-  { id: 'javascript', name: 'JavaScript', icon: 'javascript', category: 'programming' },
+  { id: 'typescript', name: 'TypeScript', icon: 'ts', category: 'programming' },
+  { id: 'javascript', name: 'JavaScript', icon: 'js', category: 'programming' },
   { id: 'python', name: 'Python', icon: 'python', category: 'programming' },
   { id: 'sql', name: 'SQL', icon: 'sql', category: 'programming' },
   
@@ -12,11 +12,11 @@ export const techStack: TechStackItem[] = [
   { id: 'nextjs', name: 'Next.js', icon: 'nextjs', category: 'frontend' },
   { id: 'tailwind', name: 'Tailwind CSS', icon: 'tailwind', category: 'frontend' },
   { id: 'mui', name: 'Material-UI', icon: 'mui', category: 'frontend' },
-  { id: 'html', name: 'HTML5', icon: 'html', category: 'frontend' },
-  { id: 'css', name: 'CSS3', icon: 'css', category: 'frontend' },
+  { id: 'html', name: 'HTML', icon: 'html', category: 'frontend' },
+  { id: 'css', name: 'CSS', icon: 'css', category: 'frontend' },
 
   // Backend
-  { id: 'nodejs', name: 'Node.js', icon: 'nodejs', category: 'backend' },
+  { id: 'nodejs', name: 'Node.js', icon: 'node', category: 'backend' },
   { id: 'express', name: 'Express.js', icon: 'express', category: 'backend' },
   { id: 'fastapi', name: 'FastAPI', icon: 'fastapi', category: 'backend' },
   { id: 'sequelize', name: 'Sequelize', icon: 'sequelize', category: 'backend' },
@@ -25,8 +25,8 @@ export const techStack: TechStackItem[] = [
   { id: 'mongodb', name: 'MongoDB', icon: 'mongodb', category: 'database' },
   { id: 'postgresql', name: 'PostgreSQL', icon: 'postgresql', category: 'database' },
   { id: 'redis', name: 'Redis', icon: 'redis', category: 'database' },
-  { id: 'pinecone', name: 'Pinecone', icon: 'pinecone', category: 'database' },
-  { id: 'faiss', name: 'Faiss', icon: 'faiss', category: 'database' },
+  { id: 'chroma', name: 'Chroma', icon: 'chroma', category: 'database' },
+  { id: 'faiss', name: 'Faiss', icon: 'meta', category: 'database' },
 
   // Cloud & DevOps
   { id: 'docker', name: 'Docker', icon: 'docker', category: 'cloudDevops' },
@@ -34,7 +34,7 @@ export const techStack: TechStackItem[] = [
   { id: 'terraform', name: 'Terraform', icon: 'terraform', category: 'cloudDevops' },
   { id: 'aws', name: 'AWS', icon: 'aws', category: 'cloudDevops' },
   { id: 'gcp', name: 'GCP', icon: 'gcp', category: 'cloudDevops' },
-  { id: 'huaweiCloud', name: 'Huawei Cloud', icon: 'huaweicloud', category: 'cloudDevops' },
+  { id: 'huaweiCloud', name: 'Huawei Cloud', icon: 'huawei', category: 'cloudDevops' },
 
   // AI
   { id: 'tensorflow', name: 'TensorFlow', icon: 'tensorflow', category: 'ai' },

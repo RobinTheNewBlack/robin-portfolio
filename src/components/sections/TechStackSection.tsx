@@ -194,72 +194,77 @@ export default function TechStackSection() {
               {techStackTabs.map((tab, index) => (
                 <TabPanel key={tab.key} value={tabValue} index={index}>
                   <MotionBox
-                key={`techstack-${tab.key}`}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                variants={staggerContainer}
-                sx={{
-                  display: 'grid',
-                  gridTemplateColumns: {
-                    xs: 'repeat(2, 1fr)',
-                    sm: 'repeat(3, 1fr)',
-                    md: 'repeat(3, 1fr)',
-                    lg: 'repeat(4, 1fr)',
-                  },
-                  gap: 2,
-                }}
-              >
-                {getTechByCategory(tab.key).length > 0 ? (
-                  getTechByCategory(tab.key).map((tech) => (
-                    <MotionBox key={tech.id} variants={itemVariants}>
-                      <Paper
-                        sx={{
-                          p: 3,
-                          textAlign: 'center',
-                          bgcolor: 'rgba(255,255,255,0.03)',
-                          border: '1px solid rgba(255,255,255,0.1)',
-                          borderRadius: 2,
-                          transition: 'all 0.3s ease',
-                          '&:hover': {
-                            bgcolor: 'rgba(255,255,255,0.05)',
-                            borderColor: 'primary.main',
-                            transform: 'translateY(-4px)',
-                          },
-                        }}
-                      >
-                        <Box
-                          sx={{
-                            width: 48,
-                            height: 48,
-                            mx: 'auto',
-                            mb: 1.5,
-                            borderRadius: 2,
-                            bgcolor: 'rgba(37, 99, 235, 0.1)',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                          }}
-                        >
-                          <Typography variant="h6" sx={{ color: 'primary.main' }}>
-                            {tech.name.charAt(0)}
-                          </Typography>
-                        </Box>
-                        <Typography variant="body2" sx={{ fontWeight: 500 }}>
-                          {tech.name}
-                        </Typography>
-                      </Paper>
-                    </MotionBox>
-                  ))
-                ) : (
-                  <Box sx={{ gridColumn: '1 / -1', textAlign: 'center', py: 8 }}>
-                    <Typography color="text.secondary">No items to display</Typography>
-                  </Box>
-                )}
-              </MotionBox>
-              </TabPanel>
-            ))}
-          </AnimatePresence>
+                    key={`techstack-${tab.key}`}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    variants={staggerContainer}
+                    sx={{
+                      display: 'grid',
+                      gridTemplateColumns: {
+                        xs: 'repeat(2, 1fr)',
+                        sm: 'repeat(3, 1fr)',
+                        md: 'repeat(3, 1fr)',
+                        lg: 'repeat(4, 1fr)',
+                      },
+                      gap: 2,
+                    }}
+                  >
+                    {getTechByCategory(tab.key).length > 0 ? (
+                      getTechByCategory(tab.key).map((tech) => (
+                        <MotionBox key={tech.id} variants={itemVariants}>
+                          <Paper
+                            sx={{
+                              p: 3,
+                              textAlign: 'center',
+                              bgcolor: 'rgba(255,255,255,0.03)',
+                              border: '1px solid rgba(255,255,255,0.1)',
+                              borderRadius: 2,
+                              transition: 'all 0.3s ease',
+                              '&:hover': {
+                                bgcolor: 'rgba(255,255,255,0.05)',
+                                borderColor: 'primary.main',
+                                transform: 'translateY(-4px)',
+                              },
+                            }}
+                          >
+                            <Box
+                              sx={{
+                                width: 48,
+                                height: 48,
+                                mx: 'auto',
+                                mb: 1.5,
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                              }}
+                            >
+                              <Box
+                                component="img"
+                                src={`/images/techstacks/${tech.icon}.png`}
+                                alt={tech.name}
+                                sx={{
+                                  width: 64,
+                                  height: 64,
+                                  objectFit: 'contain',
+                                }}
+                              />
+                            </Box>
+                            <Typography variant="body2" sx={{ fontWeight: 500 }}>
+                              {tech.name}
+                            </Typography>
+                          </Paper>
+                        </MotionBox>
+                      ))
+                    ) : (
+                      <Box sx={{ gridColumn: '1 / -1', textAlign: 'center', py: 8 }}>
+                        <Typography color="text.secondary">No items to display</Typography>
+                      </Box>
+                    )}
+                  </MotionBox>
+                </TabPanel>
+              ))}
+            </AnimatePresence>
           </Box>
         </MotionBox>
       </Container>
