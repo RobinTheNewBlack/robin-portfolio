@@ -75,6 +75,8 @@ function TabPanel(props: TabPanelProps) {
   );
 }
 
+const largerIcons = new Set(['node', 'express', 'fastapi', 'langchain', 'langgraph', 'langsmith', 'pandas', 'numpy', 'cypress']);
+
 const techStackTabs: { key: TechStackCategory; icon: React.ReactElement }[] = [
   { key: 'programming', icon: <CodeIcon /> },
   { key: 'backend', icon: <StorageIcon /> },
@@ -217,7 +219,7 @@ export default function TechStackSection() {
                             sx={{
                               p: 3,
                               textAlign: 'center',
-                              bgcolor: 'rgba(255,255,255,0.03)',
+                              bgcolor: 'rgba(255,255,255,0.01)',
                               border: '1px solid rgba(255,255,255,0.1)',
                               borderRadius: 2,
                               transition: 'all 0.3s ease',
@@ -230,7 +232,7 @@ export default function TechStackSection() {
                           >
                             <Box
                               sx={{
-                                width: 48,
+                                width: largerIcons.has(tech.icon) ? 80 : 48,
                                 height: 48,
                                 mx: 'auto',
                                 mb: 1.5,
@@ -244,8 +246,8 @@ export default function TechStackSection() {
                                 src={`/images/techstacks/${tech.icon}.png`}
                                 alt={tech.name}
                                 sx={{
-                                  width: 64,
-                                  height: 64,
+                                  width: largerIcons.has(tech.icon) ? 80 : 64,
+                                  height: largerIcons.has(tech.icon) ? 80 : 64,
                                   objectFit: 'contain',
                                 }}
                               />

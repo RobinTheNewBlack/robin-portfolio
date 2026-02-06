@@ -32,9 +32,12 @@ export const techStack: TechStackItem[] = [
     { id: "docker", name: "Docker", icon: "docker", category: "cloudDevops" },
     { id: "kubernetes", name: "Kubernetes", icon: "kubernetes", category: "cloudDevops" },
     { id: "terraform", name: "Terraform", icon: "terraform", category: "cloudDevops" },
+    { id: "githubActions", name: "GitHub Actions", icon: "github-actions", category: "cloudDevops" },
+    { id: "bitbucketPipelines", name: "Bitbucket Pipelines", icon: "bitbucket", category: "cloudDevops" },
     { id: "aws", name: "AWS", icon: "aws", category: "cloudDevops" },
     { id: "gcp", name: "GCP", icon: "gcp", category: "cloudDevops" },
     { id: "huaweiCloud", name: "Huawei Cloud", icon: "huawei", category: "cloudDevops" },
+
 
     // AI
     { id: "tensorflow", name: "TensorFlow", icon: "tensorflow", category: "ai" },
@@ -44,6 +47,9 @@ export const techStack: TechStackItem[] = [
     { id: "langgraph", name: "LangGraph", icon: "langgraph", category: "ai" },
     { id: "langsmith", name: "LangSmith", icon: "langsmith", category: "ai" },
     { id: "huggingface", name: "Hugging Face", icon: "huggingface", category: "ai" },
+    { id: "mcp", name: "Mcp", icon: "mcp", category: "ai" },
+    { id: "ollama", name: "Ollama", icon: "ollama", category: "ai" },
+    { id: "groq", name: "Groq", icon: "groq", category: "ai" },
 
     // Data Science
     { id: "pandas", name: "Pandas", icon: "pandas", category: "dataScience" },
