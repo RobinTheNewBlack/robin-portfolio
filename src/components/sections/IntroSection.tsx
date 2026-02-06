@@ -50,8 +50,8 @@ const illustrationVariants = {
   },
 };
 
-export default function HeroSection() {
-  const t = useTranslations('hero');
+export default function IntroSection() {
+  const t = useTranslations('intro');
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);

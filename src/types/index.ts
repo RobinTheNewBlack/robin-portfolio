@@ -63,11 +63,17 @@ export interface StatItem {
   icon: string;
 }
 
+export interface ExperienceProject {
+  topic: string;
+  bullets: string[];
+}
+
 export interface Experience {
   id: string;
   positionKey: string;
   companyKey: string;
-  year: string;
-  descriptionKey: string;
+  yearKey: string;
+  responsibilityKey: string;
+  projectsKey: string;
   logo?: string;
 }

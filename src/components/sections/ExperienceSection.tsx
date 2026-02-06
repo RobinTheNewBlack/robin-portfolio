@@ -4,6 +4,7 @@ import { Box, Container, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { experiences } from '@/data/experiences';
+import { ExperienceProject } from '@/types';
 
 const MotionBox = motion.create(Box);
 
@@ -103,7 +104,7 @@ export default function ExperienceSection() {
         <Box
           sx={{
             position: 'relative',
-            maxWidth: 1000,
+            maxWidth: 1200,
             mx: 'auto',
           }}
         >
@@ -201,7 +202,7 @@ export default function ExperienceSection() {
                         color: 'text.secondary',
                       }}
                     >
-                      {exp.year}
+                      {t(exp.yearKey)}
                     </Typography>
                   </Box>
                 </MotionBox>
@@ -285,7 +286,7 @@ export default function ExperienceSection() {
                 >
                   <Box
                     sx={{
-                      maxWidth: 400,
+                      maxWidth: 520,
                       p: 3,
                       bgcolor: 'rgba(255,255,255,0.03)',
                       borderRadius: 2,
@@ -297,15 +298,101 @@ export default function ExperienceSection() {
                       },
                     }}
                   >
+                    {/* Responsibility Overview */}
                     <Typography
-                      variant="body1"
+                      variant="body2"
                       sx={{
-                        color: 'text.secondary',
-                        lineHeight: 1.7,
+                        color: 'text.primary',
+                        fontWeight: 600,
+                        mb: 0.75,
+                        fontSize: '0.85rem',
                       }}
                     >
-                      {t(exp.descriptionKey)}
+                      Responsibility
                     </Typography>
+                    <Box component="ul" sx={{ m: 0, pl: 2.5, listStyle: 'none', mb: 2 }}>
+                      {(t.raw(exp.responsibilityKey) as string[]).map((item) => (
+                        <Box
+                          component="li"
+                          key={item}
+                          sx={{
+                            color: 'text.secondary',
+                            lineHeight: 1.7,
+                            fontSize: '0.9rem',
+                            position: 'relative',
+                            pl: 1.5,
+                            mb: 0.5,
+                            '&::before': {
+                              content: '"▸"',
+                              position: 'absolute',
+                              left: 0,
+                              color: 'primary.main',
+                              fontSize: '0.75rem',
+                              top: '2px',
+                            },
+                          }}
+                        >
+                          {item}
+                        </Box>
+                      ))}
+                    </Box>
+
+                    {/* Projects */}
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: 'text.primary',
+                        fontWeight: 600,
+                        mb: 0.75,
+                        fontSize: '0.85rem',
+                      }}
+                    >
+                      Projects
+                    </Typography>
+                    {(t.raw(exp.projectsKey) as ExperienceProject[]).map(
+                      (project, projIdx) => (
+                        <Box key={project.topic} sx={{ mb: projIdx < (t.raw(exp.projectsKey) as ExperienceProject[]).length - 1 ? 1.5 : 0 }}>
+                          <Typography
+                            variant="body2"
+                            sx={{
+                              color: 'primary.light',
+                              fontWeight: 600,
+                              mb: 0.5,
+                              fontSize: '0.8rem',
+                              pl: 1,
+                            }}
+                          >
+                            {project.topic}
+                          </Typography>
+                          <Box component="ul" sx={{ m: 0, pl: 2.5, listStyle: 'none' }}>
+                            {project.bullets.map((bullet) => (
+                              <Box
+                                component="li"
+                                key={bullet}
+                                sx={{
+                                  color: 'text.secondary',
+                                  lineHeight: 1.7,
+                                  fontSize: '0.85rem',
+                                  position: 'relative',
+                                  pl: 1.5,
+                                  mb: 0.3,
+                                  '&::before': {
+                                    content: '"•"',
+                                    position: 'absolute',
+                                    left: 0,
+                                    color: 'text.secondary',
+                                    fontSize: '0.85rem',
+                                    top: '0px',
+                                  },
+                                }}
+                              >
+                                {bullet}
+                              </Box>
+                            ))}
+                          </Box>
+                        </Box>
+                      )
+                    )}
                   </Box>
                 </MotionBox>
 
@@ -354,7 +441,7 @@ export default function ExperienceSection() {
                       mb: 1.5,
                     }}
                   >
-                    {exp.year}
+                    {t(exp.yearKey)}
                   </Typography>
                   <Box
                     sx={{
@@ -364,15 +451,101 @@ export default function ExperienceSection() {
                       border: '1px solid rgba(255,255,255,0.1)',
                     }}
                   >
+                    {/* Responsibility Overview */}
                     <Typography
                       variant="body2"
                       sx={{
-                        color: 'text.secondary',
-                        lineHeight: 1.7,
+                        color: 'text.primary',
+                        fontWeight: 600,
+                        mb: 0.5,
+                        fontSize: '0.8rem',
                       }}
                     >
-                      {t(exp.descriptionKey)}
+                      Responsibility
                     </Typography>
+                    <Box component="ul" sx={{ m: 0, pl: 2, listStyle: 'none', mb: 1.5 }}>
+                      {(t.raw(exp.responsibilityKey) as string[]).map((item) => (
+                        <Box
+                          component="li"
+                          key={item}
+                          sx={{
+                            color: 'text.secondary',
+                            lineHeight: 1.7,
+                            fontSize: '0.85rem',
+                            position: 'relative',
+                            pl: 1.5,
+                            mb: 0.3,
+                            '&::before': {
+                              content: '"▸"',
+                              position: 'absolute',
+                              left: 0,
+                              color: 'primary.main',
+                              fontSize: '0.7rem',
+                              top: '2px',
+                            },
+                          }}
+                        >
+                          {item}
+                        </Box>
+                      ))}
+                    </Box>
+
+                    {/* Projects */}
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: 'text.primary',
+                        fontWeight: 600,
+                        mb: 0.5,
+                        fontSize: '0.8rem',
+                      }}
+                    >
+                      Projects
+                    </Typography>
+                    {(t.raw(exp.projectsKey) as ExperienceProject[]).map(
+                      (project, projIdx) => (
+                        <Box key={project.topic} sx={{ mb: projIdx < (t.raw(exp.projectsKey) as ExperienceProject[]).length - 1 ? 1 : 0 }}>
+                          <Typography
+                            variant="body2"
+                            sx={{
+                              color: 'primary.light',
+                              fontWeight: 600,
+                              mb: 0.3,
+                              fontSize: '0.75rem',
+                              pl: 0.5,
+                            }}
+                          >
+                            {project.topic}
+                          </Typography>
+                          <Box component="ul" sx={{ m: 0, pl: 2, listStyle: 'none' }}>
+                            {project.bullets.map((bullet) => (
+                              <Box
+                                component="li"
+                                key={bullet}
+                                sx={{
+                                  color: 'text.secondary',
+                                  lineHeight: 1.7,
+                                  fontSize: '0.8rem',
+                                  position: 'relative',
+                                  pl: 1.5,
+                                  mb: 0.2,
+                                  '&::before': {
+                                    content: '"•"',
+                                    position: 'absolute',
+                                    left: 0,
+                                    color: 'text.secondary',
+                                    fontSize: '0.8rem',
+                                    top: '0px',
+                                  },
+                                }}
+                              >
+                                {bullet}
+                              </Box>
+                            ))}
+                          </Box>
+                        </Box>
+                      )
+                    )}
                   </Box>
                 </MotionBox>
               </Box>

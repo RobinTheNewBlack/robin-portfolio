@@ -1,12 +1,12 @@
 'use client';
 
 import { Box, Chip } from '@mui/material';
-import { heroTechStack } from '@/data/techStack';
+import { introTechStack } from '@/data/techStack';
 
 export default function TechBadges() {
   return (
     <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-      {heroTechStack.map((tech) => (
+      {introTechStack.map((tech) => (
         <Chip
           key={tech}
           label={tech}

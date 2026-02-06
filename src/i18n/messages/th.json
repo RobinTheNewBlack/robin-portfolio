@@ -1,128 +1,372 @@
 {
-  "nav": {
-    "home": "หน้าแรก",
-    "about": "เกี่ยวกับ",
-    "projects": "โปรเจกต์",
-    "certificates": "ใบรับรอง",
-    "techStack": "เทคโนโลยี",
-    "contact": "ติดต่อ"
-  },
-  "hero": {
-    "badge": "พร้อมสร้างสรรค์",
-    "title": "Frontend",
-    "titleHighlight": "Developer",
-    "subtitle": "นักศึกษาสาขาเครือข่ายและโทรคมนาคม",
-    "description": "สร้างเว็บไซต์ที่สร้างสรรค์ ใช้งานได้จริง และเป็นมิตรกับผู้ใช้เพื่อโซลูชันดิจิทัล มุ่งมั่นสร้างประสบการณ์เว็บที่สวยงามด้วยโค้ดที่สะอาด",
-    "projectsBtn": "ผลงาน",
-    "contactBtn": "ติดต่อ"
-  },
-  "about": {
-    "title": "เกี่ยวกับฉัน",
-    "tagline": "เปลี่ยนไอเดียให้เป็นประสบการณ์ดิจิทัล",
-    "greeting": "สวัสดี ผมชื่อ",
-    "name": "ณัฐกิตติ์ เกิดทะเล",
-    "bio": "นักศึกษาสาขาเครือข่ายคอมพิวเตอร์และโทรคมนาคมที่หลงใหลในการพัฒนา Front-End มุ่งเน้นสร้างประสบการณ์ดิจิทัลที่น่าสนใจและพยายามส่งมอบโซลูชันที่ดีที่สุดในทุกโปรเจกต์",
-    "downloadCv": "ดาวน์โหลด CV",
-    "viewProjects": "ดูผลงาน",
-    "stats": {
-      "projects": "โปรเจกต์ทั้งหมด",
-      "projectsDesc": "โซลูชันเว็บที่สร้างสรรค์",
-      "certificates": "ใบรับรอง",
-      "certificatesDesc": "ทักษะวิชาชีพที่ได้รับการรับรอง",
-      "experience": "ปีประสบการณ์",
-      "experienceDesc": "การเดินทางแห่งการเรียนรู้อย่างต่อเนื่อง"
+    "nav": {
+        "home": "หน้าแรก",
+        "about": "เกี่ยวกับ",
+        "projects": "โปรเจกต์",
+        "certificates": "ใบรับรอง",
+        "techStack": "เทคโนโลยี",
+        "contact": "ติดต่อ"
+    },
+    "intro": {
+        "badge": "พร้อมสร้างสรรค์นวัตกรรม",
+        "title": "AI & Fullstack",
+        "titleHighlight": "Developer",
+        "subtitle": "Full-Stack Developer ที่ก้าวข้ามขีดจำกัดของ Full-Stack",
+        "description": "นักพัฒนาซอฟต์แวร์ที่มีประสบการณ์กว่า 3 ปี โดยทำงานหลักในตำแหน่ง Full-Stack Developer และ AI Engineer พร้อมประสบการณ์ก่อนหน้าในตำแหน่ง System Analyst งานหลักเกี่ยวข้องกับการพัฒนา Web Application และ AI Solutions สำหรับองค์กรต่างๆ",
+        "projectsBtn": "ผลงาน",
+        "contactBtn": "ติดต่อ"
+    },
+    "about": {
+        "title": "เกี่ยวกับฉัน",
+        "tagline": "เปลี่ยนไอเดียให้เป็นประสบการณ์ดิจิทัล",
+        "greeting": "สวัสดีครับ ผมชื่อ",
+        "name": "ณัฐกิตติ์ เกิดทะเล (แม็กซ์)",
+        "bio": "ผมมีความชอบและหลงใหลอย่างมากในเรื่องเทคโนโลยีคอมพิวเตอร์ ชอบพัฒนาทักษะใหม่ๆให้ตัวเองอยุ่เสมอ แม้ว่าพื้นฐานทางการศึกษาของผมจะมาจากสาขาวิศวกรรมอุตสาหการ แต่ผมได้ตัดสินใจอย่างตั้งใจและมุ่งมั่นที่จะเปลี่ยนสายงานเข้าสู่ด้านการพัฒนาซอฟต์แวร์ ผมจึงอยากนำความรู้ความสามารถและเครื่องมือทั้งหมดที่ผมมีมาสร้างประโยชน์ สร้างระบบที่มีประสิทธิภาพ และสร้างสิ่งใหม่ๆที่ยิ่งใหญ่ เพื่อสังคมและประเทศของเรา",
+        "downloadCv": "ดาวน์โหลด CV",
+        "viewProjects": "ดูผลงาน",
+        "stats": {
+            "projects": "โปรเจกต์",
+            "projectsDesc": "ซอฟต์แวร์โซลูชันเว็บที่สร้าง",
+            "certificates": "ใบรับรอง",
+            "certificatesDesc": "ทักษะวิชาชีพที่ได้รับการรับรอง",
+            "experience": "ประสบการณ์การทำงาน",
+            "experienceDesc": "การเดินทางแห่งการเรียนรู้"
+        }
+    },
+    "projectSection": {
+        "title": "โปรเจกต์",
+        "subtitle": "สำรวจเส้นทางการพัฒนาของผมผ่านโปรเจกต์หลากหลายประเภท",
+        "tabs": {
+            "internal": "โปรเจกต์ภายใน",
+            "freelance": "โปรเจกต์ฟรีแลนซ์",
+            "side": "โปรเจกต์ส่วนตัว"
+        },
+        "liveDemo": "ดูตัวอย่าง",
+        "details": "รายละเอียด",
+        "noProjects": "ไม่มีโปรเจกต์ที่จะแสดง"
+    },
+    "certificateSection": {
+        "title": "ใบรับรอง",
+        "subtitle": "ใบรับรองและความสำเร็จทางวิชาชีพที่ยืนยันทักษะและความรู้ของผม",
+        "tabs": {
+            "programming": "การเขียนโปรแกรม",
+            "ai": "ปัญญาประดิษฐ์",
+            "computerFundamental": "พื้นฐานคอมพิวเตอร์",
+            "devops": "DevOps",
+            "mathematics": "คณิตศาสตร์"
+        },
+        "noCertificates": "ไม่มีใบรับรองที่จะแสดง"
+    },
+    "techStackSection": {
+        "title": "เทคโนโลยี",
+        "subtitle": "เทคโนโลยีและเครื่องมือที่ผมใช้ในการสร้างแอปพลิเคชัน",
+        "tabs": {
+            "programming": "ภาษาโปรแกรม",
+            "backend": "แบ็กเอนด์",
+            "frontend": "ฟรอนต์เอนด์",
+            "database": "ฐานข้อมูล",
+            "cloudDevops": "คลาวด์และ DevOps",
+            "ai": "ปัญญาประดิษฐ์",
+            "dataScience": "วิทยาศาสตร์ข้อมูล",
+            "testing": "การทดสอบ",
+            "tools": "เครื่องมือ"
+        }
+    },
+    "projects": {
+        "pawCare": {
+            "title": "Paw Care",
+            "description": "โปรแกรมที่ออกแบบมาเพื่อช่วยผู้ใช้แก้ปัญหาคณิตศาสตร์โดยอัตโนมัติพร้อมคำตอบแบบทีละขั้นตอน"
+        },
+        "orvia": {
+            "title": "Orvia",
+            "description": "โปรแกรมที่ออกแบบมาเพื่อช่วยผู้ใช้แก้ปัญหาคณิตศาสตร์โดยอัตโนมัติพร้อมคำตอบแบบทีละขั้นตอน"
+        },
+        "optSence": {
+            "title": "OptSence",
+            "description": "โปรแกรมที่ออกแบบมาเพื่อช่วยผู้ใช้แก้ปัญหาคณิตศาสตร์โดยอัตโนมัติพร้อมคำตอบแบบทีละขั้นตอน"
+        },
+        "eSign": {
+            "title": "E-sign",
+            "description": "เว็บไซต์ที่ช่วยให้ผู้ใช้สามารถสร้าง บันทึก และจัดการบันทึกส่วนตัวได้อย่างมีประสิทธิภาพ"
+        },
+        "univa": {
+            "title": "Univa",
+            "description": "เว็บไซต์ที่ช่วยให้ผู้ใช้สามารถสร้าง บันทึก และจัดการบันทึกส่วนตัวได้อย่างมีประสิทธิภาพ"
+        },
+        "genoCore": {
+            "title": "GenoCore",
+            "description": "เว็บไซต์ที่ช่วยให้ผู้ใช้สามารถสร้าง บันทึก และจัดการบันทึกส่วนตัวได้อย่างมีประสิทธิภาพ"
+        },
+        "agentic": {
+            "title": "Agentic",
+            "description": "AutoChat เป็นโซลูชันอัตโนมัติสำหรับส่งข้อความไปยังช่อง Discord ตามกำหนดเวลา"
+        },
+        "goldBread": {
+            "title": "Gold Bread",
+            "description": "AutoChat เป็นโซลูชันอัตโนมัติสำหรับส่งข้อความไปยังช่อง Discord ตามกำหนดเวลา"
+        }
+    },
+    "certificates": {
+        "python": {
+            "title": "Complete Python Zero to Hero",
+            "issuer": "Udemy"
+        },
+        "webDev": {
+            "title": "The Complete Web Development Bootcamp",
+            "issuer": "Udemy"
+        },
+        "typescript": {
+            "title": "Understanding TypeScript",
+            "issuer": "Udemy"
+        },
+        "sql": {
+            "title": "Data Analyst with SQL Server Track",
+            "issuer": "Datacamp"
+        },
+        "fastapi": {
+            "title": "FastAPI The Complete Course",
+            "issuer": "Udemy"
+        },
+        "dataScience": {
+            "title": "Data Science with Python Track",
+            "issuer": "Datacamp"
+        },
+        "mlSupervised": {
+            "title": "Supervised Learning with Scikit-Learn",
+            "issuer": "Datacamp"
+        },
+        "mlUnsupervised": {
+            "title": "Unsupervised Learning with Scikit-Learn",
+            "issuer": "Datacamp"
+        },
+        "tensorflow": {
+            "title": "Tensorflow for Deep Learning",
+            "issuer": "Udemy"
+        },
+        "pytorch": {
+            "title": "PyTorch for Deep Learning",
+            "issuer": "Udemy"
+        },
+        "mlops": {
+            "title": "Mastering MLOps complete course for ML Operations",
+            "issuer": "Udemy"
+        },
+        "aws": {
+            "title": "AWS Certified Machine Learning Specialty",
+            "issuer": "Udemy"
+        },
+        "githubAction": {
+            "title": "GitHub Actions - The Complete Guide",
+            "issuer": "Udemy"
+        },
+        "iac": {
+            "title": "Terraform Complete Course",
+            "issuer": "Udemy"
+        },
+        "comArchitecture1": {
+            "title": "ComputerArchitecture & Organization 1",
+            "issuer": "Udemy"
+        },
+        "comArchitecture2": {
+            "title": "ComputerArchitecture & Organization 2",
+            "issuer": "Udemy"
+        },
+        "comArchitecture3": {
+            "title": "ComputerArchitecture & Organization 3",
+            "issuer": "Udemy"
+        },
+        "comNetwork": {
+            "title": "Computer Network",
+            "issuer": "Udemy"
+        },
+        "algebra": {
+            "title": "Linear Algebra for Machine Learning",
+            "issuer": "Coursera"
+        },
+        "calculus": {
+            "title": "Calculas for Machine Learning",
+            "issuer": "Coursera"
+        }
+    },
+    "experience": {
+        "title": "ประสบการณ์ในการทำงาน",
+        "items": {
+            "trainee": {
+                "position": "Engineering Trainee",
+                "company": "PTG energy",
+                "year": "ส.ค. 2562 - ต.ค. 2562",
+                "responsibility": [
+                    "ช่วยเหลือทีม Process Transformation ในการวิเคราะห์และปรับปรุงกระบวนการภายในองค์กร"
+                ],
+                "projects": [
+                    {
+                        "topic": "บริหารจัดการ Supply Chain",
+                        "bullets": ["ปรับปรุงประสิทธิภาพของ Supply Chain"]
+                    },
+                    {
+                        "topic": "ระบบอัตโนมัติ (RPA)",
+                        "bullets": ["นำ RPA มาใช้ในกระบวนการต่างๆ เพื่อเพิ่มประสิทธิภาพ ในการทำงาน"]
+                    }
+                ]
+            },
+            "sa": {
+                "position": "System Analyst",
+                "company": "Tipco Foods",
+                "year": "ม.ค. 2564 - ก.พ. 2565",
+                "responsibility": [
+                    "วิเคราะห์ความต้องการทางธุรกิจและสรุปความต้องการของผู้ใช้งาน",
+                    "ออกแบบและพัฒนาระบบภายในองค์กร",
+                    "แทนที่ระบบจากภายนอกด้วยระบบภายในเพื่อลดต้นทุน",
+                    "ออกแบบ UX/UI และจัดทำเอกสารสำหรับระบบที่พัฒนา",
+                    "ทำงานร่วมกับทีมนักพัฒนาอย่างใกล้ชิดเพื่อให้โปรเจกต์สำเร็จ"
+                ],
+                "projects": [
+                    {
+                        "topic": "ระบบวางแผนทรัพยากรองค์กร (ERP)",
+                        "bullets": [
+                            "ลดต้นทุนระยะยาว โดยแทนที่ระบบเดิมด้วยระบบ ERP ที่ปรับแต่งเองสำหรับแผนกภายในองค์กร",
+                            "พัฒนาและติดตั้งระบบจัดการคลังสินค้าและสินค้าคงคลัง",
+                            "พัฒนาและติดตั้งระบบจัดการคำสั่งซื้อออนไลน์"
+                        ]
+                    },
+                    {
+                        "topic": "ระบบจัดการสำหรับพนักงานขาย",
+                        "bullets": [
+                            "พัฒนาและติดตั้งระบบจัดการการขายสำหรับพนักงานขายใหม่ทั้งหมด เพื่อแทนที่ระบบจากภายนอกที่ใช้งานอยู่"
+                        ]
+                    },
+                    {
+                        "topic": "ระบบบริหารจัดการร้านค้า (POS)",
+                        "bullets": [
+                            "พัฒนาและติดตั้งระบบบริหารจัดการร้านค้า หรือ POS เพื่อแทนที่ระบบจากภายนอกที่ใช้งานอยู่"
+                        ]
+                    }
+                ]
+            },
+            "ai": {
+                "position": "AI & Machine Learning Engineer",
+                "company": "UTAC Thailand",
+                "year": "พ.ค. 2565 - ส.ค. 2566",
+                "responsibility": [
+                    "ออกแบบและพัฒนาโมเดล Computer Vision พร้อมเลือกสถาปัตยกรรมโมเดลที่เหมาะสมเพื่อแก้ปัญหาเฉพาะ",
+                    "ดำเนินการเตรียมข้อมูล, การเพิ่มข้อมูล และการ annotation เพื่อเตรียมชุดข้อมูลสำหรับการฝึกและประเมินผล",
+                    "พัฒนาและปรับปรุงอัลกอริทึม Machine Learning เพื่อเพิ่มความแม่นยำและประสิทธิภาพของโมเดล"
+                ],
+                "projects": [
+                    {
+                        "topic": "การจำแนกภาพ (Image Classification)",
+                        "bullets": [
+                            "ลดอัตราการปฏิเสธสินค้าเกินจริงและเวลาในการตรวจสอบของผู้ปฏิบัติงาน",
+                            "ใช้โมเดล ResNet50 แบบ multi-class classification เพื่อจำแนกข้อบกพร่องของผลิตภัณฑ์",
+                            "ใช้ EfficientNet พัฒนา AI master model เป็นโมเดลพื้นฐานสำหรับงาน Computer Vision ต่างๆ"
+                        ]
+                    },
+                    {
+                        "topic": "การตรวจจับวัตถุ (Object Detection)",
+                        "bullets": [
+                            "ใช้ YOLOv7 และ YOLOv8 ตรวจจับข้อบกพร่องของผลิตภัณฑ์และคำนวณอัตราส่วนพื้นที่ข้อบกพร่อง",
+                            "ใช้โมเดล Halcon ตรวจจับข้อบกพร่องบนพื้นผิวผลิตภัณฑ์"
+                        ]
+                    },
+                    {
+                        "topic": "การแบ่งส่วนภาพ (Semantic Segmentation)",
+                        "bullets": [
+                            "ใช้โมเดล U-Net แบบ multi-class segmentation เพื่อแบ่งส่วนข้อบกพร่องของผลิตภัณฑ์และคำนวณอัตราส่วนพื้นที่ข้อบกพร่อง"
+                        ]
+                    },
+                    {
+                        "topic": "OCR",
+                        "bullets": ["ใช้โมเดล OCR อ่านรหัสผลิตภัณฑ์จากสินค้าโดยอัตโนมัติ"]
+                    }
+                ]
+            },
+            "gb": {
+                "position": "Backend Developer (งานฟรีแลนซ์)",
+                "company": "Technonedge",
+                "year": "ก.ย. 2568 - ก.พ. 2569",
+                "responsibility": [
+                    "พัฒนาบริการแบ็กเอนด์",
+                    "ออกแบบโครงสร้างฐานข้อมูล SQL",
+                    "ออกแบบ API schemas และ API endpoints"
+                ],
+                "projects": [
+                    {
+                        "topic": "ระบบจัดการการขาย",
+                        "bullets": [
+                            "พัฒนาบริการแบ็กเอนด์ด้วย Node.js สำหรับโมดูล Salesperson Check-in และ Inventory Reconcile",
+                            "จัดการแอปพลิเคชันที่ทำงานบน container ใน Portainer"
+                        ]
+                    }
+                ]
+            },
+            "dev": {
+                "position": "Full-Stack Developer",
+                "company": "Genovation",
+                "year": "ก.ย. 2567 - ปัจจุบัน",
+                "responsibility": [
+                    "พัฒนาเว็บแอปพลิเคชันด้วย Node.js และ Next.js โดยเน้นการพัฒนาแบ็กเอนด์ด้วย RESTful APIs และการจัดการฐานข้อมูล",
+                    "ติดตั้งและพัฒนาระบบยืนยันตัวตนและการอนุญาตผู้ใช้ด้วย JWT และ OAuth2 กับ Keycloak",
+                    "ออกแบบ API schemas และ API endpoints สำหรับบริการเว็บและแอปพลิเคชันต่างๆ",
+                    "ออกแบบโครงสร้างฐานข้อมูลทั้ง NoSQL และ SQL รวมถึง MongoDB และ PostgreSQL",
+                    "สร้าง CI/CD pipelines ด้วย GitHub Actions และ Bitbucket Pipelines เพื่อทำให้กระบวนการทดสอบ สร้าง และปรับใช้เป็นอัตโนมัติ",
+                    "จัดเตรียมและจัดการบริการคลาวด์และโครงสร้างพื้นฐานบน AWS ด้วยเครื่องมือ Infrastructure as Code (IaC) เช่น CloudFormation",
+                    "เขียน unittest ด้วย Jest เพื่อรับรองคุณภาพและความน่าเชื่อถือของโค้ดด้วยแนวทาง Test-Driven Development (TDD)",
+                    "ทำงานร่วมกับทีมข้ามสายงานรวมถึงนักออกแบบ เจ้าของผลิตภัณฑ์ และนักพัฒนาคนอื่นๆ เพื่อส่งมอบโซลูชันซอฟต์แวร์คุณภาพสูง"
+                ],
+                "projects": [
+                    {
+                        "topic": "Paw Care (แพลตฟอร์มโภชนาการสัตว์เลี้ยง)",
+                        "bullets": [
+                            "จัดเตรียมและจัดการโครงสร้างพื้นฐานคลาวด์บน AWS ด้วย CloudFormation",
+                            "ออกแบบโครงสร้างฐานข้อมูล NoSQL ด้วย MongoDB สำหรับการจัดเก็บข้อมูลแบบยืดหยุ่น",
+                            "ออกแบบ API schemas และเอกสารสำหรับบริการแบ็กเอนด์ต่างๆ ด้วย API Dog",
+                            "พัฒนา business logic หลักในบริการแบ็กเอนด์ด้วย Node.js"
+                        ]
+                    },
+                    {
+                        "topic": "Univa (ระบบจัดการอุปกรณ์การแพทย์อัจฉริยะ)",
+                        "bullets": [
+                            "พัฒนาส่วนติดต่อผู้ใช้ด้วยเว็บแอปพลิเคชัน Next.js",
+                            "ติดตั้งและพัฒนาระบบยืนยันตัวตนและการอนุญาตผู้ใช้ด้วย JWT และ OAuth2 กับ Keycloak",
+                            "ออกแบบสถาปัตยกรรมคลาวด์ AWS สำหรับการปรับใช้แอปพลิเคชันที่ขยายได้และเชื่อถือได้",
+                            "จัดเตรียมและจัดการโครงสร้างพื้นฐานคลาวด์บน AWS ด้วย CloudFormation"
+                        ]
+                    },
+                    {
+                        "topic": "Genocore (แพลตฟอร์ม AI Agent Chatbot)",
+                        "bullets": [
+                            "พัฒนาบริการ AI agent และ Tools ด้วย LangChain กับ Gemini",
+                            "ติดตามพฤติกรรม AI ด้วย LangSmith",
+                            "พัฒนาส่วนติดต่อผู้ใช้ด้วยเว็บแอปพลิเคชัน React.js",
+                            "พัฒนาระบบ AI session และ memory persistence ในฐานข้อมูล MongoDB"
+                        ]
+                    },
+                    {
+                        "topic": "บริการสรุปการประชุมด้วย AI",
+                        "bullets": [
+                            "พัฒนาบริการสรุปการประชุมด้วย AI โดยใช้โมเดลโอเพนซอร์สจาก HuggingFace",
+                            "พัฒนาบริการแปลงเสียงเป็นข้อความด้วยโมเดล Whisper จาก OpenAI",
+                            "ปรับ hyper-parameter ของโมเดลโอเพนซอร์สเพื่อปรับปรุงประสิทธิภาพบนข้อมูลเฉพาะโดเมน"
+                        ]
+                    },
+                    {
+                        "topic": "Orvia (ระบบติดตามและจองห้องผ่าตัดอัจฉริยะ)",
+                        "bullets": [
+                            "พัฒนา business logic หลักในบริการแบ็กเอนด์ด้วย Node.js",
+                            "พัฒนาบริการสร้างภาพ E-paper ด้วย FastAPI",
+                            "ออกแบบโครงสร้างฐานข้อมูล SQL ด้วย PostgreSQL สำหรับการจัดเก็บข้อมูลแบบมีโครงสร้าง",
+                            "ออกแบบ API schemas และเอกสารสำหรับบริการแบ็กเอนด์ต่างๆ ด้วย API Dog"
+                        ]
+                    },
+                    {
+                        "topic": "OptSence (ระบบติดตาม HVAC)",
+                        "bullets": [
+                            "พัฒนา business logic หลักในบริการแบ็กเอนด์ด้วย Node.js",
+                            "ปรับใช้แอปพลิเคชันบนบริการ container orchestration บน Huawei Cloud"
+                        ]
+                    }
+                ]
+            }
+        }
     }
-  },
-  "projectSection": {
-    "title": "โปรเจกต์",
-    "subtitle": "สำรวจเส้นทางการพัฒนาของผมผ่านโปรเจกต์หลากหลายประเภท",
-    "tabs": {
-      "internal": "โปรเจกต์ภายใน",
-      "freelance": "โปรเจกต์ฟรีแลนซ์",
-      "side": "โปรเจกต์ส่วนตัว"
-    },
-    "liveDemo": "ดูตัวอย่าง",
-    "details": "รายละเอียด",
-    "noProjects": "ไม่มีโปรเจกต์ที่จะแสดง"
-  },
-  "certificateSection": {
-    "title": "ใบรับรอง",
-    "subtitle": "ใบรับรองและความสำเร็จทางวิชาชีพที่ยืนยันทักษะและความรู้ของผม",
-    "tabs": {
-      "programming": "การเขียนโปรแกรม",
-      "ai": "ปัญญาประดิษฐ์",
-      "computerFundamental": "พื้นฐานคอมพิวเตอร์",
-      "devops": "DevOps",
-      "mathematics": "คณิตศาสตร์"
-    },
-    "noCertificates": "ไม่มีใบรับรองที่จะแสดง"
-  },
-  "techStackSection": {
-    "title": "เทคโนโลยี",
-    "subtitle": "เทคโนโลยีและเครื่องมือที่ผมใช้ในการสร้างแอปพลิเคชัน",
-    "tabs": {
-      "programming": "ภาษาโปรแกรม",
-      "backend": "แบ็กเอนด์",
-      "frontend": "ฟรอนต์เอนด์",
-      "database": "ฐานข้อมูล",
-      "cloudDevops": "คลาวด์และ DevOps",
-      "ai": "ปัญญาประดิษฐ์",
-      "dataScience": "วิทยาศาสตร์ข้อมูล",
-      "testing": "การทดสอบ",
-      "tools": "เครื่องมือ"
-    }
-  },
-  "projects": {
-    "arithmeticSolver": {
-      "title": "Arithmetic Solver",
-      "description": "โปรแกรมที่ออกแบบมาเพื่อช่วยผู้ใช้แก้ปัญหาคณิตศาสตร์โดยอัตโนมัติพร้อมคำตอบแบบทีละขั้นตอน"
-    },
-    "autoChat": {
-      "title": "AutoChat-Discord",
-      "description": "AutoChat เป็นโซลูชันอัตโนมัติสำหรับส่งข้อความไปยังช่อง Discord ตามกำหนดเวลา"
-    },
-    "noteBook": {
-      "title": "Note Book",
-      "description": "เว็บไซต์ที่ช่วยให้ผู้ใช้สามารถสร้าง บันทึก และจัดการบันทึกส่วนตัวได้อย่างมีประสิทธิภาพ"
-    }
-  },
-  "certificates": {
-    "webDev": {
-      "title": "พื้นฐานการพัฒนาเว็บ",
-      "issuer": "FreeCodeCamp"
-    },
-    "javascript": {
-      "title": "อัลกอริทึม JavaScript",
-      "issuer": "FreeCodeCamp"
-    },
-    "react": {
-      "title": "การพัฒนา React",
-      "issuer": "Coursera"
-    }
-  },
-  "experience": {
-    "title": "ประสบการณ์ของฉัน",
-    "items": {
-      "trainee": {
-        "position": "นักศึกษาฝึกงาน",
-        "company": "Datacom",
-        "description": "เข้าร่วมการอบรมสามเดือนที่เรียนรู้เกี่ยวกับพื้นฐาน MS Excel ทักษะการพิมพ์ และส่วนประกอบหลักของระบบคอมพิวเตอร์"
-      },
-      "scholar": {
-        "position": "นักเรียนทุนภายนอก",
-        "company": "Security Bank Corporation",
-        "description": "หนึ่งในนักเรียนทุนภายนอกของ Security Bank Corporation มีหน้าที่เข้าร่วมสัมมนาที่เกี่ยวข้องและรักษาผลการเรียน"
-      },
-      "intern": {
-        "position": "นักศึกษาฝึกงาน IT",
-        "company": "Tech Solutions Inc.",
-        "description": "ได้รับประสบการณ์จริงในการพัฒนาเว็บ ช่วยเหลือทีมพัฒนาในงาน frontend และเรียนรู้แนวปฏิบัติที่ดีในอุตสาหกรรม"
-      },
-      "developer": {
-        "position": "นักพัฒนาจูเนียร์",
-        "company": "Digital Agency",
-        "description": "ทำงานในโปรเจกต์เว็บหลากหลายโดยใช้เทคโนโลยีสมัยใหม่เช่น React และ Next.js ร่วมมือกับทีมข้ามสายงานเพื่อส่งมอบโซลูชันคุณภาพ"
-      }
-    }
-  }
 }
