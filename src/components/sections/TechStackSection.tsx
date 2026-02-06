@@ -153,7 +153,10 @@ export default function TechStackSection() {
             scrollButtons="auto"
             sx={{
               bgcolor: 'rgba(255,255,255,0.03)',
-              borderRadius: 2,
+              backdropFilter: 'blur(12px)',
+              WebkitBackdropFilter: 'blur(12px)',
+              border: '1px solid rgba(255,255,255,0.06)',
+              borderRadius: 3,
               p: 0.5,
               minWidth: { md: 200 },
               flexShrink: 0,
@@ -163,18 +166,18 @@ export default function TechStackSection() {
               '& .MuiTab-root': {
                 minHeight: 48,
                 px: 2,
-                borderRadius: 1.5,
+                borderRadius: 2,
                 color: 'text.secondary',
                 transition: 'all 0.3s ease',
                 alignItems: 'flex-start',
                 justifyContent: 'flex-start',
                 textAlign: 'left',
                 '&.Mui-selected': {
-                  bgcolor: 'rgba(255,255,255,0.05)',
+                  bgcolor: 'rgba(255,255,255,0.06)',
                   color: 'text.primary',
                 },
                 '&:hover': {
-                  bgcolor: 'rgba(255,255,255,0.03)',
+                  bgcolor: 'rgba(255,255,255,0.04)',
                 },
               },
             }}
@@ -219,14 +222,18 @@ export default function TechStackSection() {
                             sx={{
                               p: 3,
                               textAlign: 'center',
-                              bgcolor: 'rgba(255,255,255,0.01)',
-                              border: '1px solid rgba(255,255,255,0.1)',
-                              borderRadius: 2,
+                              bgcolor: 'rgba(255,255,255,0.02)',
+                              backdropFilter: 'blur(12px)',
+                              WebkitBackdropFilter: 'blur(12px)',
+                              border: '1px solid rgba(255,255,255,0.08)',
+                              borderRadius: 3,
+                              boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.04)',
                               transition: 'all 0.3s ease',
                               '&:hover': {
-                                bgcolor: 'rgba(255,255,255,0.05)',
-                                borderColor: 'primary.main',
+                                bgcolor: 'rgba(255,255,255,0.06)',
+                                borderColor: 'rgba(37, 99, 235, 0.4)',
                                 transform: 'translateY(-4px)',
+                                boxShadow: '0 8px 32px rgba(37, 99, 235, 0.1), inset 0 1px 0 rgba(255,255,255,0.06)',
                               },
                             }}
                           >

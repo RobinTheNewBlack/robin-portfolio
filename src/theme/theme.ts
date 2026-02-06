@@ -16,8 +16,8 @@ export const darkTheme = createTheme({
       dark: '#0e7490',
     },
     background: {
-      default: '#0a0a0f',
-      paper: '#1a1a2e',
+      default: '#060611',
+      paper: '#0d0d1a',
     },
     text: {
       primary: '#ffffff',
@@ -67,8 +67,11 @@ export const darkTheme = createTheme({
           padding: '10px 24px',
         },
         containedPrimary: {
+          background: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)',
+          boxShadow: '0 4px 20px rgba(37, 99, 235, 0.3)',
           '&:hover': {
-            backgroundColor: '#1d4ed8',
+            background: 'linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%)',
+            boxShadow: '0 6px 28px rgba(37, 99, 235, 0.4)',
           },
         },
       },
@@ -76,14 +79,27 @@ export const darkTheme = createTheme({
     MuiCard: {
       styleOverrides: {
         root: {
-          backgroundColor: 'rgba(255,255,255,0.05)',
+          backgroundColor: 'rgba(255, 255, 255, 0.03)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
           borderRadius: 16,
-          border: '1px solid rgba(255,255,255,0.1)',
+          border: '1px solid rgba(255, 255, 255, 0.08)',
+          boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.04)',
           transition: 'all 0.3s ease',
           '&:hover': {
-            borderColor: 'rgba(37, 99, 235, 0.5)',
+            backgroundColor: 'rgba(255, 255, 255, 0.06)',
+            borderColor: 'rgba(37, 99, 235, 0.4)',
             transform: 'translateY(-4px)',
+            boxShadow:
+              '0 8px 32px rgba(37, 99, 235, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.06)',
           },
+        },
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          backgroundImage: 'none',
         },
       },
     },
@@ -93,17 +109,20 @@ export const darkTheme = createTheme({
           borderRadius: 50,
         },
         filled: {
-          backgroundColor: 'rgba(255,255,255,0.1)',
+          backgroundColor: 'rgba(255, 255, 255, 0.08)',
+          backdropFilter: 'blur(8px)',
+          WebkitBackdropFilter: 'blur(8px)',
         },
       },
     },
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundColor: 'rgba(10, 10, 15, 0.8)',
-          backdropFilter: 'blur(10px)',
+          backgroundColor: 'rgba(6, 6, 17, 0.6)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
           boxShadow: 'none',
-          borderBottom: '1px solid rgba(255,255,255,0.1)',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
         },
       },
     },

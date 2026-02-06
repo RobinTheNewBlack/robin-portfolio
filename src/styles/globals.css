@@ -1,16 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0f;
+  --background: #060611;
   --foreground: #ededed;
   --blue-400: #3b82f6;
   --blue-500: #2563eb;
   --blue-600: #1d4ed8;
   --blue-700: #1e40af;
+  --cyan-400: #22d3ee;
   --cyan-600: #0891b2;
-  --gradient-start: #0f172a;
-  --gradient-mid: #1e3a5f;
-  --gradient-end: #0c0a1f;
+  --indigo-500: #6366f1;
+  --gradient-start: #0a1628;
+  --gradient-mid: #132847;
+  --gradient-end: #080620;
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-hover-bg: rgba(255, 255, 255, 0.06);
+  --glass-hover-border: rgba(37, 99, 235, 0.4);
 }
 
 @theme inline {
@@ -31,29 +37,92 @@ body {
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 
-/* Hero gradient background */
+/* ========== SECTION BACKGROUNDS ========== */
+
+/* Hero gradient — semi-transparent so orbs show through */
 .bg-hero-gradient {
-  background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-mid) 50%, var(--gradient-end) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(10, 22, 40, 0.6) 0%,
+    rgba(19, 40, 71, 0.4) 50%,
+    rgba(8, 6, 32, 0.6) 100%
+  );
 }
 
-/* About section gradient */
+/* About / general section gradient — semi-transparent */
 .bg-about-gradient {
-  background: linear-gradient(180deg, #0a0a0f 0%, #0f172a 50%, #0a0a0f 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(6, 6, 17, 0.4) 0%,
+    rgba(10, 22, 40, 0.3) 50%,
+    rgba(6, 6, 17, 0.4) 100%
+  );
 }
 
 /* Portfolio section gradient */
 .bg-portfolio-gradient {
-  background: linear-gradient(180deg, #0a0a0f 0%, #0f0f1a 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(6, 6, 17, 0.5) 0%,
+    rgba(12, 12, 26, 0.4) 100%
+  );
 }
+
+/* ========== GLASSMORPHISM UTILITIES ========== */
+
+/* Glass panel — use on cards and containers */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+}
+
+.glass-panel:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(37, 99, 235, 0.3);
+  box-shadow:
+    0 8px 32px rgba(37, 99, 235, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Stronger glass — for prominent containers */
+.glass-panel-strong {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+}
+
+/* ========== CARD & GLOW EFFECTS ========== */
 
 /* Card glow effect on hover */
 .card-glow:hover {
-  box-shadow: 0 0 40px rgba(37, 99, 235, 0.15);
+  box-shadow:
+    0 0 40px rgba(37, 99, 235, 0.15),
+    0 0 80px rgba(37, 99, 235, 0.05);
 }
+
+/* Subtle inner glow for depth */
+.inner-glow {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* ========== TEXT GRADIENTS ========== */
 
 /* Blue text gradient - vibrant */
 .text-gradient-blue {
-  background: linear-gradient(135deg, #93c5fd 0%, #60a5fa 20%, #3b82f6 40%, #2563eb 60%, #4f46e5 80%, #6366f1 100%);
+  background: linear-gradient(
+    135deg,
+    #93c5fd 0%,
+    #60a5fa 20%,
+    #3b82f6 40%,
+    #2563eb 60%,
+    #4f46e5 80%,
+    #6366f1 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -73,9 +142,12 @@ body {
   }
 }
 
+/* ========== ANIMATIONS ========== */
+
 /* Animated pulse for status badge */
 @keyframes pulse-glow {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -87,7 +159,8 @@ body {
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
-/* Custom scrollbar */
+/* ========== SCROLLBAR ========== */
+
 ::-webkit-scrollbar {
   width: 8px;
 }

@@ -143,7 +143,10 @@ export default function CertificatesSection() {
             scrollButtons="auto"
             sx={{
               bgcolor: 'rgba(255,255,255,0.03)',
-              borderRadius: 2,
+              backdropFilter: 'blur(12px)',
+              WebkitBackdropFilter: 'blur(12px)',
+              border: '1px solid rgba(255,255,255,0.06)',
+              borderRadius: 3,
               p: 0.5,
               '& .MuiTabs-indicator': {
                 display: 'none',
@@ -151,15 +154,15 @@ export default function CertificatesSection() {
               '& .MuiTab-root': {
                 minHeight: 48,
                 px: 3,
-                borderRadius: 1.5,
+                borderRadius: 2,
                 color: 'text.secondary',
                 transition: 'all 0.3s ease',
                 '&.Mui-selected': {
-                  bgcolor: 'rgba(255,255,255,0.05)',
+                  bgcolor: 'rgba(255,255,255,0.06)',
                   color: 'text.primary',
                 },
                 '&:hover': {
-                  bgcolor: 'rgba(255,255,255,0.03)',
+                  bgcolor: 'rgba(255,255,255,0.04)',
                 },
               },
             }}

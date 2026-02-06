@@ -207,14 +207,17 @@ export default function IntroSection() {
                 justifyContent: 'center',
               }}
             >
-              {/* Placeholder illustration using MUI components */}
+              {/* Glassmorphism illustration */}
               <Box
                 sx={{
                   width: 350,
                   height: 250,
-                  bgcolor: 'rgba(37, 99, 235, 0.1)',
+                  bgcolor: 'rgba(255, 255, 255, 0.03)',
+                  backdropFilter: 'blur(16px)',
+                  WebkitBackdropFilter: 'blur(16px)',
                   borderRadius: 4,
-                  border: '2px solid rgba(37, 99, 235, 0.3)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  boxShadow: '0 8px 32px rgba(37, 99, 235, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.06)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -226,9 +229,11 @@ export default function IntroSection() {
                     right: -20,
                     width: 100,
                     height: 100,
-                    bgcolor: 'rgba(6, 182, 212, 0.2)',
+                    bgcolor: 'rgba(6, 182, 212, 0.08)',
+                    backdropFilter: 'blur(12px)',
                     borderRadius: 2,
-                    border: '2px solid rgba(6, 182, 212, 0.3)',
+                    border: '1px solid rgba(6, 182, 212, 0.15)',
+                    boxShadow: '0 4px 24px rgba(6, 182, 212, 0.1)',
                   },
                   '&::after': {
                     content: '""',
@@ -237,9 +242,11 @@ export default function IntroSection() {
                     left: -30,
                     width: 80,
                     height: 80,
-                    bgcolor: 'rgba(37, 99, 235, 0.2)',
+                    bgcolor: 'rgba(37, 99, 235, 0.08)',
+                    backdropFilter: 'blur(12px)',
                     borderRadius: '50%',
-                    border: '2px solid rgba(37, 99, 235, 0.3)',
+                    border: '1px solid rgba(37, 99, 235, 0.15)',
+                    boxShadow: '0 4px 24px rgba(37, 99, 235, 0.1)',
                   },
                 }}
               >

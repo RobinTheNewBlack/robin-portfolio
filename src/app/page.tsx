@@ -7,20 +7,24 @@ import ProjectSection from "@/components/sections/ProjectSection";
 import CertificatesSection from "@/components/sections/CertificatesSection";
 import TechStackSection from "@/components/sections/TechStackSection";
 import ContactSection from "@/components/sections/ContactSection";
+import BackgroundOrbs from "@/components/ui/BackgroundOrbs";
 
 export default function Home() {
   return (
-    <Box sx={{ minHeight: "100vh", bgcolor: "background.default" }}>
-      <Navbar />
-      <main>
-        <IntroSection />
-        <AboutSection />
-        <ExperienceSection />
-        <TechStackSection />
-        <ProjectSection />
-        <CertificatesSection />
-        <ContactSection />
-      </main>
+    <Box sx={{ minHeight: "100vh", bgcolor: "background.default", position: "relative" }}>
+      <BackgroundOrbs />
+      <Box sx={{ position: "relative", zIndex: 1 }}>
+        <Navbar />
+        <main>
+          <IntroSection />
+          <AboutSection />
+          <ExperienceSection />
+          <TechStackSection />
+          <ProjectSection />
+          <CertificatesSection />
+          <ContactSection />
+        </main>
+      </Box>
     </Box>
   );
 }

@@ -289,12 +289,16 @@ export default function ExperienceSection() {
                       maxWidth: 520,
                       p: 3,
                       bgcolor: 'rgba(255,255,255,0.03)',
-                      borderRadius: 2,
-                      border: '1px solid rgba(255,255,255,0.1)',
+                      backdropFilter: 'blur(12px)',
+                      WebkitBackdropFilter: 'blur(12px)',
+                      borderRadius: 3,
+                      border: '1px solid rgba(255,255,255,0.08)',
+                      boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.04)',
                       transition: 'all 0.3s ease',
                       '&:hover': {
-                        bgcolor: 'rgba(255,255,255,0.05)',
+                        bgcolor: 'rgba(255,255,255,0.06)',
                         borderColor: 'rgba(37, 99, 235, 0.3)',
+                        boxShadow: '0 8px 32px rgba(37, 99, 235, 0.1), inset 0 1px 0 rgba(255,255,255,0.06)',
                       },
                     }}
                   >
@@ -447,8 +451,11 @@ export default function ExperienceSection() {
                     sx={{
                       p: 2,
                       bgcolor: 'rgba(255,255,255,0.03)',
-                      borderRadius: 2,
-                      border: '1px solid rgba(255,255,255,0.1)',
+                      backdropFilter: 'blur(12px)',
+                      WebkitBackdropFilter: 'blur(12px)',
+                      borderRadius: 3,
+                      border: '1px solid rgba(255,255,255,0.08)',
+                      boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.04)',
                     }}
                   >
                     {/* Responsibility Overview */}

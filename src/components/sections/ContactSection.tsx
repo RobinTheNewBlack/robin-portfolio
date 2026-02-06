@@ -20,7 +20,7 @@ const iconMap: { [key: string]: React.ReactNode } = {
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' as const } },
 };
 
 const staggerContainer = {
@@ -30,7 +30,7 @@ const staggerContainer = {
 
 const cardVariants = {
   hidden: { opacity: 0, y: 30, scale: 0.95 },
-  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: 'easeOut' } },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: 'easeOut' as const } },
 };
 
 export default function ContactSection() {
@@ -98,15 +98,19 @@ export default function ContactSection() {
             sx={{
               p: { xs: 3, md: 4 },
               bgcolor: 'rgba(255,255,255,0.03)',
+              backdropFilter: 'blur(16px)',
+              WebkitBackdropFilter: 'blur(16px)',
               border: '1px solid rgba(255,255,255,0.08)',
               borderRadius: 4,
+              boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.04)',
               display: 'flex',
               flexDirection: 'column',
               gap: 3,
               transition: 'all 0.3s ease',
               '&:hover': {
                 borderColor: 'rgba(37, 99, 235, 0.3)',
-                bgcolor: 'rgba(255,255,255,0.05)',
+                bgcolor: 'rgba(255,255,255,0.06)',
+                boxShadow: '0 8px 32px rgba(37, 99, 235, 0.1), inset 0 1px 0 rgba(255,255,255,0.06)',
               },
             }}
           >
@@ -241,9 +245,12 @@ export default function ContactSection() {
             sx={{
               p: { xs: 3, md: 4 },
               background:
-                'linear-gradient(135deg, rgba(37, 99, 235, 0.12) 0%, rgba(8, 145, 178, 0.08) 100%)',
-              border: '1px solid rgba(37, 99, 235, 0.2)',
+                'linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(8, 145, 178, 0.05) 100%)',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+              border: '1px solid rgba(37, 99, 235, 0.15)',
               borderRadius: 4,
+              boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.06)',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',
@@ -255,7 +262,7 @@ export default function ContactSection() {
               transition: 'all 0.3s ease',
               '&:hover': {
                 borderColor: 'rgba(37, 99, 235, 0.4)',
-                boxShadow: '0 0 40px rgba(37, 99, 235, 0.1)',
+                boxShadow: '0 8px 40px rgba(37, 99, 235, 0.15), inset 0 1px 0 rgba(255,255,255,0.08)',
               },
               '&::before': {
                 content: '""',
@@ -265,7 +272,7 @@ export default function ContactSection() {
                 right: 0,
                 bottom: 0,
                 background:
-                  'radial-gradient(circle at 30% 20%, rgba(37, 99, 235, 0.08) 0%, transparent 60%)',
+                  'radial-gradient(circle at 30% 20%, rgba(37, 99, 235, 0.06) 0%, transparent 60%)',
                 pointerEvents: 'none',
               },
             }}
