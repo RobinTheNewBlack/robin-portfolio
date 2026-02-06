@@ -258,7 +258,7 @@
                         "bullets": [
                             "Reduce over reject product ratio and operator inspection time.",
                             "Use ResNet50 multi-class classification model to classify product defects.",
-                            "Use EfficientNet to develop AI master model to use as a base model for various computer vision tasks."
+                            "Use EfficientNet to develop AI master model to use as a base pre-trained model for various computer vision tasks."
                         ]
                     },
                     {
@@ -310,7 +310,7 @@
                     "Design database schemas for both NoSQL and SQL databases including MongoDB and PostgreSQL.",
                     "Create CI/CD pipelines using GitHub Actions and Bitbucket Pipelines to automate testing, building, and deployment processes.",
                     "Provisioning and managing cloud services and infrastructure on AWS using Infrastructure as Code (IaC) tools like CloudFormation.",
-                    "Write unittest using Jest to ensure code quality and reliability with Test-Driven Development (TDD) approach.",
+                    "Write unittest using Jest to ensure code quality and reliability with Test-Driven Development (TDD) approach to match coverage criteria.",
                     "Collaborate with cross-functional teams including designers, product owners and other developers to deliver high-quality software solutions."
                 ],
                 "projects": [
