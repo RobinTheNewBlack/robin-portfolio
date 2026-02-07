@@ -3,6 +3,7 @@
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { useLocale } from 'next-intl';
 import { useTransition } from 'react';
+import { useRouter, usePathname } from '@/i18n/navigation';
 
 const locales = [
   { code: 'en', label: 'EN' },
@@ -11,13 +12,15 @@ const locales = [
 
 export default function LanguageSwitcher() {
   const currentLocale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
 
+  // Handles the language switch by use client-side navigation toreplacing the current route (/en) with the new locale (/th)
   const handleChange = (_event: React.MouseEvent<HTMLElement>, newLocale: string | null) => {
     if (newLocale && newLocale !== currentLocale) {
       startTransition(() => {
-        document.cookie = `next_locale=${newLocale};path=/;max-age=31536000`;
-        window.location.reload();
+        router.replace(pathname, { locale: newLocale });
       });
     }
   };

@@ -10,7 +10,7 @@ interface ProjectCardProps {
   project: Project;
 }
 
-export default function ProjectCard({ project }: ProjectCardProps) {
+export default function ProjectCard({ project }: Readonly<ProjectCardProps>) {
   const t = useTranslations();
   const tPortfolio = useTranslations('portfolio');
 
