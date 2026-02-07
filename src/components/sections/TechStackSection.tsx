@@ -13,8 +13,11 @@ import SmartToyIcon from '@mui/icons-material/SmartToy';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import BugReportIcon from '@mui/icons-material/BugReport';
 import BuildIcon from '@mui/icons-material/Build';
+import AppsIcon from '@mui/icons-material/Apps';
 import { techStack } from '@/data/techStack';
 import { TechStackCategory } from '@/types';
+
+type TabKey = 'all' | TechStackCategory;
 
 const MotionBox = motion.create(Box);
 
@@ -77,7 +80,8 @@ function TabPanel(props: TabPanelProps) {
 
 const largerIcons = new Set(['node', 'express', 'fastapi', 'langchain', 'langgraph', 'langsmith', 'pandas', 'numpy', 'cypress']);
 
-const techStackTabs: { key: TechStackCategory; icon: React.ReactElement }[] = [
+const techStackTabs: { key: TabKey; icon: React.ReactElement }[] = [
+  { key: 'all', icon: <AppsIcon /> },
   { key: 'programming', icon: <CodeIcon /> },
   { key: 'backend', icon: <StorageIcon /> },
   { key: 'frontend', icon: <WebIcon /> },
@@ -97,8 +101,9 @@ export default function TechStackSection() {
     setTabValue(newValue);
   };
 
-  const getTechByCategory = (category: TechStackCategory) => {
-    return techStack.filter((tech) => tech.category === category);
+  const getTechByTab = (key: TabKey) => {
+    if (key === 'all') return techStack;
+    return techStack.filter((tech) => tech.category === key);
   };
 
   return (
@@ -169,9 +174,9 @@ export default function TechStackSection() {
                 borderRadius: 2,
                 color: 'text.secondary',
                 transition: 'all 0.3s ease',
-                alignItems: 'flex-start',
+                alignItems: 'center',
                 justifyContent: 'flex-start',
-                textAlign: 'left',
+                textAlign: 'center',
                 '&.Mui-selected': {
                   bgcolor: 'rgba(255,255,255,0.06)',
                   color: 'text.primary',
@@ -194,7 +199,28 @@ export default function TechStackSection() {
             ))}
           </Tabs>
 
-          <Box sx={{ flexGrow: 1 }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              maxHeight: 520,
+              overflowY: 'auto',
+              overflowX: 'hidden',
+              pr: 1,
+              '&::-webkit-scrollbar': {
+                width: 6,
+              },
+              '&::-webkit-scrollbar-track': {
+                background: 'transparent',
+              },
+              '&::-webkit-scrollbar-thumb': {
+                background: 'rgba(37, 99, 235, 0.3)',
+                borderRadius: 3,
+              },
+              '&::-webkit-scrollbar-thumb:hover': {
+                background: 'rgba(37, 99, 235, 0.5)',
+              },
+            }}
+          >
             <AnimatePresence mode="wait">
               {techStackTabs.map((tab, index) => (
                 <TabPanel key={tab.key} value={tabValue} index={index}>
@@ -215,8 +241,8 @@ export default function TechStackSection() {
                       gap: 2,
                     }}
                   >
-                    {getTechByCategory(tab.key).length > 0 ? (
-                      getTechByCategory(tab.key).map((tech) => (
+                    {getTechByTab(tab.key).length > 0 ? (
+                      getTechByTab(tab.key).map((tech) => (
                         <MotionBox key={tech.id} variants={itemVariants}>
                           <Paper
                             sx={{

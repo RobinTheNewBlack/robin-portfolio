@@ -61,6 +61,7 @@
         "title": "Tech Stack",
         "subtitle": "Technologies and tools I use to build amazing applications.",
         "tabs": {
+            "all": "All",
             "programming": "Programming",
             "backend": "Backend",
             "frontend": "Frontend",
