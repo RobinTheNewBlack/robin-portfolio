@@ -1,17 +1,10 @@
 import { getRequestConfig } from "next-intl/server";
-import { routing } from "./routing";
+import { cookies } from "next/headers";
 
-// After the proxy redirects to /en/
-// or /th/ based on the user's preferred language,
-// getRequestConfig receives { requestLocale } — the locale extracted from the URL segment by the proxy
-// Dynamically imports the correct translation file (en.json or th.json)
-// and returns the locale and messages to the Next.js app
-export default getRequestConfig(async ({ requestLocale }) => {
-    let locale = await requestLocale;
+export const DEFAULT_LOCALE = "en";
 
-    if (!locale || !routing.locales.includes(locale as "en" | "th")) {
-        locale = routing.defaultLocale;
-    }
+export default getRequestConfig(async () => {
+    const locale = (await cookies()).get("next_locale")?.value || DEFAULT_LOCALE;
 
     return {
         locale,

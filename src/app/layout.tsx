@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { getLocale } from "next-intl/server";
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale, getMessages } from "next-intl/server";
+import ThemeRegistry from "@/theme/ThemeRegistry";
+import "@/styles/globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,9 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nattakit K. | Fullstack Developer",
-  description: "Portfolio website of Nattakit K. - Fullstack Developer and AI Engineer.",
-  keywords: ["Fullstack Developer", "AI Engineer", "System Analyst"],
+  title: "Nattakit K. | Frontend Developer",
+  description: "Portfolio website of Nattakit K. - Frontend Developer and Network & Telecom Student. Creating innovative, functional, and user-friendly websites for digital solutions.",
+  keywords: ["Frontend Developer", "Web Developer", "React", "Next.js", "Portfolio"],
 };
 
 export default async function RootLayout({
@@ -24,6 +27,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const locale = await getLocale();
+  const messages = await getMessages();
 
   return (
     <html lang={locale} suppressHydrationWarning>
@@ -31,7 +35,11 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning
       >
-        {children}
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <ThemeRegistry>
+            {children}
+          </ThemeRegistry>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
