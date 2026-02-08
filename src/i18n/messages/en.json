@@ -57,10 +57,24 @@
         },
         "noCertificates": "No certificates to display"
     },
+    "contactSection": {
+        "title": "Get In Touch",
+        "subtitle": "Have a project in mind or want to collaborate? Feel free to reach out. I'm always open to new opportunities and interesting conversations.",
+        "cardTitle": "Let's work together",
+        "cardDescription": "Whether you have a question, a project idea, or just want to say hello — my inbox is always open.",
+        "emailLabel": "Email",
+        "locationLabel": "Location",
+        "locationValue": "Bangkok, Thailand",
+        "findMeOn": "Find me on",
+        "ctaTitle": "Start a Conversation",
+        "ctaDescription": "I'd love to hear about your project. Drop me a message and let's create something great together.",
+        "sendEmail": "Send me an Email"
+    },
     "techStackSection": {
         "title": "Tech Stack",
         "subtitle": "Technologies and tools I use to build amazing applications.",
         "tabs": {
+            "all": "All",
             "programming": "Programming",
             "backend": "Backend",
             "frontend": "Frontend",

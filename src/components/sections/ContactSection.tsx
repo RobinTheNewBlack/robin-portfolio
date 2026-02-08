@@ -8,6 +8,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { useTranslations } from 'next-intl';
 import { socialLinks } from '@/data/navigation';
 
 const MotionBox = motion.create(Box);
@@ -34,6 +35,7 @@ const cardVariants = {
 };
 
 export default function ContactSection() {
+  const t = useTranslations('contactSection');
   return (
     <Box
       id="contact"
@@ -60,7 +62,7 @@ export default function ContactSection() {
               mb: 2,
             }}
           >
-            Get In Touch
+            {t('title')}
           </Typography>
           <Typography
             variant="h6"
@@ -73,8 +75,7 @@ export default function ContactSection() {
               lineHeight: 1.7,
             }}
           >
-            Have a project in mind or want to collaborate? Feel free to reach out.
-            I&apos;m always open to new opportunities and interesting conversations.
+            {t('subtitle')}
           </Typography>
         </MotionBox>
 
@@ -118,15 +119,14 @@ export default function ContactSection() {
               variant="h5"
               sx={{ fontWeight: 600, color: 'text.primary' }}
             >
-              Let&apos;s work together
+              {t('cardTitle')}
             </Typography>
 
             <Typography
               variant="body1"
               sx={{ color: 'text.secondary', lineHeight: 1.7 }}
             >
-              Whether you have a question, a project idea, or just want to say
-              hello — my inbox is always open.
+              {t('cardDescription')}
             </Typography>
 
             {/* Email */}
@@ -150,7 +150,7 @@ export default function ContactSection() {
                   variant="body2"
                   sx={{ color: 'text.secondary', fontSize: '0.8rem' }}
                 >
-                  Email
+                  {t('emailLabel')}
                 </Typography>
                 <Typography
                   component="a"
@@ -190,13 +190,13 @@ export default function ContactSection() {
                   variant="body2"
                   sx={{ color: 'text.secondary', fontSize: '0.8rem' }}
                 >
-                  Location
+                  {t('locationLabel')}
                 </Typography>
                 <Typography
                   variant="body1"
                   sx={{ color: 'text.primary', fontWeight: 500 }}
                 >
-                  Bangkok, Thailand
+                  {t('locationValue')}
                 </Typography>
               </Box>
             </Box>
@@ -207,7 +207,7 @@ export default function ContactSection() {
                 variant="body2"
                 sx={{ color: 'text.secondary', mb: 1.5, fontSize: '0.8rem' }}
               >
-                Find me on
+                {t('findMeOn')}
               </Typography>
               <Box sx={{ display: 'flex', gap: 1.5 }}>
                 {socialLinks.map((link) => (
@@ -295,7 +295,7 @@ export default function ContactSection() {
               variant="h5"
               sx={{ fontWeight: 600, color: 'text.primary', position: 'relative' }}
             >
-              Start a Conversation
+              {t('ctaTitle')}
             </Typography>
 
             <Typography
@@ -307,8 +307,7 @@ export default function ContactSection() {
                 position: 'relative',
               }}
             >
-              I&apos;d love to hear about your project. Drop me a message and
-              let&apos;s create something great together.
+              {t('ctaDescription')}
             </Typography>
 
             <Button
@@ -334,7 +333,7 @@ export default function ContactSection() {
                 transition: 'all 0.3s ease',
               }}
             >
-              Send me an Email
+              {t('sendEmail')}
             </Button>
           </MotionBox>
         </MotionBox>
