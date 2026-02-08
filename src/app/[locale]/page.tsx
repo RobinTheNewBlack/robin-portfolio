@@ -18,8 +18,8 @@ export default function Home() {
         <main>
           <IntroSection />
           <AboutSection />
-          <TechStackSection />
           <ExperienceSection />
+          <TechStackSection />
           <ProjectSection />
           <CertificatesSection />
           <ContactSection />
