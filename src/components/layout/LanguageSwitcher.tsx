@@ -2,22 +2,24 @@
 
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { useLocale } from 'next-intl';
+import { useRouter, usePathname } from '@/i18n/navigation';
 import { useTransition } from 'react';
 
 const locales = [
   { code: 'en', label: 'EN' },
   { code: 'th', label: 'TH' },
-];
+] as const;
 
 export default function LanguageSwitcher() {
   const currentLocale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
 
   const handleChange = (_event: React.MouseEvent<HTMLElement>, newLocale: string | null) => {
     if (newLocale && newLocale !== currentLocale) {
       startTransition(() => {
-        document.cookie = `next_locale=${newLocale};path=/;max-age=31536000`;
-        window.location.reload();
+        router.replace(pathname, { locale: newLocale });
       });
     }
   };

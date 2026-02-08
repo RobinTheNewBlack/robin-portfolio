@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { NextIntlClientProvider } from "next-intl";
-import { getLocale, getMessages } from "next-intl/server";
+import { NextIntlClientProvider, hasLocale } from "next-intl";
+import { getMessages } from "next-intl/server";
+import { notFound } from "next/navigation";
+import { routing } from "@/i18n/routing";
 import ThemeRegistry from "@/theme/ThemeRegistry";
 import "@/styles/globals.css";
 
@@ -17,16 +19,34 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Nattakit K. | Frontend Developer",
-  description: "Portfolio website of Nattakit K. - Frontend Developer and Network & Telecom Student. Creating innovative, functional, and user-friendly websites for digital solutions.",
-  keywords: ["Frontend Developer", "Web Developer", "React", "Next.js", "Portfolio"],
+  description:
+    "Portfolio website of Nattakit K. - Frontend Developer and Network & Telecom Student. Creating innovative, functional, and user-friendly websites for digital solutions.",
+  keywords: [
+    "Frontend Developer",
+    "Web Developer",
+    "React",
+    "Next.js",
+    "Portfolio",
+  ],
 };
 
-export default async function RootLayout({
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export default async function LocaleLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }>) {
-  const locale = await getLocale();
+  const { locale } = await params;
+
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
   const messages = await getMessages();
 
   return (
@@ -36,9 +56,7 @@ export default async function RootLayout({
         suppressHydrationWarning
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <ThemeRegistry>
-            {children}
-          </ThemeRegistry>
+          <ThemeRegistry>{children}</ThemeRegistry>
         </NextIntlClientProvider>
       </body>
     </html>
