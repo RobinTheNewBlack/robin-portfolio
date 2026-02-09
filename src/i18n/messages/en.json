@@ -95,8 +95,8 @@
             "title": "Orvia",
             "description": "A program designed to help users solve arithmetic problems automatically with step-by-step solutions."
         },
-        "optSence": {
-            "title": "OptSence",
+        "optSense": {
+            "title": "optSense",
             "description": "A program designed to help users solve arithmetic problems automatically with step-by-step solutions."
         },
         "eSign": {
@@ -373,7 +373,7 @@
                         ]
                     },
                     {
-                        "topic": "OptSence (HVAC Monitoring System)",
+                        "topic": "optSense (HVAC Monitoring System)",
                         "bullets": [
                             "Developed core buisness logic in backend services using Node.js.",
                             "Deploy application to container orchestration services on Huawei Cloud."
