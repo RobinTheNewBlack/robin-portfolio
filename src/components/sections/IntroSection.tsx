@@ -69,7 +69,7 @@ export default function IntroSection() {
         minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
-        pt: { xs: 4, md: 0 },
+        pt: { xs: 10, md: 0 },
         pb: { xs: 8, md: 0 },
         overflow: 'hidden',
       }}

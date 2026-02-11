@@ -7,12 +7,23 @@ import ProjectSection from "@/components/sections/ProjectSection";
 import CertificatesSection from "@/components/sections/CertificatesSection";
 import TechStackSection from "@/components/sections/TechStackSection";
 import ContactSection from "@/components/sections/ContactSection";
-import BackgroundOrbs from "@/components/ui/BackgroundOrbs";
+import FloatingLines from "@/components/FloatingLines";
 
 export default function Home() {
   return (
     <Box sx={{ minHeight: "100vh", bgcolor: "background.default", position: "relative" }}>
-      <BackgroundOrbs />
+      <div style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }}>
+        <FloatingLines
+          linesGradient={["#76127d", "#2F4BC0", "#5b47f5"]}
+          animationSpeed={1}
+          interactive
+          bendRadius={5}
+          bendStrength={-0.5}
+          mouseDamping={0.05}
+          parallax
+          parallaxStrength={0.2}
+        />
+      </div>
       <Box sx={{ position: "relative", zIndex: 1 }}>
         <Navbar />
         <main>

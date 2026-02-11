@@ -45,6 +45,16 @@
         "details": "Details",
         "noProjects": "No projects to display"
     },
+    "projectDetail": {
+        "back": "Back",
+        "projects": "Projects",
+        "technologiesUsed": "Technologies Used",
+        "keyFeatures": "Key Features",
+        "totalTechnologies": "Total Technologies",
+        "keyFeaturesCount": "Key Features",
+        "liveDemo": "Live Demo",
+        "github": "Github"
+    },
     "certificateSection": {
         "title": "Certificates",
         "subtitle": "Professional certifications and achievements that validate my skills and knowledge.",
@@ -89,35 +99,91 @@
     "projects": {
         "pawCare": {
             "title": "Paw Care",
-            "description": "A program designed to help users solve arithmetic problems automatically with step-by-step solutions."
+            "description": "A program designed to help users solve arithmetic problems automatically with step-by-step solutions.",
+            "keyFeatures": [
+                "Pet nutrition calculator",
+                "Personalized meal plans",
+                "Veterinary consultation booking",
+                "Health tracking dashboard",
+                "Product recommendations"
+            ]
         },
         "orvia": {
             "title": "Orvia",
-            "description": "A program designed to help users solve arithmetic problems automatically with step-by-step solutions."
+            "description": "A program designed to help users solve arithmetic problems automatically with step-by-step solutions.",
+            "keyFeatures": [
+                "Real-time operating room monitoring",
+                "Room reservation system",
+                "E-paper display integration",
+                "Staff scheduling",
+                "Equipment tracking"
+            ]
         },
         "optSense": {
             "title": "optSense",
-            "description": "A program designed to help users solve arithmetic problems automatically with step-by-step solutions."
+            "description": "A program designed to help users solve arithmetic problems automatically with step-by-step solutions.",
+            "keyFeatures": [
+                "HVAC real-time monitoring",
+                "Temperature & humidity tracking",
+                "Alert notification system",
+                "Historical data analytics",
+                "Device management"
+            ]
         },
         "eSign": {
             "title": "E-sign",
-            "description": "A website that allows users to create, save, and manage their personal notes efficiently."
+            "description": "A website that allows users to create, save, and manage their personal notes efficiently.",
+            "keyFeatures": [
+                "Digital document signing",
+                "Multi-party signing workflow",
+                "Document template management",
+                "Audit trail & history",
+                "PDF generation"
+            ]
         },
         "univa": {
             "title": "Univa",
-            "description": "A website that allows users to create, save, and manage their personal notes efficiently."
+            "description": "A website that allows users to create, save, and manage their personal notes efficiently.",
+            "keyFeatures": [
+                "Medical equipment inventory",
+                "Maintenance scheduling",
+                "Usage tracking dashboard",
+                "Role-based access control",
+                "Reporting & analytics"
+            ]
         },
         "genoCore": {
             "title": "GenoCore",
-            "description": "A website that allows users to create, save, and manage their personal notes efficiently."
+            "description": "A website that allows users to create, save, and manage their personal notes efficiently.",
+            "keyFeatures": [
+                "AI agent chatbot interface",
+                "Custom tool integration",
+                "Conversation memory persistence",
+                "Multi-model support",
+                "Session management"
+            ]
         },
         "agentic": {
             "title": "Agentic",
-            "description": "AutoChat is an automation solution for sending messages to Discord channels on a scheduled basis."
+            "description": "AutoChat is an automation solution for sending messages to Discord channels on a scheduled basis.",
+            "keyFeatures": [
+                "Automated task execution",
+                "Workflow builder",
+                "API integration",
+                "Scheduling system",
+                "Activity logging"
+            ]
         },
         "goldBread": {
             "title": "Gold Bread",
-            "description": "AutoChat is an automation solution for sending messages to Discord channels on a scheduled basis."
+            "description": "AutoChat is an automation solution for sending messages to Discord channels on a scheduled basis.",
+            "keyFeatures": [
+                "Sales order management",
+                "Inventory tracking",
+                "Salesperson check-in system",
+                "Inventory reconciliation",
+                "Reporting dashboard"
+            ]
         }
     },
     "certificates": {

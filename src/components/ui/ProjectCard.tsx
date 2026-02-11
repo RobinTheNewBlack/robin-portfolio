@@ -1,10 +1,11 @@
 'use client';
 
-import { Card, CardContent, CardMedia, Typography, Box, Chip, Link } from '@mui/material';
+import { Card, CardContent, CardMedia, Typography, Box, Chip, Link as MuiLink } from '@mui/material';
 import { useTranslations } from 'next-intl';
 import LaunchIcon from '@mui/icons-material/Launch';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Project } from '@/types';
+import { Link } from '@/i18n/navigation';
 
 interface ProjectCardProps {
   project: Project;
@@ -12,7 +13,6 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   const t = useTranslations();
-  const tPortfolio = useTranslations('portfolio');
 
   return (
     <Card
@@ -70,7 +70,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </Box>
         <Box sx={{ mt: 'auto', display: 'flex', gap: 2 }}>
           {project.liveUrl && (
-            <Link
+            <MuiLink
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -84,29 +84,24 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 '&:hover': { color: 'primary.main' },
               }}
             >
-              {tPortfolio('liveDemo')}
+              {t('projectSection.liveDemo')}
               <LaunchIcon sx={{ fontSize: 16 }} />
-            </Link>
+            </MuiLink>
           )}
-          {project.detailsUrl && (
-            <Link
-              href={project.detailsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 0.5,
-                color: 'text.secondary',
-                textDecoration: 'none',
-                fontSize: '0.875rem',
-                '&:hover': { color: 'text.primary' },
-              }}
-            >
-              {tPortfolio('details')}
-              <ArrowForwardIcon sx={{ fontSize: 16 }} />
-            </Link>
-          )}
+          <Link
+            href={`/projects/${project.slug}`}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px',
+              color: '#a1a1aa',
+              textDecoration: 'none',
+              fontSize: '0.875rem',
+            }}
+          >
+            {t('projectSection.details')}
+            <ArrowForwardIcon sx={{ fontSize: 16 }} />
+          </Link>
         </Box>
       </CardContent>
     </Card>

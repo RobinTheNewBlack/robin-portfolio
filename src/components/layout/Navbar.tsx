@@ -2,7 +2,6 @@
 
 import { Box, Button, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import EmailIcon from '@mui/icons-material/Email';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { navLinks } from '@/data/navigation';
@@ -184,8 +183,6 @@ export default function Navbar() {
         {drawer}
       </Drawer>
 
-      {/* Spacer for content below navbar */}
-      <Box sx={{ height: { xs: 80, md: 100 } }} />
     </>
   );
 }

@@ -2,12 +2,14 @@ export type ProjectCategory = 'internal' | 'freelance' | 'side';
 
 export interface Project {
   id: string;
+  slug: string;
   titleKey: string;
   descriptionKey: string;
   image: string;
   technologies: string[];
+  keyFeaturesKey: string;
   liveUrl?: string;
-  detailsUrl?: string;
+  githubUrl?: string;
   featured: boolean;
   category: ProjectCategory;
 }
