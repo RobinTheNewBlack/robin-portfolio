@@ -18,7 +18,7 @@
     },
     "about": {
         "title": "About Me",
-        "tagline": "Transforming ideas into digital experiences",
+        "tagline": "Learning is my long-term investment.",
         "greeting": "Hello, I'm",
         "name": "Nattakit Kerdtalay (Max)",
         "bio": "I have a deep passion for computer technology and a strong commitment to continuously developing new skills. Although my academic background is in Industrial Engineering, I made a deliberate and determined decision to transition into the field of software development. I aspire to apply all of my knowledge, capabilities, and available tools to create value, build efficient systems, and develop meaningful innovations that contribute positively to our society and country.",
@@ -53,7 +53,14 @@
         "totalTechnologies": "Total Technologies",
         "keyFeaturesCount": "Key Features",
         "liveDemo": "Live Demo",
-        "github": "Github"
+        "github": "Github",
+        "categoryInternal": "Internal Project",
+        "categoryFreelance": "Freelance Project",
+        "categorySide": "Side Project",
+        "projectOverview": "Project Overview",
+        "previousProject": "Previous Project",
+        "nextProject": "Next Project",
+        "viewAllProjects": "View All Projects"
     },
     "certificateSection": {
         "title": "Certificates",

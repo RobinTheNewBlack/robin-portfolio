@@ -108,9 +108,7 @@ export default function AboutSection() {
               gap: 1,
             }}
           >
-            <AutoAwesomeIcon sx={{ fontSize: 20 }} />
             {t('tagline')}
-            <AutoAwesomeIcon sx={{ fontSize: 20 }} />
           </Typography>
         </MotionBox>
 
