@@ -25,15 +25,9 @@ export default async function ProjectDetailPage({
   // Resolve key features
   const keyFeatures: string[] = [];
   let i = 0;
-  while (true) {
-    try {
-      const feature = t(`${project.keyFeaturesKey}.${i}`);
-      if (!feature || feature === `${project.keyFeaturesKey}.${i}`) break;
-      keyFeatures.push(feature);
-      i++;
-    } catch {
-      break;
-    }
+  while (t.has(`${project.keyFeaturesKey}.${i}`)) {
+    keyFeatures.push(t(`${project.keyFeaturesKey}.${i}`));
+    i++;
   }
 
   // Compute prev/next with circular wrap

@@ -31,8 +31,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         image={project.image}
         alt={t(project.titleKey)}
         sx={{
-          height: 200,
-          objectFit: 'cover',
+          height: 300,
+          objectFit: 'contain',
           bgcolor: 'background.paper',
         }}
       />

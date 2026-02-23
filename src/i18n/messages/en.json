@@ -39,7 +39,7 @@
         "tabs": {
             "internal": "Internal Projects",
             "freelance": "Freelance Projects",
-            "side": "Side Projects"
+            "personal": "Personal Projects"
         },
         "liveDemo": "Live Demo",
         "details": "Details",
@@ -57,6 +57,7 @@
         "categoryInternal": "Internal Project",
         "categoryFreelance": "Freelance Project",
         "categorySide": "Side Project",
+        "categoryPersonal": "Personal Project",
         "projectOverview": "Project Overview",
         "previousProject": "Previous Project",
         "nextProject": "Next Project",
@@ -159,8 +160,8 @@
                 "Reporting & analytics"
             ]
         },
-        "genoCore": {
-            "title": "GenoCore",
+        "zentrix": {
+            "title": "Zentrix.ai",
             "description": "A website that allows users to create, save, and manage their personal notes efficiently.",
             "keyFeatures": [
                 "AI agent chatbot interface",
@@ -170,8 +171,8 @@
                 "Session management"
             ]
         },
-        "agentic": {
-            "title": "Agentic",
+        "delph": {
+            "title": "Delph.ai",
             "description": "AutoChat is an automation solution for sending messages to Discord channels on a scheduled basis.",
             "keyFeatures": [
                 "Automated task execution",
@@ -288,11 +289,15 @@
                 "projects": [
                     {
                         "topic": "Supply Chain Management",
-                        "bullets": ["Improve supply chain performance"]
+                        "bullets": [
+                            "Improve supply chain performance"
+                        ]
                     },
                     {
                         "topic": "Robotic Process Automation",
-                        "bullets": ["Implement RPA to internal department processes"]
+                        "bullets": [
+                            "Implement RPA to internal department processes"
+                        ]
                     }
                 ]
             },
@@ -363,7 +368,9 @@
                     },
                     {
                         "topic": "OCR",
-                        "bullets": ["Use OCR model to read product code from products automatically."]
+                        "bullets": [
+                            "Use OCR model to read product code from products automatically."
+                        ]
                     }
                 ]
             },

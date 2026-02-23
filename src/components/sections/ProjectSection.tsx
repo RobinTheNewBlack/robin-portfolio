@@ -71,9 +71,9 @@ function TabPanel(props: TabPanelProps) {
 }
 
 const projectTabs: { key: ProjectCategory; icon: React.ReactElement }[] = [
+  { key: 'personal', icon: <LightbulbIcon /> },
   { key: 'internal', icon: <CodeIcon /> },
   { key: 'freelance', icon: <WorkIcon /> },
-  { key: 'side', icon: <LightbulbIcon /> },
 ];
 
 export default function ProjectSection() {
@@ -187,8 +187,8 @@ export default function ProjectSection() {
                 variants={staggerContainer}
                 sx={{
                   display: 'grid',
-                  gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' },
-                  gap: 3,
+                  gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)' },
+                  gap: 4,
                 }}
               >
                 {getProjectsByCategory(tab.key).length > 0 ? (

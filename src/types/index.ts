@@ -1,4 +1,4 @@
-export type ProjectCategory = 'internal' | 'freelance' | 'side';
+export type ProjectCategory = 'internal' | 'freelance' | 'personal';
 
 export interface Project {
   id: string;
