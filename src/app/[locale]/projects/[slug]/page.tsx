@@ -40,7 +40,7 @@ export default async function ProjectDetailPage({
         slug: project.slug,
         title: t(project.titleKey),
         description: t(project.descriptionKey),
-        image: project.image,
+        images: project.images,
         technologies: project.technologies,
         keyFeatures,
         liveUrl: project.liveUrl,

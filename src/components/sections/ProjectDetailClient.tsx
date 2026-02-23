@@ -1,10 +1,13 @@
 'use client';
 
-import { Box, Container, Typography, Button, Chip } from '@mui/material';
-import { motion } from 'framer-motion';
+import { useState, useCallback, useEffect } from 'react';
+import { Box, Container, Typography, Button, Chip, IconButton } from '@mui/material';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import LaunchIcon from '@mui/icons-material/Launch';
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -130,8 +133,8 @@ const categoryConfig: Record<
     color: '#fb923c',
     borderColor: 'rgba(249, 115, 22, 0.3)',
   },
-  side: {
-    labelKey: 'categorySide',
+  personal: {
+    labelKey: 'categoryPersonal',
     icon: <LightbulbIcon sx={{ fontSize: 16 }} />,
     bgcolor: 'rgba(6, 182, 212, 0.2)',
     color: '#22d3ee',
@@ -146,7 +149,7 @@ interface ProjectDetailClientProps {
     slug: string;
     title: string;
     description: string;
-    image: string;
+    images: string[];
     technologies: string[];
     keyFeatures: string[];
     liveUrl?: string;
@@ -166,6 +169,41 @@ export default function ProjectDetailClient({
 }: ProjectDetailClientProps) {
   const t = useTranslations('projectDetail');
   const catConfig = categoryConfig[project.category];
+
+  // --- Carousel State ---
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [slideDirection, setSlideDirection] = useState(0);
+  const hasMultipleImages = project.images.length > 1;
+
+  const goToImage = useCallback(
+    (index: number) => {
+      setSlideDirection(index > currentImageIndex ? 1 : -1);
+      setCurrentImageIndex(index);
+    },
+    [currentImageIndex],
+  );
+
+  const goNext = useCallback(() => {
+    setSlideDirection(1);
+    setCurrentImageIndex((prev) => (prev + 1) % project.images.length);
+  }, [project.images.length]);
+
+  const goPrev = useCallback(() => {
+    setSlideDirection(-1);
+    setCurrentImageIndex(
+      (prev) => (prev - 1 + project.images.length) % project.images.length,
+    );
+  }, [project.images.length]);
+
+  useEffect(() => {
+    if (!hasMultipleImages) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') goPrev();
+      if (e.key === 'ArrowRight') goNext();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [hasMultipleImages, goNext, goPrev]);
 
   return (
     <Box
@@ -274,7 +312,7 @@ export default function ProjectDetailClient({
             {project.description}
           </MotionTypography>
 
-          {/* Hero Image */}
+          {/* Hero Image Carousel */}
           <MotionBox
             variants={imageVariants}
             sx={{
@@ -283,23 +321,150 @@ export default function ProjectDetailClient({
               border: '1px solid rgba(255,255,255,0.1)',
               boxShadow:
                 '0 8px 40px rgba(37, 99, 235, 0.15), 0 0 80px rgba(37, 99, 235, 0.05)',
+              position: 'relative',
             }}
           >
-            <Box
-              component="img"
-              src={project.image}
-              alt={project.title}
-              sx={{
-                width: '100%',
-                height: { xs: 280, md: 450, lg: 500 },
-                objectFit: 'cover',
-                display: 'block',
-                transition: 'transform 0.4s ease',
-                '&:hover': {
-                  transform: 'scale(1.02)',
-                },
-              }}
-            />
+            {/* Image with AnimatePresence */}
+            <Box sx={{ position: 'relative', height: { xs: 280, md: 450, lg: 500 }, overflow: 'hidden' }}>
+              <AnimatePresence initial={false} custom={slideDirection} mode="popLayout">
+                <motion.img
+                  key={currentImageIndex}
+                  src={project.images[currentImageIndex]}
+                  alt={`${project.title} - ${currentImageIndex + 1}`}
+                  custom={slideDirection}
+                  initial={{ x: slideDirection > 0 ? '100%' : '-100%', opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ x: slideDirection > 0 ? '-100%' : '100%', opacity: 0 }}
+                  transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'contain',
+                    display: 'block',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                  }}
+                />
+              </AnimatePresence>
+            </Box>
+
+            {/* Navigation Arrows */}
+            {hasMultipleImages && (
+              <>
+                <IconButton
+                  onClick={goPrev}
+                  aria-label="Previous image"
+                  sx={{
+                    position: 'absolute',
+                    left: 12,
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    bgcolor: 'rgba(0,0,0,0.5)',
+                    backdropFilter: 'blur(8px)',
+                    color: '#fff',
+                    width: 44,
+                    height: 44,
+                    border: '1px solid rgba(255,255,255,0.15)',
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      bgcolor: 'rgba(37, 99, 235, 0.6)',
+                      borderColor: 'rgba(37, 99, 235, 0.5)',
+                      transform: 'translateY(-50%) scale(1.1)',
+                    },
+                  }}
+                >
+                  <ChevronLeftIcon />
+                </IconButton>
+                <IconButton
+                  onClick={goNext}
+                  aria-label="Next image"
+                  sx={{
+                    position: 'absolute',
+                    right: 12,
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    bgcolor: 'rgba(0,0,0,0.5)',
+                    backdropFilter: 'blur(8px)',
+                    color: '#fff',
+                    width: 44,
+                    height: 44,
+                    border: '1px solid rgba(255,255,255,0.15)',
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      bgcolor: 'rgba(37, 99, 235, 0.6)',
+                      borderColor: 'rgba(37, 99, 235, 0.5)',
+                      transform: 'translateY(-50%) scale(1.1)',
+                    },
+                  }}
+                >
+                  <ChevronRightIcon />
+                </IconButton>
+
+                {/* Dot Indicators */}
+                <Box
+                  sx={{
+                    position: 'absolute',
+                    bottom: 16,
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    display: 'flex',
+                    gap: 1,
+                    px: 2,
+                    py: 1,
+                    borderRadius: 3,
+                    bgcolor: 'rgba(0,0,0,0.45)',
+                    backdropFilter: 'blur(8px)',
+                    border: '1px solid rgba(255,255,255,0.1)',
+                  }}
+                >
+                  {project.images.map((_, index) => (
+                    <Box
+                      key={index}
+                      onClick={() => goToImage(index)}
+                      sx={{
+                        width: index === currentImageIndex ? 24 : 8,
+                        height: 8,
+                        borderRadius: 4,
+                        bgcolor:
+                          index === currentImageIndex
+                            ? 'primary.light'
+                            : 'rgba(255,255,255,0.35)',
+                        cursor: 'pointer',
+                        transition: 'all 0.3s ease',
+                        '&:hover': {
+                          bgcolor:
+                            index === currentImageIndex
+                              ? 'primary.light'
+                              : 'rgba(255,255,255,0.6)',
+                        },
+                      }}
+                    />
+                  ))}
+                </Box>
+
+                {/* Image Counter */}
+                <Box
+                  sx={{
+                    position: 'absolute',
+                    top: 16,
+                    right: 16,
+                    px: 1.5,
+                    py: 0.5,
+                    borderRadius: 2,
+                    bgcolor: 'rgba(0,0,0,0.5)',
+                    backdropFilter: 'blur(8px)',
+                    border: '1px solid rgba(255,255,255,0.1)',
+                    color: 'rgba(255,255,255,0.8)',
+                    fontSize: '0.8rem',
+                    fontWeight: 500,
+                    fontFamily: 'var(--font-geist-mono)',
+                  }}
+                >
+                  {currentImageIndex + 1} / {project.images.length}
+                </Box>
+              </>
+            )}
           </MotionBox>
         </MotionBox>
 
@@ -469,37 +634,31 @@ export default function ProjectDetailClient({
                 {t('keyFeatures')}
               </Typography>
             </Box>
-            <MotionBox
-              component="ul"
+            <motion.ul
               variants={featureContainerVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
-              sx={{
+              style={{
                 listStyle: 'none',
-                p: 0,
-                m: 0,
+                padding: 0,
+                margin: 0,
                 display: 'flex',
                 flexDirection: 'column',
-                gap: 1,
+                gap: '8px',
               }}
             >
               {project.keyFeatures.map((feature, index) => (
-                <MotionBox
-                  component="li"
+                <motion.li
                   key={index}
                   variants={featureItemVariants}
-                  sx={{
+                  style={{
                     display: 'flex',
                     alignItems: 'center',
-                    gap: 2,
-                    py: 1.5,
-                    px: 2,
-                    borderRadius: 2,
+                    gap: '16px',
+                    padding: '12px 16px',
+                    borderRadius: '8px',
                     transition: 'background 0.2s',
-                    '&:hover': {
-                      background: 'rgba(255,255,255,0.03)',
-                    },
                   }}
                 >
                   <Typography
@@ -529,9 +688,9 @@ export default function ProjectDetailClient({
                   >
                     {feature}
                   </Typography>
-                </MotionBox>
+                </motion.li>
               ))}
-            </MotionBox>
+            </motion.ul>
           </MotionBox>
         </Box>
 

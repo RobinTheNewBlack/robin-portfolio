@@ -28,7 +28,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     >
       <CardMedia
         component="img"
-        image={project.image}
+        image={project.images[0]}
         alt={t(project.titleKey)}
         sx={{
           height: 300,

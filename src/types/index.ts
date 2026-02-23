@@ -5,7 +5,7 @@ export interface Project {
   slug: string;
   titleKey: string;
   descriptionKey: string;
-  image: string;
+  images: string[];
   technologies: string[];
   keyFeaturesKey: string;
   liveUrl?: string;
