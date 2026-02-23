@@ -8,102 +8,53 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import LaunchIcon from '@mui/icons-material/Launch';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import CodeIcon from '@mui/icons-material/Code';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import WorkIcon from '@mui/icons-material/Work';
 import LightbulbIcon from '@mui/icons-material/Lightbulb';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { Link } from '@/i18n/navigation';
 import type { ProjectCategory } from '@/types';
 
 const MotionBox = motion.create(Box);
 const MotionTypography = motion.create(Typography);
-const MotionChip = motion.create(Chip);
 
 // --- Animation Variants ---
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.6,
-      ease: 'easeOut' as const,
-    },
+    transition: { duration: 0.6, ease: 'easeOut' as const },
   },
 };
 
-const imageVariants = {
-  hidden: { opacity: 0, scale: 0.92, y: 20 },
+const stagger = {
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    scale: 1,
+    transition: { staggerChildren: 0.08, delayChildren: 0.15 },
+  },
+};
+
+const slideUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.8,
-      ease: 'easeOut' as const,
-      delay: 0.3,
-    },
+    transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] as const },
   },
 };
 
-const chipContainerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.05,
-      delayChildren: 0.1,
-    },
-  },
-};
-
-const chipItemVariants = {
-  hidden: { opacity: 0, scale: 0.8 },
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.9 },
   visible: {
     opacity: 1,
     scale: 1,
-    transition: {
-      duration: 0.3,
-      ease: 'easeOut' as const,
-    },
-  },
-};
-
-const featureContainerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.1,
-    },
-  },
-};
-
-const featureItemVariants = {
-  hidden: { opacity: 0, x: -20 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 0.4,
-      ease: 'easeOut' as const,
-    },
+    transition: { duration: 0.5, ease: 'easeOut' as const },
   },
 };
 
@@ -114,31 +65,35 @@ const categoryConfig: Record<
   {
     labelKey: string;
     icon: React.ReactElement;
-    bgcolor: string;
+    gradient: string;
     color: string;
+    bgColor: string;
     borderColor: string;
   }
 > = {
   internal: {
     labelKey: 'categoryInternal',
     icon: <CodeIcon sx={{ fontSize: 16 }} />,
-    bgcolor: 'rgba(37, 99, 235, 0.2)',
+    gradient: 'linear-gradient(135deg, #3b82f6, #8b5cf6)',
     color: '#3b82f6',
-    borderColor: 'rgba(37, 99, 235, 0.3)',
+    bgColor: 'rgba(59, 130, 246, 0.12)',
+    borderColor: 'rgba(59, 130, 246, 0.25)',
   },
   freelance: {
     labelKey: 'categoryFreelance',
     icon: <WorkIcon sx={{ fontSize: 16 }} />,
-    bgcolor: 'rgba(249, 115, 22, 0.2)',
+    gradient: 'linear-gradient(135deg, #f97316, #ef4444)',
     color: '#fb923c',
-    borderColor: 'rgba(249, 115, 22, 0.3)',
+    bgColor: 'rgba(249, 115, 22, 0.12)',
+    borderColor: 'rgba(249, 115, 22, 0.25)',
   },
   personal: {
     labelKey: 'categoryPersonal',
     icon: <LightbulbIcon sx={{ fontSize: 16 }} />,
-    bgcolor: 'rgba(6, 182, 212, 0.2)',
+    gradient: 'linear-gradient(135deg, #06b6d4, #8b5cf6)',
     color: '#22d3ee',
-    borderColor: 'rgba(6, 182, 212, 0.3)',
+    bgColor: 'rgba(6, 182, 212, 0.12)',
+    borderColor: 'rgba(6, 182, 212, 0.25)',
   },
 };
 
@@ -209,145 +164,84 @@ export default function ProjectDetailClient({
     <Box
       sx={{
         minHeight: '100vh',
-        background:
-          'linear-gradient(180deg, rgba(6,6,17,0.95) 0%, rgba(10,22,40,0.9) 50%, rgba(6,6,17,0.95) 100%)',
+        background: 'linear-gradient(180deg, #060611 0%, #0a1628 40%, #060611 100%)',
         pt: { xs: 10, md: 12 },
         pb: 8,
       }}
     >
       <Container maxWidth="lg">
-        {/* === Section A: Breadcrumb === */}
+        {/* ═══ Back Button ═══ */}
         <MotionBox
-          variants={itemVariants}
           initial="hidden"
           animate="visible"
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 1,
-            mb: 6,
-          }}
+          variants={fadeIn}
+          sx={{ mb: 4 }}
         >
           <Link
             href="/#projects"
             style={{
-              display: 'flex',
+              display: 'inline-flex',
               alignItems: 'center',
-              gap: '4px',
+              gap: '6px',
               color: '#a1a1aa',
               textDecoration: 'none',
               fontSize: '0.875rem',
-              padding: '6px 12px',
-              borderRadius: '8px',
-              background: 'rgba(255,255,255,0.05)',
-              border: '1px solid rgba(255,255,255,0.08)',
+              padding: '8px 16px',
+              borderRadius: '12px',
+              background: 'rgba(255,255,255,0.04)',
+              border: '1px solid rgba(255,255,255,0.06)',
+              transition: 'all 0.3s ease',
             }}
           >
             <ArrowBackIcon sx={{ fontSize: 16 }} />
             {t('back')}
           </Link>
-          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-            {t('projects')}
-          </Typography>
-          <NavigateNextIcon sx={{ fontSize: 16, color: 'text.secondary' }} />
-          <Typography variant="body2" sx={{ color: 'text.primary' }}>
-            {project.title}
-          </Typography>
         </MotionBox>
 
-        {/* === Section B: Hero === */}
+        {/* ═══ Hero Section: Image Carousel ═══ */}
         <MotionBox
-          variants={containerVariants}
           initial="hidden"
           animate="visible"
-          sx={{ mb: 6 }}
+          variants={slideUp}
+          sx={{
+            position: 'relative',
+            borderRadius: 4,
+            overflow: 'hidden',
+            mb: 5,
+            border: '1px solid rgba(255,255,255,0.08)',
+            boxShadow: '0 20px 60px rgba(0,0,0,0.4), 0 0 100px rgba(37, 99, 235, 0.08)',
+          }}
         >
-          {/* Category Badge */}
-          <MotionChip
-            variants={itemVariants}
-            icon={catConfig.icon}
-            label={t(catConfig.labelKey)}
+          {/* Main Image */}
+          <Box
             sx={{
-              mb: 2,
-              bgcolor: catConfig.bgcolor,
-              color: catConfig.color,
-              border: `1px solid ${catConfig.borderColor}`,
-              fontWeight: 500,
-              px: 1,
-              '& .MuiChip-icon': {
-                color: catConfig.color,
-              },
-            }}
-          />
-
-          {/* Title */}
-          <MotionBox variants={itemVariants}>
-            <Typography
-              variant="h2"
-              component="h1"
-              className="text-gradient-blue"
-              sx={{
-                fontWeight: 800,
-                fontSize: { xs: '2rem', md: '2.75rem', lg: '3.25rem' },
-                lineHeight: 1.15,
-                mb: 3,
-              }}
-            >
-              {project.title}
-            </Typography>
-          </MotionBox>
-
-          {/* Description */}
-          <MotionTypography
-            variants={itemVariants}
-            variant="body1"
-            sx={{
-              color: 'text.secondary',
-              lineHeight: 1.8,
-              fontSize: { xs: '0.95rem', md: '1.05rem' },
-              maxWidth: 700,
-              mb: 4,
-            }}
-          >
-            {project.description}
-          </MotionTypography>
-
-          {/* Hero Image Carousel */}
-          <MotionBox
-            variants={imageVariants}
-            sx={{
-              borderRadius: 3,
-              overflow: 'hidden',
-              border: '1px solid rgba(255,255,255,0.1)',
-              boxShadow:
-                '0 8px 40px rgba(37, 99, 235, 0.15), 0 0 80px rgba(37, 99, 235, 0.05)',
               position: 'relative',
+              height: { xs: 300, md: 480, lg: 540 },
+              bgcolor: 'rgba(0,0,0,0.3)',
+              overflow: 'hidden',
             }}
           >
-            {/* Image with AnimatePresence */}
-            <Box sx={{ position: 'relative', height: { xs: 280, md: 450, lg: 500 }, overflow: 'hidden' }}>
-              <AnimatePresence initial={false} custom={slideDirection} mode="popLayout">
-                <motion.img
-                  key={currentImageIndex}
-                  src={project.images[currentImageIndex]}
-                  alt={`${project.title} - ${currentImageIndex + 1}`}
-                  custom={slideDirection}
-                  initial={{ x: slideDirection > 0 ? '100%' : '-100%', opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: slideDirection > 0 ? '-100%' : '100%', opacity: 0 }}
-                  transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'contain',
-                    display: 'block',
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                  }}
-                />
-              </AnimatePresence>
-            </Box>
+            <AnimatePresence initial={false} custom={slideDirection} mode="popLayout">
+              <motion.img
+                key={currentImageIndex}
+                src={project.images[currentImageIndex]}
+                alt={`${project.title} - ${currentImageIndex + 1}`}
+                custom={slideDirection}
+                initial={{ x: slideDirection > 0 ? '100%' : '-100%', opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: slideDirection > 0 ? '-100%' : '100%', opacity: 0 }}
+                transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'contain',
+                  display: 'block',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                }}
+              />
+            </AnimatePresence>
 
             {/* Navigation Arrows */}
             {hasMultipleImages && (
@@ -357,20 +251,20 @@ export default function ProjectDetailClient({
                   aria-label="Previous image"
                   sx={{
                     position: 'absolute',
-                    left: 12,
+                    left: { xs: 8, md: 16 },
                     top: '50%',
                     transform: 'translateY(-50%)',
-                    bgcolor: 'rgba(0,0,0,0.5)',
-                    backdropFilter: 'blur(8px)',
+                    bgcolor: 'rgba(0,0,0,0.55)',
+                    backdropFilter: 'blur(12px)',
                     color: '#fff',
-                    width: 44,
-                    height: 44,
-                    border: '1px solid rgba(255,255,255,0.15)',
+                    width: { xs: 40, md: 48 },
+                    height: { xs: 40, md: 48 },
+                    border: '1px solid rgba(255,255,255,0.12)',
                     transition: 'all 0.3s ease',
                     '&:hover': {
                       bgcolor: 'rgba(37, 99, 235, 0.6)',
                       borderColor: 'rgba(37, 99, 235, 0.5)',
-                      transform: 'translateY(-50%) scale(1.1)',
+                      transform: 'translateY(-50%) scale(1.08)',
                     },
                   }}
                 >
@@ -381,20 +275,20 @@ export default function ProjectDetailClient({
                   aria-label="Next image"
                   sx={{
                     position: 'absolute',
-                    right: 12,
+                    right: { xs: 8, md: 16 },
                     top: '50%',
                     transform: 'translateY(-50%)',
-                    bgcolor: 'rgba(0,0,0,0.5)',
-                    backdropFilter: 'blur(8px)',
+                    bgcolor: 'rgba(0,0,0,0.55)',
+                    backdropFilter: 'blur(12px)',
                     color: '#fff',
-                    width: 44,
-                    height: 44,
-                    border: '1px solid rgba(255,255,255,0.15)',
+                    width: { xs: 40, md: 48 },
+                    height: { xs: 40, md: 48 },
+                    border: '1px solid rgba(255,255,255,0.12)',
                     transition: 'all 0.3s ease',
                     '&:hover': {
                       bgcolor: 'rgba(37, 99, 235, 0.6)',
                       borderColor: 'rgba(37, 99, 235, 0.5)',
-                      transform: 'translateY(-50%) scale(1.1)',
+                      transform: 'translateY(-50%) scale(1.08)',
                     },
                   }}
                 >
@@ -409,13 +303,13 @@ export default function ProjectDetailClient({
                     left: '50%',
                     transform: 'translateX(-50%)',
                     display: 'flex',
-                    gap: 1,
+                    gap: 0.75,
                     px: 2,
                     py: 1,
-                    borderRadius: 3,
-                    bgcolor: 'rgba(0,0,0,0.45)',
-                    backdropFilter: 'blur(8px)',
-                    border: '1px solid rgba(255,255,255,0.1)',
+                    borderRadius: 5,
+                    bgcolor: 'rgba(0,0,0,0.5)',
+                    backdropFilter: 'blur(12px)',
+                    border: '1px solid rgba(255,255,255,0.08)',
                   }}
                 >
                   {project.images.map((_, index) => (
@@ -423,27 +317,27 @@ export default function ProjectDetailClient({
                       key={index}
                       onClick={() => goToImage(index)}
                       sx={{
-                        width: index === currentImageIndex ? 24 : 8,
+                        width: index === currentImageIndex ? 20 : 8,
                         height: 8,
                         borderRadius: 4,
                         bgcolor:
                           index === currentImageIndex
-                            ? 'primary.light'
-                            : 'rgba(255,255,255,0.35)',
+                            ? '#fff'
+                            : 'rgba(255,255,255,0.3)',
                         cursor: 'pointer',
-                        transition: 'all 0.3s ease',
+                        transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
                         '&:hover': {
                           bgcolor:
                             index === currentImageIndex
-                              ? 'primary.light'
-                              : 'rgba(255,255,255,0.6)',
+                              ? '#fff'
+                              : 'rgba(255,255,255,0.55)',
                         },
                       }}
                     />
                   ))}
                 </Box>
 
-                {/* Image Counter */}
+                {/* Image Counter Badge */}
                 <Box
                   sx={{
                     position: 'absolute',
@@ -452,83 +346,148 @@ export default function ProjectDetailClient({
                     px: 1.5,
                     py: 0.5,
                     borderRadius: 2,
-                    bgcolor: 'rgba(0,0,0,0.5)',
-                    backdropFilter: 'blur(8px)',
-                    border: '1px solid rgba(255,255,255,0.1)',
-                    color: 'rgba(255,255,255,0.8)',
-                    fontSize: '0.8rem',
-                    fontWeight: 500,
+                    bgcolor: 'rgba(0,0,0,0.55)',
+                    backdropFilter: 'blur(12px)',
+                    border: '1px solid rgba(255,255,255,0.08)',
+                    color: 'rgba(255,255,255,0.75)',
+                    fontSize: '0.78rem',
+                    fontWeight: 600,
                     fontFamily: 'var(--font-geist-mono)',
+                    letterSpacing: '0.05em',
                   }}
                 >
                   {currentImageIndex + 1} / {project.images.length}
                 </Box>
               </>
             )}
-          </MotionBox>
+          </Box>
+
+          {/* Thumbnail Strip */}
+          {hasMultipleImages && (
+            <Box
+              sx={{
+                display: 'flex',
+                gap: 1,
+                p: 1.5,
+                bgcolor: 'rgba(0,0,0,0.4)',
+                borderTop: '1px solid rgba(255,255,255,0.06)',
+                overflowX: 'auto',
+                '&::-webkit-scrollbar': { height: 4 },
+                '&::-webkit-scrollbar-thumb': {
+                  bgcolor: 'rgba(255,255,255,0.15)',
+                  borderRadius: 2,
+                },
+              }}
+            >
+              {project.images.map((img, index) => (
+                <Box
+                  key={index}
+                  onClick={() => goToImage(index)}
+                  sx={{
+                    flexShrink: 0,
+                    width: { xs: 80, md: 100 },
+                    height: { xs: 52, md: 64 },
+                    borderRadius: 1.5,
+                    overflow: 'hidden',
+                    cursor: 'pointer',
+                    border: index === currentImageIndex
+                      ? '2px solid rgba(59, 130, 246, 0.8)'
+                      : '2px solid transparent',
+                    opacity: index === currentImageIndex ? 1 : 0.5,
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      opacity: 1,
+                      border: index === currentImageIndex
+                        ? '2px solid rgba(59, 130, 246, 0.8)'
+                        : '2px solid rgba(255,255,255,0.25)',
+                    },
+                  }}
+                >
+                  <Box
+                    component="img"
+                    src={img}
+                    alt={`Thumbnail ${index + 1}`}
+                    sx={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                    }}
+                  />
+                </Box>
+              ))}
+            </Box>
+          )}
         </MotionBox>
 
-        {/* === Section C: Stats + Action Buttons === */}
+        {/* ═══ Project Header: Badge + Title + Description + Actions ═══ */}
         <MotionBox
-          variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="glass-panel"
-          sx={{
-            display: 'flex',
-            flexDirection: { xs: 'column', sm: 'row' },
-            alignItems: { sm: 'center' },
-            justifyContent: 'space-between',
-            gap: 3,
-            p: { xs: 3, md: 4 },
-            mb: 6,
-          }}
+          variants={stagger}
+          sx={{ mb: 6 }}
         >
-          {/* Stats */}
-          <MotionBox
-            variants={itemVariants}
-            sx={{
-              display: 'flex',
-              gap: { xs: 3, md: 5 },
-              flexWrap: 'wrap',
-            }}
-          >
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-              <CodeIcon sx={{ color: 'primary.light', fontSize: 24 }} />
-              <Box>
-                <Typography
-                  variant="h5"
-                  sx={{ fontWeight: 700, color: 'text.primary', lineHeight: 1 }}
-                >
-                  {project.technologies.length}
-                </Typography>
-                <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-                  {t('totalTechnologies')}
-                </Typography>
-              </Box>
-            </Box>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-              <AutoAwesomeIcon sx={{ color: '#f97316', fontSize: 24 }} />
-              <Box>
-                <Typography
-                  variant="h5"
-                  sx={{ fontWeight: 700, color: 'text.primary', lineHeight: 1 }}
-                >
-                  {project.keyFeatures.length}
-                </Typography>
-                <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-                  {t('keyFeaturesCount')}
-                </Typography>
-              </Box>
-            </Box>
+          {/* Category Badge */}
+          <MotionBox variants={fadeIn} sx={{ mb: 2 }}>
+            <Chip
+              icon={catConfig.icon}
+              label={t(catConfig.labelKey)}
+              sx={{
+                bgcolor: catConfig.bgColor,
+                color: catConfig.color,
+                border: `1px solid ${catConfig.borderColor}`,
+                fontWeight: 600,
+                fontSize: '0.8rem',
+                px: 1,
+                '& .MuiChip-icon': { color: catConfig.color },
+              }}
+            />
           </MotionBox>
 
-          {/* Action Buttons */}
-          <MotionBox
-            variants={itemVariants}
-            sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}
+          <motion.h1
+            variants={fadeIn}
+            style={{
+              fontWeight: 800,
+              lineHeight: 1.1,
+              marginBottom: '24px',
+              background: 'linear-gradient(135deg, #e2e8f0, #fff, #93c5fd)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}
           >
+            <Typography
+              variant="h2"
+              component="span"
+              sx={{
+                fontWeight: 'inherit',
+                fontSize: { xs: '2rem', md: '2.75rem', lg: '3.5rem' },
+                lineHeight: 'inherit',
+                background: 'inherit',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}
+            >
+              {project.title}
+            </Typography>
+          </motion.h1>
+
+          {/* Description */}
+          <MotionTypography
+            variants={fadeIn}
+            variant="body1"
+            sx={{
+              color: 'rgba(161, 161, 170, 0.9)',
+              lineHeight: 1.85,
+              fontSize: { xs: '0.95rem', md: '1.08rem' },
+              maxWidth: 720,
+              mb: 4,
+            }}
+          >
+            {project.description}
+          </MotionTypography>
+
+          {/* Action Buttons */}
+          <MotionBox variants={fadeIn} sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
             {project.liveUrl && (
               <Button
                 component="a"
@@ -537,7 +496,20 @@ export default function ProjectDetailClient({
                 rel="noopener noreferrer"
                 variant="contained"
                 endIcon={<LaunchIcon />}
-                sx={{ px: 3 }}
+                sx={{
+                  px: 3.5,
+                  py: 1.2,
+                  borderRadius: 2.5,
+                  fontWeight: 600,
+                  fontSize: '0.9rem',
+                  background: catConfig.gradient,
+                  boxShadow: `0 4px 20px ${catConfig.bgColor}`,
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    transform: 'translateY(-2px)',
+                    boxShadow: `0 8px 30px ${catConfig.bgColor}`,
+                  },
+                }}
               >
                 {t('liveDemo')}
               </Button>
@@ -551,12 +523,19 @@ export default function ProjectDetailClient({
                 variant="outlined"
                 endIcon={<GitHubIcon />}
                 sx={{
-                  px: 3,
-                  borderColor: 'rgba(255,255,255,0.2)',
+                  px: 3.5,
+                  py: 1.2,
+                  borderRadius: 2.5,
+                  fontWeight: 600,
+                  fontSize: '0.9rem',
+                  borderColor: 'rgba(255,255,255,0.15)',
                   color: 'text.primary',
+                  backdropFilter: 'blur(8px)',
+                  transition: 'all 0.3s ease',
                   '&:hover': {
-                    borderColor: 'primary.main',
-                    bgcolor: 'rgba(37, 99, 235, 0.1)',
+                    borderColor: catConfig.color,
+                    bgcolor: catConfig.bgColor,
+                    transform: 'translateY(-2px)',
                   },
                 }}
               >
@@ -566,51 +545,94 @@ export default function ProjectDetailClient({
           </MotionBox>
         </MotionBox>
 
-        {/* === Section D: Technologies + Key Features === */}
+
+
+        {/* ═══ Info Cards: Stats + Technologies + Key Features ═══ */}
         <Box
           sx={{
             display: 'grid',
-            gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
-            gap: { xs: 4, md: 6 },
+            gridTemplateColumns: { xs: '1fr', lg: '1fr 1fr' },
+            gap: 3,
             mb: 8,
           }}
         >
-          {/* Technologies Used */}
+          {/* Left: Technologies */}
           <MotionBox
-            variants={itemVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            className="glass-panel"
-            sx={{ p: { xs: 3, md: 4 } }}
+            viewport={{ once: true, amount: 0.2 }}
+            variants={slideUp}
+            sx={{
+              p: { xs: 3, md: 4 },
+              borderRadius: 4,
+              bgcolor: 'rgba(255,255,255,0.025)',
+              border: '1px solid rgba(255,255,255,0.06)',
+              backdropFilter: 'blur(20px)',
+              transition: 'border-color 0.3s ease',
+              '&:hover': { borderColor: 'rgba(255,255,255,0.12)' },
+            }}
           >
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 3 }}>
-              <CodeIcon sx={{ color: 'primary.light', fontSize: 22 }} />
-              <Typography variant="h6" sx={{ fontWeight: 700 }}>
-                {t('technologiesUsed')}
+            {/* Section Header */}
+            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 3 }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                <Box
+                  sx={{
+                    width: 36,
+                    height: 36,
+                    borderRadius: 2,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    background: 'linear-gradient(135deg, rgba(59,130,246,0.2), rgba(139,92,246,0.2))',
+                    border: '1px solid rgba(59,130,246,0.2)',
+                  }}
+                >
+                  <CodeIcon sx={{ color: '#93c5fd', fontSize: 20 }} />
+                </Box>
+                <Typography variant="h6" sx={{ fontWeight: 700, fontSize: '1rem' }}>
+                  {t('technologiesUsed')}
+                </Typography>
+              </Box>
+              <Typography
+                sx={{
+                  fontFamily: 'var(--font-geist-mono)',
+                  fontSize: '0.8rem',
+                  color: 'text.secondary',
+                  bgcolor: 'rgba(255,255,255,0.04)',
+                  px: 1.5,
+                  py: 0.5,
+                  borderRadius: 1.5,
+                }}
+              >
+                {project.technologies.length} {t('totalTechnologies').toLowerCase()}
               </Typography>
             </Box>
+
+            {/* Tech Chips */}
             <MotionBox
-              variants={chipContainerVariants}
+              variants={stagger}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true }}
               sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}
             >
               {project.technologies.map((tech) => (
-                <MotionBox key={tech} variants={chipItemVariants}>
+                <MotionBox key={tech} variants={scaleIn}>
                   <Chip
                     label={tech}
-                    icon={<CodeIcon sx={{ fontSize: 16 }} />}
                     sx={{
-                      bgcolor: 'rgba(37, 99, 235, 0.15)',
-                      color: 'primary.light',
-                      border: '1px solid rgba(37, 99, 235, 0.3)',
+                      bgcolor: 'rgba(59, 130, 246, 0.1)',
+                      color: '#93c5fd',
+                      border: '1px solid rgba(59, 130, 246, 0.2)',
                       fontSize: '0.85rem',
+                      fontWeight: 500,
                       py: 2.5,
                       px: 0.5,
-                      '& .MuiChip-icon': {
-                        color: 'primary.light',
+                      transition: 'all 0.25s ease',
+                      '&:hover': {
+                        bgcolor: 'rgba(59, 130, 246, 0.18)',
+                        borderColor: 'rgba(59, 130, 246, 0.4)',
+                        transform: 'translateY(-1px)',
                       },
                     }}
                   />
@@ -619,210 +641,185 @@ export default function ProjectDetailClient({
             </MotionBox>
           </MotionBox>
 
-          {/* Key Features */}
+          {/* Right: Key Features */}
           <MotionBox
-            variants={itemVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            className="glass-panel-strong"
-            sx={{ p: { xs: 3, md: 4 } }}
+            viewport={{ once: true, amount: 0.2 }}
+            variants={slideUp}
+            sx={{
+              p: { xs: 3, md: 4 },
+              borderRadius: 4,
+              bgcolor: 'rgba(255,255,255,0.025)',
+              border: '1px solid rgba(255,255,255,0.06)',
+              backdropFilter: 'blur(20px)',
+              transition: 'border-color 0.3s ease',
+              '&:hover': { borderColor: 'rgba(255,255,255,0.12)' },
+            }}
           >
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 3 }}>
-              <AutoAwesomeIcon sx={{ color: '#f97316', fontSize: 22 }} />
-              <Typography variant="h6" sx={{ fontWeight: 700 }}>
-                {t('keyFeatures')}
-              </Typography>
-            </Box>
-            <motion.ul
-              variants={featureContainerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              style={{
-                listStyle: 'none',
-                padding: 0,
-                margin: 0,
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '8px',
-              }}
-            >
-              {project.keyFeatures.map((feature, index) => (
-                <motion.li
-                  key={index}
-                  variants={featureItemVariants}
-                  style={{
+            {/* Section Header */}
+            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 3 }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                <Box
+                  sx={{
+                    width: 36,
+                    height: 36,
+                    borderRadius: 2,
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '16px',
-                    padding: '12px 16px',
-                    borderRadius: '8px',
-                    transition: 'background 0.2s',
+                    justifyContent: 'center',
+                    background: 'linear-gradient(135deg, rgba(249,115,22,0.2), rgba(239,68,68,0.2))',
+                    border: '1px solid rgba(249,115,22,0.2)',
                   }}
                 >
-                  <Typography
+                  <AutoAwesomeIcon sx={{ color: '#fdba74', fontSize: 20 }} />
+                </Box>
+                <Typography variant="h6" sx={{ fontWeight: 700, fontSize: '1rem' }}>
+                  {t('keyFeatures')}
+                </Typography>
+              </Box>
+              <Typography
+                sx={{
+                  fontFamily: 'var(--font-geist-mono)',
+                  fontSize: '0.8rem',
+                  color: 'text.secondary',
+                  bgcolor: 'rgba(255,255,255,0.04)',
+                  px: 1.5,
+                  py: 0.5,
+                  borderRadius: 1.5,
+                }}
+              >
+                {project.keyFeatures.length} {t('keyFeaturesCount').toLowerCase()}
+              </Typography>
+            </Box>
+
+            {/* Features List */}
+            <MotionBox
+              variants={stagger}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}
+            >
+              {project.keyFeatures.map((feature, index) => (
+                <MotionBox
+                  key={index}
+                  variants={fadeIn}
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 1.5,
+                    py: 1.5,
+                    px: 2,
+                    borderRadius: 2.5,
+                    transition: 'all 0.25s ease',
+                    '&:hover': {
+                      bgcolor: 'rgba(255,255,255,0.03)',
+                    },
+                  }}
+                >
+                  <CheckCircleOutlineIcon
                     sx={{
-                      fontFamily: 'var(--font-geist-mono)',
-                      fontWeight: 700,
-                      fontSize: '0.85rem',
-                      color: 'primary.light',
-                      opacity: 0.7,
-                      minWidth: 24,
-                    }}
-                  >
-                    {String(index + 1).padStart(2, '0')}
-                  </Typography>
-                  <Box
-                    sx={{
-                      width: 2,
-                      height: 20,
-                      bgcolor: 'rgba(249, 115, 22, 0.4)',
-                      borderRadius: 1,
+                      fontSize: 18,
+                      color: catConfig.color,
+                      opacity: 0.8,
                       flexShrink: 0,
                     }}
                   />
                   <Typography
                     variant="body2"
-                    sx={{ color: 'text.secondary', lineHeight: 1.6 }}
+                    sx={{
+                      color: 'rgba(161, 161, 170, 0.9)',
+                      lineHeight: 1.6,
+                      fontSize: '0.9rem',
+                    }}
                   >
                     {feature}
                   </Typography>
-                </motion.li>
+                </MotionBox>
               ))}
-            </motion.ul>
+            </MotionBox>
           </MotionBox>
         </Box>
 
-        {/* === Section E: Project Navigation === */}
+        {/* ═══ Project Navigation ═══ */}
         <MotionBox
-          variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ once: true }}
+          variants={fadeIn}
           sx={{
-            display: 'grid',
-            gridTemplateColumns: { xs: '1fr', md: '1fr auto 1fr' },
-            gap: 3,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            pt: 4,
+            borderTop: '1px solid rgba(255,255,255,0.06)',
           }}
         >
-          {/* Previous Project */}
-          <MotionBox variants={itemVariants}>
-            <Link
-              href={`/projects/${prevProject.slug}`}
-              style={{ textDecoration: 'none', display: 'block' }}
-            >
-              <Box
-                className="glass-panel"
-                sx={{
-                  p: 3,
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease',
-                  '&:hover': {
-                    borderColor: 'rgba(37, 99, 235, 0.4)',
-                    transform: 'translateX(-4px)',
-                  },
-                }}
-              >
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 0.5 }}>
-                  <ArrowBackIcon sx={{ fontSize: 16, color: 'text.secondary' }} />
-                  <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-                    {t('previousProject')}
-                  </Typography>
-                </Box>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    color: 'text.primary',
-                    fontWeight: 600,
-                    pl: 3.5,
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                    whiteSpace: 'nowrap',
-                  }}
-                >
-                  {prevProject.title}
-                </Typography>
-              </Box>
-            </Link>
-          </MotionBox>
-
-          {/* View All Projects */}
-          <MotionBox
-            variants={itemVariants}
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
+          {/* Previous */}
+          <Link
+            href={`/projects/${prevProject.slug}`}
+            style={{ textDecoration: 'none' }}
           >
-            <Button
-              component={Link}
-              href="/#projects"
-              variant="outlined"
+            <Box
               sx={{
-                borderColor: 'rgba(255,255,255,0.2)',
-                color: 'text.primary',
-                whiteSpace: 'nowrap',
-                '&:hover': {
-                  borderColor: 'primary.main',
-                  bgcolor: 'rgba(37, 99, 235, 0.1)',
-                },
+                display: 'flex',
+                alignItems: 'center',
+                gap: 1,
+                color: 'text.secondary',
+                transition: 'color 0.2s ease',
+                '&:hover': { color: 'text.primary' },
+                '&:hover .arrow': { transform: 'translateX(-3px)' },
+              }}
+            >
+              <ArrowBackIcon className="arrow" sx={{ fontSize: 16, transition: 'transform 0.2s ease' }} />
+              <Typography variant="body2" sx={{ fontWeight: 500 }}>
+                {prevProject.title}
+              </Typography>
+            </Box>
+          </Link>
+
+          {/* View All */}
+          <Link
+            href="/#projects"
+            style={{ textDecoration: 'none' }}
+          >
+            <Typography
+              variant="body2"
+              sx={{
+                color: 'text.secondary',
+                fontWeight: 500,
+                transition: 'color 0.2s ease',
+                display: { xs: 'none', sm: 'block' },
+                '&:hover': { color: 'text.primary' },
               }}
             >
               {t('viewAllProjects')}
-            </Button>
-          </MotionBox>
+            </Typography>
+          </Link>
 
-          {/* Next Project */}
-          <MotionBox variants={itemVariants}>
-            <Link
-              href={`/projects/${nextProject.slug}`}
-              style={{ textDecoration: 'none', display: 'block' }}
+          {/* Next */}
+          <Link
+            href={`/projects/${nextProject.slug}`}
+            style={{ textDecoration: 'none' }}
+          >
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 1,
+                color: 'text.secondary',
+                transition: 'color 0.2s ease',
+                '&:hover': { color: 'text.primary' },
+                '&:hover .arrow': { transform: 'translateX(3px)' },
+              }}
             >
-              <Box
-                className="glass-panel"
-                sx={{
-                  p: 3,
-                  cursor: 'pointer',
-                  textAlign: 'right',
-                  transition: 'all 0.3s ease',
-                  '&:hover': {
-                    borderColor: 'rgba(37, 99, 235, 0.4)',
-                    transform: 'translateX(4px)',
-                  },
-                }}
-              >
-                <Box
-                  sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 1,
-                    mb: 0.5,
-                    justifyContent: 'flex-end',
-                  }}
-                >
-                  <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-                    {t('nextProject')}
-                  </Typography>
-                  <ArrowForwardIcon sx={{ fontSize: 16, color: 'text.secondary' }} />
-                </Box>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    color: 'text.primary',
-                    fontWeight: 600,
-                    pr: 3.5,
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                    whiteSpace: 'nowrap',
-                  }}
-                >
-                  {nextProject.title}
-                </Typography>
-              </Box>
-            </Link>
-          </MotionBox>
+              <Typography variant="body2" sx={{ fontWeight: 500 }}>
+                {nextProject.title}
+              </Typography>
+              <ArrowForwardIcon className="arrow" sx={{ fontSize: 16, transition: 'transform 0.2s ease' }} />
+            </Box>
+          </Link>
         </MotionBox>
       </Container>
     </Box>
