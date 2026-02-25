@@ -547,13 +547,13 @@ export default function ProjectDetailClient({
 
 
 
-        {/* ═══ Info Cards: Stats + Technologies + Key Features ═══ */}
+        {/* ═══ Info Cards: Technologies + Key Features ═══ */}
         <Box
           sx={{
             display: 'grid',
-            gridTemplateColumns: { xs: '1fr', lg: '1fr 1fr' },
-            gap: 3,
-            mb: 8,
+            gridTemplateColumns: { xs: '1fr', lg: '5fr 7fr' },
+            gap: { xs: 4, lg: 6 },
+            mb: 10,
           }}
         >
           {/* Left: Technologies */}
@@ -563,79 +563,99 @@ export default function ProjectDetailClient({
             viewport={{ once: true, amount: 0.2 }}
             variants={slideUp}
             sx={{
-              p: { xs: 3, md: 4 },
-              borderRadius: 4,
-              bgcolor: 'rgba(255,255,255,0.025)',
-              border: '1px solid rgba(255,255,255,0.06)',
-              backdropFilter: 'blur(20px)',
-              transition: 'border-color 0.3s ease',
-              '&:hover': { borderColor: 'rgba(255,255,255,0.12)' },
+              position: 'relative',
+              p: { xs: 3, md: 4.5 },
+              borderRadius: '24px',
+              background: 'linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)',
+              border: '1px solid rgba(255,255,255,0.1)',
+              boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.05), 0 8px 32px rgba(0,0,0,0.3)',
+              backdropFilter: 'blur(24px)',
+              WebkitBackdropFilter: 'blur(24px)',
+              overflow: 'hidden',
+              display: 'flex',
+              flexDirection: 'column',
+              '&::before': {
+                content: '""',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                height: '1px',
+                background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)',
+              }
             }}
           >
+            {/* Elegant Background Glow */}
+            <Box
+              sx={{
+                position: 'absolute',
+                top: '-20%',
+                left: '-10%',
+                width: '140%',
+                height: '140%',
+                background: 'radial-gradient(circle at top left, rgba(59,130,246,0.1), transparent 50%)',
+                pointerEvents: 'none',
+                zIndex: 0,
+              }}
+            />
+
             {/* Section Header */}
-            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 3 }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                <Box
-                  sx={{
-                    width: 36,
-                    height: 36,
-                    borderRadius: 2,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    background: 'linear-gradient(135deg, rgba(59,130,246,0.2), rgba(139,92,246,0.2))',
-                    border: '1px solid rgba(59,130,246,0.2)',
-                  }}
-                >
-                  <CodeIcon sx={{ color: '#93c5fd', fontSize: 20 }} />
+            <Box sx={{ position: 'relative', zIndex: 1, mb: 4, display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+              <Box>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1 }}>
+                  <CodeIcon sx={{ color: '#93c5fd', fontSize: 24 }} />
+                  <Typography variant="h5" sx={{ fontWeight: 800, color: '#fff', letterSpacing: '-0.02em' }}>
+                    {t('technologiesUsed')}
+                  </Typography>
                 </Box>
-                <Typography variant="h6" sx={{ fontWeight: 700, fontSize: '1rem' }}>
-                  {t('technologiesUsed')}
+                <Typography variant="body2" sx={{ color: 'rgba(161,161,170,0.8)' }}>
+                  {project.technologies.length} {t('totalTechnologies').toLowerCase()}
                 </Typography>
               </Box>
-              <Typography
-                sx={{
-                  fontFamily: 'var(--font-geist-mono)',
-                  fontSize: '0.8rem',
-                  color: 'text.secondary',
-                  bgcolor: 'rgba(255,255,255,0.04)',
-                  px: 1.5,
-                  py: 0.5,
-                  borderRadius: 1.5,
-                }}
-              >
-                {project.technologies.length} {t('totalTechnologies').toLowerCase()}
-              </Typography>
             </Box>
 
-            {/* Tech Chips */}
+            {/* Tech Badges Grid */}
             <MotionBox
               variants={stagger}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}
+              sx={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: 1.5,
+                position: 'relative',
+                zIndex: 1,
+              }}
             >
               {project.technologies.map((tech) => (
                 <MotionBox key={tech} variants={scaleIn}>
-                  <Chip
-                    label={tech}
+                  <Box
                     sx={{
-                      bgcolor: 'rgba(59, 130, 246, 0.1)',
-                      color: '#93c5fd',
-                      border: '1px solid rgba(59, 130, 246, 0.2)',
-                      fontSize: '0.85rem',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      px: 2.5,
+                      py: 1.2,
+                      borderRadius: '12px',
+                      background: 'linear-gradient(145deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.01) 100%)',
+                      border: '1px solid rgba(255,255,255,0.08)',
+                      boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.05)',
+                      color: '#e2e8f0',
+                      fontSize: '0.9rem',
                       fontWeight: 500,
-                      py: 2.5,
-                      px: 0.5,
-                      transition: 'all 0.25s ease',
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                       '&:hover': {
-                        bgcolor: 'rgba(59, 130, 246, 0.18)',
-                        borderColor: 'rgba(59, 130, 246, 0.4)',
-                        transform: 'translateY(-1px)',
-                      },
+                        background: 'linear-gradient(145deg, rgba(59,130,246,0.1) 0%, rgba(139,92,246,0.1) 100%)',
+                        borderColor: 'rgba(96,165,250,0.4)',
+                        color: '#fff',
+                        transform: 'translateY(-2px) scale(1.02)',
+                        boxShadow: '0 10px 20px rgba(0,0,0,0.2), inset 0 1px 1px rgba(255,255,255,0.15)',
+                      }
                     }}
-                  />
+                  >
+                    <Box sx={{ width: 6, height: 6, borderRadius: '50%', background: catConfig.gradient, mr: 1.5, boxShadow: `0 0 8px ${catConfig.color}` }} />
+                    {tech}
+                  </Box>
                 </MotionBox>
               ))}
             </MotionBox>
@@ -648,49 +668,55 @@ export default function ProjectDetailClient({
             viewport={{ once: true, amount: 0.2 }}
             variants={slideUp}
             sx={{
-              p: { xs: 3, md: 4 },
-              borderRadius: 4,
-              bgcolor: 'rgba(255,255,255,0.025)',
-              border: '1px solid rgba(255,255,255,0.06)',
-              backdropFilter: 'blur(20px)',
-              transition: 'border-color 0.3s ease',
-              '&:hover': { borderColor: 'rgba(255,255,255,0.12)' },
+              position: 'relative',
+              p: { xs: 3, md: 4.5 },
+              borderRadius: '24px',
+              background: 'linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)',
+              border: '1px solid rgba(255,255,255,0.1)',
+              boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.05), 0 8px 32px rgba(0,0,0,0.3)',
+              backdropFilter: 'blur(24px)',
+              WebkitBackdropFilter: 'blur(24px)',
+              overflow: 'hidden',
+              display: 'flex',
+              flexDirection: 'column',
+              '&::before': {
+                content: '""',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                height: '1px',
+                background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)',
+              }
             }}
           >
+            {/* Elegant Background Glow */}
+            <Box
+              sx={{
+                position: 'absolute',
+                top: '-20%',
+                right: '-10%',
+                width: '140%',
+                height: '140%',
+                background: 'radial-gradient(circle at top right, rgba(249,115,22,0.08), transparent 50%)',
+                pointerEvents: 'none',
+                zIndex: 0,
+              }}
+            />
+
             {/* Section Header */}
-            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 3 }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                <Box
-                  sx={{
-                    width: 36,
-                    height: 36,
-                    borderRadius: 2,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    background: 'linear-gradient(135deg, rgba(249,115,22,0.2), rgba(239,68,68,0.2))',
-                    border: '1px solid rgba(249,115,22,0.2)',
-                  }}
-                >
-                  <AutoAwesomeIcon sx={{ color: '#fdba74', fontSize: 20 }} />
+            <Box sx={{ position: 'relative', zIndex: 1, mb: 4, display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+              <Box>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1 }}>
+                  <AutoAwesomeIcon sx={{ color: '#fdba74', fontSize: 24 }} />
+                  <Typography variant="h5" sx={{ fontWeight: 800, color: '#fff', letterSpacing: '-0.02em' }}>
+                    {t('keyFeatures')}
+                  </Typography>
                 </Box>
-                <Typography variant="h6" sx={{ fontWeight: 700, fontSize: '1rem' }}>
-                  {t('keyFeatures')}
+                <Typography variant="body2" sx={{ color: 'rgba(161,161,170,0.8)' }}>
+                  {project.keyFeatures.length} {t('keyFeaturesCount').toLowerCase()}
                 </Typography>
               </Box>
-              <Typography
-                sx={{
-                  fontFamily: 'var(--font-geist-mono)',
-                  fontSize: '0.8rem',
-                  color: 'text.secondary',
-                  bgcolor: 'rgba(255,255,255,0.04)',
-                  px: 1.5,
-                  py: 0.5,
-                  borderRadius: 1.5,
-                }}
-              >
-                {project.keyFeatures.length} {t('keyFeaturesCount').toLowerCase()}
-              </Typography>
             </Box>
 
             {/* Features List */}
@@ -699,7 +725,7 @@ export default function ProjectDetailClient({
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}
+              sx={{ display: 'flex', flexDirection: 'column', gap: 2, position: 'relative', zIndex: 1 }}
             >
               {project.keyFeatures.map((feature, index) => (
                 <MotionBox
@@ -707,31 +733,60 @@ export default function ProjectDetailClient({
                   variants={fadeIn}
                   sx={{
                     display: 'flex',
-                    alignItems: 'center',
-                    gap: 1.5,
-                    py: 1.5,
-                    px: 2,
-                    borderRadius: 2.5,
-                    transition: 'all 0.25s ease',
-                    '&:hover': {
-                      bgcolor: 'rgba(255,255,255,0.03)',
+                    alignItems: 'flex-start',
+                    gap: 2.5,
+                    p: 3,
+                    borderRadius: '16px',
+                    background: 'rgba(255,255,255,0.02)',
+                    border: '1px solid rgba(255,255,255,0.04)',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    '&::before': {
+                      content: '""',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      width: '4px',
+                      height: '100%',
+                      background: catConfig.gradient,
+                      opacity: 0,
+                      transition: 'opacity 0.3s ease',
                     },
+                    '&:hover': {
+                      background: 'rgba(255,255,255,0.04)',
+                      transform: 'translateX(6px)',
+                      borderColor: 'rgba(255,255,255,0.08)',
+                      boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
+                      '&::before': {
+                        opacity: 1,
+                      }
+                    }
                   }}
                 >
-                  <CheckCircleOutlineIcon
+                  <Box
                     sx={{
-                      fontSize: 18,
+                      mt: 0.25,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      width: 28,
+                      height: 28,
+                      borderRadius: '8px',
+                      background: catConfig.bgColor,
                       color: catConfig.color,
-                      opacity: 0.8,
                       flexShrink: 0,
                     }}
-                  />
+                  >
+                    <CheckCircleOutlineIcon sx={{ fontSize: 18 }} />
+                  </Box>
                   <Typography
-                    variant="body2"
+                    variant="body1"
                     sx={{
-                      color: 'rgba(161, 161, 170, 0.9)',
+                      color: '#e2e8f0',
                       lineHeight: 1.6,
-                      fontSize: '0.9rem',
+                      fontSize: '0.95rem',
+                      fontWeight: 400,
                     }}
                   >
                     {feature}

@@ -107,90 +107,103 @@
     "projects": {
         "pawCare": {
             "title": "Paw Care",
-            "description": "A program designed to help users solve arithmetic problems automatically with step-by-step solutions.",
+            "description": "A web-based application designed to help veterinarians calculate customized nutrition formulas for pets based on medical conditions, weight and dietary requirements.",
             "keyFeatures": [
-                "Pet nutrition calculator",
-                "Personalized meal plans",
-                "Veterinary consultation booking",
-                "Health tracking dashboard",
-                "Product recommendations"
+                "Nutition Formula Calculator",
+                "Patient Records",
+                "Order Management",
+                "Queue Management"
             ]
         },
         "orvia": {
-            "title": "Orvia",
+            "title": "Orvia (Operating Room Management System)",
             "description": "A program designed to help users solve arithmetic problems automatically with step-by-step solutions.",
             "keyFeatures": [
-                "Real-time operating room monitoring",
-                "Room reservation system",
-                "E-paper display integration",
-                "Staff scheduling",
-                "Equipment tracking"
+                "Calendar-based Operating Room Scheduling",
+                "Weekly Surgical Planning View",
+                "Real-time Booking Updates",
+                "Digital Door Signage Integration",
+                "Multi-department Coordination"
             ]
         },
         "optSense": {
-            "title": "optSense",
-            "description": "A program designed to help users solve arithmetic problems automatically with step-by-step solutions.",
+            "title": "optSense (HVAC Monitoring System)",
+            "description": "A real-time HVAC and operating room equipment monitoring platform designed to ensure environmental control standards in surgical rooms, The system streams live data to a central company dashboard, enabling immediate issue detection and response across multiple hospital.",
             "keyFeatures": [
-                "HVAC real-time monitoring",
-                "Temperature & humidity tracking",
-                "Alert notification system",
-                "Historical data analytics",
-                "Device management"
+                "Real-time Environmental Data Monitoring",
+                "Multi-Hospital Centralized Dashboard",
+                "Severity-based Alert Configuration",
+                "Line OA Instant Notifications",
+                "Graph Analytics & SCADA Visualization"
             ]
         },
         "eSign": {
-            "title": "E-sign",
-            "description": "A website that allows users to create, save, and manage their personal notes efficiently.",
+            "title": "E-sign (Operating Room Management System)",
+            "description": "A Smart Operating Room (OR) management application designed to streamline surgical scheduling and resource allocation. By utilizing a user interface inspired by the intuitive flow of Google Calendar, E-Sign bridges the gap between digital planning and physical workspace awareness. The system integrates seamlessly with e-Paper displays at the OR entrance to provide real-time, high-visibility updates, ensuring that medical staff can manage room occupancy and coordinate patient care with surgical precision.",
             "keyFeatures": [
-                "Digital document signing",
-                "Multi-party signing workflow",
-                "Document template management",
-                "Audit trail & history",
-                "PDF generation"
+                "Calendar-based Operating Room Scheduling",
+                "Dynamic Room Utilization Analytics",
+                "Real-time Booking Updates",
+                "Real-time e-Paper Integration",
+                "Detailed Booking Insights"
             ]
         },
         "univa": {
-            "title": "Univa",
-            "description": "A website that allows users to create, save, and manage their personal notes efficiently.",
+            "title": "Univa (Ultrasound Utilization Management System)",
+            "description": "A centralized ultrasound utilization management platform designed to monitor machine usage across departments and rooms, track maintenance history, and support data-driven decisions on equipment capacity and investment planning.",
             "keyFeatures": [
-                "Medical equipment inventory",
-                "Maintenance scheduling",
-                "Usage tracking dashboard",
-                "Role-based access control",
-                "Reporting & analytics"
+                "Real-time Ultrasound Utilization Monitoring",
+                "Department & Room-based Usage Analytics",
+                "Maintenance & Repair Tracking",
+                "Centralized Equipment Database",
+                "Capacity & Investment Evaluation Dashboard"
             ]
         },
         "zentrix": {
             "title": "Zentrix.ai",
-            "description": "A website that allows users to create, save, and manage their personal notes efficiently.",
+            "description": "Zentrix.ai is an intelligent Agentic Chat Interface designed to bridge the gap between complex databases and actionable business insights. By leveraging an AI Agent architecture, the platform enables users to query connected databases using natural language. Zentrix.ai doesn't just 'talk—it' 'acts' by autonomously selecting and executing the right tools to perform data analysis, summarize sales trends, identify top-performing products, or track outstanding payments, all within a conversational context.",
             "keyFeatures": [
-                "AI agent chatbot interface",
-                "Custom tool integration",
-                "Conversation memory persistence",
-                "Multi-model support",
-                "Session management"
+                "Tool-Augmented AI Agent",
+                "Natural Language Data Analytics",
+                "Dynamic Database Schema Visualization",
+                "Interactive Tool Registry & Documentation",
+                "Contextual Chat Memory",
+                "Database Agnostic Flexibility"
             ]
         },
         "delph": {
             "title": "Delph.ai",
-            "description": "AutoChat is an automation solution for sending messages to Discord channels on a scheduled basis.",
+            "description": "Delph.ai is an advanced AI-driven chat interface designed to transform how users interact with complex documents. Built on a Retrieval-Augmented Generation (RAG) architecture, the application allows users to upload PDF files and engage in a dynamic conversation with the content. Delph.ai leverages Large Language Models (LLMs) to parse dense information, providing instant, contextually accurate answers while grounding its responses directly in the uploaded source material.",
             "keyFeatures": [
-                "Automated task execution",
-                "Workflow builder",
-                "API integration",
-                "Scheduling system",
-                "Activity logging"
+                "RAG-Powered Chat Engine",
+                "Persistent Chat Memory",
+                "Intelligent PDF Parsing",
+                "Context-Aware Q&A",
+                "Split-Screen Interactive UI",
+                "Automated Topic Extraction"
+            ]
+        },
+        "sumi": {
+            "title": "Sumi.ai",
+            "description": "Sumi.ai is an intelligent AI Recruitment & Candidate Prescreening Platform designed to revolutionize the hiring process. By integrating Large Language Models (LLMs) with a Retrieval-Augmented Generation (RAG) framework, the system automates the tedious task of manual resume screening. Sumi.ai allows HR professionals to define specific job requirements and leverages AI to critically analyze, score, and rank candidates based on their experience, skills, and qualifications, significantly reducing time-to-hire while improving placement quality.",
+            "keyFeatures": [
+                "Job-Specific AI Requirement Matching",
+                "Automated Candidate Scoring & Analysis",
+                "Precision Data Extraction & UI Visualization",
+                "Candidate Personality & Capability Summarization",
+                "End-to-End Candidate Management"
             ]
         },
         "goldBread": {
             "title": "Gold Bread",
-            "description": "AutoChat is an automation solution for sending messages to Discord channels on a scheduled basis.",
+            "description": "Goldbread is a comprehensive Back-office Management Ecosystem designed to streamline sales, logistics, inventory and financial operations through integrated Mobile and Web applications. With a centralized dashboard for management, digitizes the entire sales-to-delivery lifecycle. It eliminates manual errors in supply chain, providing a 'single source of truth' for businesses with high-volume distribution needs.",
             "keyFeatures": [
-                "Sales order management",
-                "Inventory tracking",
-                "Salesperson check-in system",
-                "Inventory reconciliation",
-                "Reporting dashboard"
+                "End-to-End Sales Lifecycle Management",
+                "Transaction Invoice & Cash Management",
+                "Salesperson Check-in System",
+                "Inventory Reconcile System",
+                "Visualization Dashboard for Management",
+                "Cross-Platform Accessibility"
             ]
         }
     },
