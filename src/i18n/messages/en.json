@@ -106,18 +106,13 @@
     },
     "projects": {
         "pawCare": {
-            "title": "Paw Care",
+            "title": "Paw Care (Pet Personalized Nutrition System)",
             "description": "A web-based application designed to help veterinarians calculate customized nutrition formulas for pets based on medical conditions, weight and dietary requirements.",
-            "keyFeatures": [
-                "Nutition Formula Calculator",
-                "Patient Records",
-                "Order Management",
-                "Queue Management"
-            ]
+            "keyFeatures": ["Nutition Formula Calculator", "Patient Records", "Order Management", "Queue Management"]
         },
         "orvia": {
             "title": "Orvia (Operating Room Management System)",
-            "description": "A program designed to help users solve arithmetic problems automatically with step-by-step solutions.",
+            "description": "A smart operating room scheduling system designed to streamline surgical booking and improve coordination across departments. The platform provides calendar-based and floor-based scheduling.",
             "keyFeatures": [
                 "Calendar-based Operating Room Scheduling",
                 "Weekly Surgical Planning View",
@@ -128,7 +123,7 @@
         },
         "optSense": {
             "title": "optSense (HVAC Monitoring System)",
-            "description": "A real-time HVAC and operating room equipment monitoring platform designed to ensure environmental control standards in surgical rooms, The system streams live data to a central company dashboard, enabling immediate issue detection and response across multiple hospital.",
+            "description": "A real-time HVAC and operating room equipment monitoring platform designed to ensure environmental control standards in surgical rooms, The system streams live data to a central hospital dashboard, enabling immediate issue detection and response across multiple hospital.",
             "keyFeatures": [
                 "Real-time Environmental Data Monitoring",
                 "Multi-Hospital Centralized Dashboard",
@@ -139,7 +134,7 @@
         },
         "eSign": {
             "title": "E-sign (Operating Room Management System)",
-            "description": "A Smart Operating Room (OR) management application designed to streamline surgical scheduling and resource allocation. By utilizing a user interface inspired by the intuitive flow of Google Calendar, E-Sign bridges the gap between digital planning and physical workspace awareness. The system integrates seamlessly with e-Paper displays at the OR entrance to provide real-time, high-visibility updates, ensuring that medical staff can manage room occupancy and coordinate patient care with surgical precision.",
+            "description": "A Smart Operating Room (OR) management application designed to streamline surgical scheduling and resource allocation, E-Sign bridges the gap between digital planning and physical workspace awareness. The system integrates seamlessly with e-Paper displays at the OR entrance to provide real-time, high-visibility updates, ensuring that medical staff can manage room occupancy and coordinate patient care with surgical precision.",
             "keyFeatures": [
                 "Calendar-based Operating Room Scheduling",
                 "Dynamic Room Utilization Analytics",
@@ -161,14 +156,13 @@
         },
         "zentrix": {
             "title": "Zentrix.ai",
-            "description": "Zentrix.ai is an intelligent Agentic Chat Interface designed to bridge the gap between complex databases and actionable business insights. By leveraging an AI Agent architecture, the platform enables users to query connected databases using natural language. Zentrix.ai doesn't just 'talk—it' 'acts' by autonomously selecting and executing the right tools to perform data analysis, summarize sales trends, identify top-performing products, or track outstanding payments, all within a conversational context.",
+            "description": "Zentrix.ai is an intelligent Agentic Chat Interface designed to bridge the gap between complex databases and business insights. By leveraging an AI Agent architecture, the platform enables users to query connected databases using natural language. Zentrix.ai doesn't just 'talk—it' but 'acts' by autonomously selecting and executing the right tools to perform data analysis tasks, summarize data insights, and track everything within the chat.",
             "keyFeatures": [
                 "Tool-Augmented AI Agent",
                 "Natural Language Data Analytics",
                 "Dynamic Database Schema Visualization",
                 "Interactive Tool Registry & Documentation",
-                "Contextual Chat Memory",
-                "Database Agnostic Flexibility"
+                "Contextual Chat Memory"
             ]
         },
         "delph": {
@@ -179,8 +173,7 @@
                 "Persistent Chat Memory",
                 "Intelligent PDF Parsing",
                 "Context-Aware Q&A",
-                "Split-Screen Interactive UI",
-                "Automated Topic Extraction"
+                "Split-Screen Interactive UI"
             ]
         },
         "sumi": {
@@ -189,14 +182,15 @@
             "keyFeatures": [
                 "Job-Specific AI Requirement Matching",
                 "Automated Candidate Scoring & Analysis",
-                "Precision Data Extraction & UI Visualization",
+                "AI assistant Chat Interface",
+                "Precision Data Extraction",
                 "Candidate Personality & Capability Summarization",
                 "End-to-End Candidate Management"
             ]
         },
         "goldBread": {
-            "title": "Gold Bread",
-            "description": "Goldbread is a comprehensive Back-office Management Ecosystem designed to streamline sales, logistics, inventory and financial operations through integrated Mobile and Web applications. With a centralized dashboard for management, digitizes the entire sales-to-delivery lifecycle. It eliminates manual errors in supply chain, providing a 'single source of truth' for businesses with high-volume distribution needs.",
+            "title": "Goldbread Data Platform",
+            "description": "Goldbread Data Platform is a comprehensive Back-office Management Ecosystem designed to streamline sales, logistics, inventory and financial operations through integrated Mobile and Web applications. With a centralized dashboard for management, digitizes the entire sales-to-delivery lifecycle. It eliminates manual errors in supply chain, providing a 'single source of truth' for businesses.",
             "keyFeatures": [
                 "End-to-End Sales Lifecycle Management",
                 "Transaction Invoice & Cash Management",
@@ -302,15 +296,11 @@
                 "projects": [
                     {
                         "topic": "Supply Chain Management",
-                        "bullets": [
-                            "Improve supply chain performance"
-                        ]
+                        "bullets": ["Improve supply chain performance"]
                     },
                     {
                         "topic": "Robotic Process Automation",
-                        "bullets": [
-                            "Implement RPA to internal department processes"
-                        ]
+                        "bullets": ["Implement RPA to internal department processes"]
                     }
                 ]
             },
@@ -381,9 +371,7 @@
                     },
                     {
                         "topic": "OCR",
-                        "bullets": [
-                            "Use OCR model to read product code from products automatically."
-                        ]
+                        "bullets": ["Use OCR model to read product code from products automatically."]
                     }
                 ]
             },
