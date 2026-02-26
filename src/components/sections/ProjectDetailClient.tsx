@@ -364,8 +364,8 @@ export default function ProjectDetailClient({
               </MotionBox>
             </MotionBox>
 
-            {/* Responsibilities Section */}
-            {project.responsibilities && project.responsibilities.length > 0 && (
+            {/* Technologies Section */}
+            {project.technologies && project.technologies.length > 0 && (
               <MotionBox
                 initial="hidden"
                 whileInView="visible"
@@ -373,36 +373,35 @@ export default function ProjectDetailClient({
                 variants={slideUp}
                 sx={{
                   mt: 2,
-                  p: 4,
-                  borderRadius: '24px',
-                  background: 'rgba(255,255,255,0.02)',
-                  border: '1px solid rgba(255,255,255,0.05)',
-                  backdropFilter: 'blur(20px)',
+                  pt: 4,
+                  borderTop: '1px solid rgba(255,255,255,0.05)',
                 }}
               >
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 3 }}>
-                  <AssignmentTurnedInIcon sx={{ color: catConfig.color, fontSize: 24 }} />
-                  <Typography variant="h6" sx={{ fontWeight: 700, color: '#f8fafc' }}>
-                    {t('responsibilities')}
-                  </Typography>
-                </Box>
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                  {project.responsibilities.map((resp, idx) => (
-                    <Box key={idx} sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
-                      <Box
-                        sx={{
-                          width: 6,
-                          height: 6,
-                          borderRadius: '50%',
-                          background: catConfig.gradient,
-                          mt: 1.2,
-                          flexShrink: 0,
-                          boxShadow: `0 0 10px ${catConfig.color}`,
-                        }}
-                      />
-                      <Typography sx={{ color: '#cbd5e1', lineHeight: 1.7, fontSize: '0.95rem' }}>
-                        {resp}
-                      </Typography>
+                <Typography variant="h6" sx={{ fontWeight: 600, color: '#f8fafc', mb: 3, fontSize: '1.05rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  {t('technologiesUsed')}
+                </Typography>
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.5 }}>
+                  {project.technologies.map((tech) => (
+                    <Box
+                      key={tech}
+                      sx={{
+                        px: 2,
+                        py: 0.8,
+                        borderRadius: '8px',
+                        bgcolor: 'transparent',
+                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                        color: '#94a3b8',
+                        fontSize: '0.85rem',
+                        fontWeight: 500,
+                        transition: 'all 0.3s ease',
+                        '&:hover': {
+                          bgcolor: 'rgba(255, 255, 255, 0.05)',
+                          color: '#fff',
+                          borderColor: alpha(catConfig.color, 0.5),
+                        },
+                      }}
+                    >
+                      {tech}
                     </Box>
                   ))}
                 </Box>
@@ -558,113 +557,43 @@ export default function ProjectDetailClient({
               </Box>
             </MotionBox>
 
-            {/* Bento Grid layout for Tech & Features */}
-            <Box
-              sx={{
-                display: 'grid',
-                gridTemplateColumns: { xs: '1fr', lg: '1fr 1fr' },
-                gap: 4,
-              }}
-            >
-              {/* Technologies Card */}
+            {/* Clean Tech & Features Layout */}
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 6, mt: 4 }}>
+
+              {/* Key Features (Clean Grid Stack) */}
               <MotionBox
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={slideUp}
-                sx={{
-                  p: 5,
-                  borderRadius: '32px',
-                  background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
-                  border: '1px solid rgba(255,255,255,0.05)',
-                  boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.05)',
-                  backdropFilter: 'blur(24px)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                }}
               >
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 4 }}>
-                  <Box sx={{ p: 1.5, borderRadius: '14px', bgcolor: 'rgba(59, 130, 246, 0.1)', color: '#60a5fa' }}>
-                    <CodeIcon sx={{ fontSize: 24 }} />
-                  </Box>
-                  <Typography variant="h5" sx={{ fontWeight: 700, color: '#f8fafc' }}>
-                    {t('technologiesUsed')}
-                  </Typography>
-                </Box>
-
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.5 }}>
-                  {project.technologies.map((tech) => (
-                    <Box
-                      key={tech}
-                      sx={{
-                        px: 2.5,
-                        py: 1,
-                        borderRadius: '20px',
-                        background: 'rgba(255,255,255,0.04)',
-                        border: '1px solid rgba(255,255,255,0.05)',
-                        color: '#cbd5e1',
-                        fontSize: '0.9rem',
-                        fontWeight: 500,
-                        transition: 'all 0.3s ease',
-                        '&:hover': {
-                          background: 'rgba(255,255,255,0.08)',
-                          borderColor: catConfig.color,
-                          color: '#fff',
-                          transform: 'translateY(-2px)',
-                        },
-                      }}
-                    >
-                      {tech}
-                    </Box>
-                  ))}
-                </Box>
-              </MotionBox>
-
-              {/* Key Features Card */}
-              <MotionBox
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={slideUp}
-                sx={{
-                  p: 5,
-                  borderRadius: '32px',
-                  background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
-                  border: '1px solid rgba(255,255,255,0.05)',
-                  boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.05)',
-                  backdropFilter: 'blur(24px)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                }}
-              >
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 4 }}>
-                  <Box sx={{ p: 1.5, borderRadius: '14px', bgcolor: 'rgba(249, 115, 22, 0.1)', color: '#fb923c' }}>
-                    <AutoAwesomeIcon sx={{ fontSize: 24 }} />
-                  </Box>
-                  <Typography variant="h5" sx={{ fontWeight: 700, color: '#f8fafc' }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 3 }}>
+                  <AutoAwesomeIcon sx={{ color: catConfig.color, fontSize: 20 }} />
+                  <Typography variant="h5" sx={{ fontWeight: 600, color: '#f8fafc' }}>
                     {t('keyFeatures')}
                   </Typography>
                 </Box>
-
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+                <Box sx={{
+                  display: 'grid',
+                  gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
+                  gap: 3
+                }}>
                   {project.keyFeatures.map((feature, index) => (
-                    <Box key={index} sx={{ display: 'flex', alignItems: 'flex-start', gap: 2.5 }}>
-                      <Box
-                        sx={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          width: 26,
-                          height: 26,
-                          borderRadius: '8px',
-                          background: 'rgba(255,255,255,0.05)',
-                          color: '#f8fafc',
-                          flexShrink: 0,
-                          mt: 0.2,
-                        }}
-                      >
-                        <CheckCircleOutlineIcon sx={{ fontSize: 16 }} />
-                      </Box>
+                    <Box
+                      key={index}
+                      sx={{
+                        p: 3,
+                        borderRadius: '16px',
+                        bgcolor: 'rgba(255, 255, 255, 0.02)',
+                        border: '1px solid rgba(255, 255, 255, 0.05)',
+                        transition: 'all 0.3s ease',
+                        '&:hover': {
+                          bgcolor: 'rgba(255, 255, 255, 0.04)',
+                          borderColor: alpha(catConfig.color, 0.3),
+                          transform: 'translateY(-2px)',
+                        }
+                      }}
+                    >
                       <Typography sx={{ color: '#cbd5e1', lineHeight: 1.6, fontSize: '0.95rem' }}>
                         {feature}
                       </Typography>
@@ -673,6 +602,51 @@ export default function ProjectDetailClient({
                 </Box>
               </MotionBox>
 
+              {/* Responsibilities Section */}
+              {project.responsibilities && project.responsibilities.length > 0 && (
+                <MotionBox
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={slideUp}
+                  sx={{
+                    pt: 6,
+                    borderTop: '1px solid rgba(255,255,255,0.05)'
+                  }}
+                >
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 3 }}>
+                    <AssignmentTurnedInIcon sx={{ color: catConfig.color, fontSize: 20 }} />
+                    <Typography variant="h5" sx={{ fontWeight: 600, color: '#f8fafc' }}>
+                      {t('responsibilities')}
+                    </Typography>
+                  </Box>
+                  <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+                    {project.responsibilities.map((resp, idx) => (
+                      <Box key={idx} sx={{ display: 'flex', alignItems: 'flex-start', gap: 2.5 }}>
+                        <Box
+                          sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            width: 26,
+                            height: 26,
+                            borderRadius: '8px',
+                            background: 'rgba(255,255,255,0.05)',
+                            color: '#f8fafc',
+                            flexShrink: 0,
+                            mt: 0.2,
+                          }}
+                        >
+                          <CheckCircleOutlineIcon sx={{ fontSize: 16 }} />
+                        </Box>
+                        <Typography sx={{ color: '#cbd5e1', lineHeight: 1.6, fontSize: '0.95rem' }}>
+                          {resp}
+                        </Typography>
+                      </Box>
+                    ))}
+                  </Box>
+                </MotionBox>
+              )}
             </Box>
           </Box>
         </Box>
