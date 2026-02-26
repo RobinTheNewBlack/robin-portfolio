@@ -1,60 +1,49 @@
 'use client';
 
-import { Box, Container, Typography, Button, Avatar } from '@mui/material';
+import { Box, Container, Typography, Button, IconButton, Divider } from '@mui/material';
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import DownloadIcon from '@mui/icons-material/Download';
 import CodeIcon from '@mui/icons-material/Code';
-import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+import SchoolIcon from '@mui/icons-material/School';
+import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
+import PublicIcon from '@mui/icons-material/Public';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import { socialLinks, stats } from '@/data/navigation';
 
 const MotionBox = motion.create(Box);
-const MotionTypography = motion.create(Typography);
-const MotionAvatar = motion.create(Avatar);
 
 const fadeInUp = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 24 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: 'easeOut' as const },
+    transition: { duration: 0.5, ease: 'easeOut' as const },
   },
 };
 
-const fadeInLeft = {
-  hidden: { opacity: 0, x: -50 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.6, ease: 'easeOut' as const },
-  },
+const glassBento = {
+  borderRadius: 3,
+  bgcolor: 'rgba(37, 99, 235, 0.05)',
+  border: '1px solid',
+  borderColor: 'rgba(37, 99, 235, 0.15)',
+  backdropFilter: 'blur(12px)',
+  p: 3,
+  height: '100%',
 };
 
-const fadeInRight = {
-  hidden: { opacity: 0, x: 50 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.6, ease: 'easeOut' as const },
-  },
+const statIconMap: Record<string, React.ReactNode> = {
+  code: <CodeIcon sx={{ fontSize: 20, color: 'primary.light' }} />,
+  certificate: <WorkspacePremiumIcon sx={{ fontSize: 20, color: 'primary.light' }} />,
+  globe: <PublicIcon sx={{ fontSize: 20, color: 'primary.light' }} />,
 };
 
-const scaleIn = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.6, ease: 'easeOut' as const },
-  },
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
+const socialIconMap: Record<string, React.ReactNode> = {
+  github: <GitHubIcon />,
+  linkedin: <LinkedInIcon />,
+  instagram: <InstagramIcon />,
 };
 
 export default function AboutSection() {
@@ -67,15 +56,24 @@ export default function AboutSection() {
     }
   };
 
+  const educationItems = t.raw('education.items') as Array<{
+    degree: string;
+    institution: string;
+    year: string;
+  }>;
+
+  const statLabels: Record<string, { label: string; desc: string }> = {
+    projects: { label: t('stats.projects'), desc: t('stats.projectsDesc') },
+    certificates: { label: t('stats.certificates'), desc: t('stats.certificatesDesc') },
+    experience: { label: t('stats.experience'), desc: t('stats.experienceDesc') },
+  };
+
   return (
     <Box
       id="about"
       component="section"
       className="bg-about-gradient"
-      sx={{
-        py: { xs: 8, md: 12 },
-        overflow: 'hidden',
-      }}
+      sx={{ py: { xs: 8, md: 12 }, overflow: 'hidden' }}
     >
       <Container maxWidth="lg">
         {/* Section Header */}
@@ -84,193 +82,342 @@ export default function AboutSection() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={fadeInUp}
-          sx={{ textAlign: 'center', mb: 8 }}
+          sx={{ textAlign: 'center', mb: 6 }}
         >
           <Typography
             variant="h2"
             className="text-gradient-blue"
-            sx={{
-              fontWeight: 700,
-              mb: 2,
-            }}
+            sx={{ fontWeight: 700, mb: 2 }}
           >
             {t('title')}
           </Typography>
-          <Typography
-            variant="h6"
-            color="text.secondary"
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: 1,
-            }}
-          >
-            {t('tagline')}
-          </Typography>
         </MotionBox>
 
-        {/* Main Content */}
+        {/* ── Bento Grid ── */}
         <Box
           sx={{
             display: 'grid',
-            gridTemplateColumns: { xs: '1fr', md: '1.4fr 1fr' },
-            gap: 6,
-            alignItems: 'center',
+            gap: 2,
+            gridTemplateColumns: {
+              xs: '1fr',
+              sm: 'repeat(2, 1fr)',
+              md: 'repeat(3, 1fr)',
+            },
+            gridTemplateAreas: {
+              xs: `
+                "intro"
+                "profile"
+                "stats"
+                "edu"
+              `,
+              sm: `
+                "intro   profile"
+                "stats   edu    "
+              `,
+              md: `
+                "intro   intro   profile"
+                "stats   edu     edu    "
+              `,
+            },
           }}
         >
-          {/* Left Content - Text */}
+          {/* ── Row 1 / Col 1-2 : Intro Card ── */}
           <MotionBox
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={staggerContainer}
-            sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}
+            viewport={{ once: true, amount: 0.2 }}
+            variants={fadeInUp}
+            sx={{ gridArea: 'intro' }}
           >
-            <MotionTypography variants={fadeInLeft} variant="h4" color="primary.light">
-              {t('greeting')}
-            </MotionTypography>
-            <MotionTypography
-              variants={fadeInLeft}
-              variant="h3"
-              sx={{ fontWeight: 700 }}
-            >
-              {t('name')}
-            </MotionTypography>
-            <MotionTypography
-              variants={fadeInLeft}
-              variant="body1"
-              color="text.secondary"
+            <Box
               sx={{
-                lineHeight: 1.8,
-                textAlign: 'justify',
-              }}
-            >
-              {t('bio')}
-            </MotionTypography>
-
-            {/* Buttons */}
-            <MotionBox variants={fadeInLeft} sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', mt: 2 }}>
-              <Button
-                variant="contained"
-                startIcon={<DownloadIcon />}
-                sx={{ px: 3, py: 1.5 }}
-              >
-                {t('downloadCv')}
-              </Button>
-              <Button
-                variant="outlined"
-                startIcon={<CodeIcon />}
-                onClick={() => scrollToSection('portfolio')}
-                sx={{
-                  px: 3,
-                  py: 1.5,
-                  borderColor: 'primary.main',
-                  color: 'primary.main',
-                  '&:hover': {
-                    bgcolor: 'rgba(37, 99, 235, 0.1)',
-                  },
-                }}
-              >
-                {t('viewProjects')}
-              </Button>
-            </MotionBox>
-          </MotionBox>
-
-          {/* Right Content - Profile Image */}
-          <MotionBox
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={fadeInRight}
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-            }}
-          >
-            <MotionAvatar
-              src="/images/my_image_1.png"
-              alt="Nattakit Kerdtalay"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
-              sx={{
-                width: { xs: 250, md: 300 },
-                height: { xs: 250, md: 300 },
-                border: '4px solid',
-                borderColor: 'rgba(37, 99, 235, 0.5)',
-                bgcolor: 'background.paper',
-              }}
-            />
-          </MotionBox>
-        </Box>
-
-        {/* Education Background */}
-        <MotionBox
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={staggerContainer}
-          sx={{
-            mt: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 4,
-          }}
-        >
-          <Typography
-            variant="h4"
-            className="text-gradient-blue"
-            sx={{ fontWeight: 700, textAlign: 'center' }}
-          >
-            {t('education.title')}
-          </Typography>
-
-          {(t.raw('education.items') as any[]).map((edu, index) => (
-            <MotionBox
-              key={index}
-              variants={scaleIn}
-              whileHover={{ y: -4, transition: { duration: 0.3 } }}
-              sx={{
-                p: 4,
-                borderRadius: 4,
-                bgcolor: 'rgba(37, 99, 235, 0.05)',
-                border: '1px solid',
-                borderColor: 'rgba(37, 99, 235, 0.2)',
+                ...glassBento,
                 display: 'flex',
-                flexDirection: { xs: 'column', md: 'row' },
-                justifyContent: 'space-between',
-                alignItems: { xs: 'flex-start', md: 'center' },
+                flexDirection: 'column',
                 gap: 2,
-                backdropFilter: 'blur(10px)',
               }}
             >
-              <Box>
-                <Typography variant="h5" sx={{ fontWeight: 700, mb: 1, color: 'text.primary' }}>
-                  {edu.degree}
-                </Typography>
-                <Typography variant="h6" sx={{ color: 'primary.main', mb: 1 }}>
-                  {edu.institution}
-                </Typography>
-              </Box>
-              <Box sx={{ textAlign: { xs: 'left', md: 'right' } }}>
-                <Typography
-                  variant="subtitle1"
+              <Typography
+                variant="overline"
+                color="primary.light"
+                sx={{ letterSpacing: 2, fontWeight: 600 }}
+              >
+                {t('greeting')}
+              </Typography>
+              <Typography variant="h3" sx={{ fontWeight: 800, lineHeight: 1.2 }}>
+                {t('name')}
+              </Typography>
+              <Typography
+                variant="body1"
+                color="text.secondary"
+                sx={{ lineHeight: 1.85, textAlign: 'justify', flexGrow: 1 }}
+              >
+                {t('bio')}
+              </Typography>
+              <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', mt: 1 }}>
+                <Button
+                  variant="contained"
+                  startIcon={<DownloadIcon />}
+                  sx={{ px: 3, py: 1.2, fontWeight: 600 }}
+                >
+                  {t('downloadCv')}
+                </Button>
+                <Button
+                  variant="outlined"
+                  startIcon={<CodeIcon />}
+                  onClick={() => scrollToSection('portfolio')}
                   sx={{
-                    fontWeight: 600,
-                    bgcolor: 'primary.main',
-                    color: 'white',
-                    px: 2,
-                    py: 0.5,
-                    borderRadius: 2,
-                    display: 'inline-block',
+                    px: 3,
+                    py: 1.2,
+                    borderColor: 'primary.main',
+                    color: 'primary.main',
+                    '&:hover': { bgcolor: 'rgba(37, 99, 235, 0.1)' },
                   }}
                 >
-                  {edu.year}
-                </Typography>
+                  {t('viewProjects')}
+                </Button>
               </Box>
-            </MotionBox>
-          ))}
-        </MotionBox>
+            </Box>
+          </MotionBox>
+
+          {/* ── Row 1 / Col 3 : Profile Card ── */}
+          <MotionBox
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={fadeInUp}
+            sx={{ gridArea: 'profile' }}
+          >
+            <Box
+              sx={{
+                ...glassBento,
+                p: 2,
+                display: 'flex',
+                flexDirection: 'column',
+                minHeight: { xs: 340, md: 'auto' },
+              }}
+            >
+              {/* Image + social icons overlay */}
+              <Box
+                sx={{
+                  position: 'relative',
+                  flexGrow: 1,
+                  overflow: 'hidden',
+                  borderRadius: 2,
+                }}
+              >
+                {/* Full image */}
+                <Box
+                  component="img"
+                  src="/images/my_image_1.png"
+                  alt="Nattakit Kerdtalay"
+                  sx={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'top center',
+                    display: 'block',
+                  }}
+                />
+
+                {/* Bottom gradient fade */}
+                <Box
+                  sx={{
+                    position: 'absolute',
+                    inset: 0,
+                    background:
+                      'linear-gradient(to top, rgba(6,6,17,0.85) 0%, rgba(6,6,17,0.2) 45%, transparent 100%)',
+                    borderRadius: 2,
+                    pointerEvents: 'none',
+                  }}
+                />
+
+                {/* Social icons — pinned over the image */}
+                <Box
+                  sx={{
+                    position: 'absolute',
+                    bottom: 16,
+                    left: 0,
+                    right: 0,
+                    display: 'flex',
+                    justifyContent: 'center',
+                    gap: 1.5,
+                  }}
+                >
+                  {socialLinks.map((link) => (
+                    <IconButton
+                      key={link.id}
+                      component="a"
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={link.ariaLabel}
+                      sx={{
+                        bgcolor: 'rgba(255,255,255,0.08)',
+                        border: '1px solid rgba(255,255,255,0.18)',
+                        color: 'white',
+                        backdropFilter: 'blur(8px)',
+                        transition: 'all 0.2s ease',
+                        '&:hover': {
+                          bgcolor: 'rgba(37,99,235,0.55)',
+                          borderColor: 'primary.main',
+                          transform: 'translateY(-3px)',
+                        },
+                      }}
+                    >
+                      {socialIconMap[link.platform]}
+                    </IconButton>
+                  ))}
+                </Box>
+              </Box>
+            </Box>
+          </MotionBox>
+
+          {/* ── Row 2 / Col 1 : Stats Card ── */}
+          <MotionBox
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={fadeInUp}
+            sx={{ gridArea: 'stats' }}
+          >
+            <Box
+              sx={{
+                ...glassBento,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-evenly',
+              }}
+            >
+              {stats.map((stat, i) => (
+                <Box key={stat.id}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, py: 1.5 }}>
+                    <Box
+                      sx={{
+                        p: 1.25,
+                        borderRadius: 2,
+                        bgcolor: 'rgba(37, 99, 235, 0.12)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        flexShrink: 0,
+                      }}
+                    >
+                      {statIconMap[stat.icon]}
+                    </Box>
+                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexGrow: 1 }}>
+                      <Typography
+                        variant="caption"
+                        color="text.secondary"
+                        sx={{ display: 'block', mt: 0.25, fontSize: '0.9rem' }}
+                      >
+                        {statLabels[stat.id]?.label}
+                      </Typography>
+                      <Typography
+                        variant="h5"
+                        className="text-gradient-blue"
+                        sx={{ fontWeight: 800, lineHeight: 1, mr: 5 }}
+                      >
+                        {stat.value}
+                      </Typography>
+                    </Box>
+                  </Box>
+                  {i < stats.length - 1 && (
+                    <Divider sx={{ borderColor: 'rgba(37, 99, 235, 0.1)' }} />
+                  )}
+                </Box>
+              ))}
+            </Box>
+          </MotionBox>
+
+          {/* ── Row 2 / Col 2-3 : Education Card ── */}
+          <MotionBox
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={fadeInUp}
+            sx={{ gridArea: 'edu' }}
+          >
+            <Box
+              sx={{
+                ...glassBento,
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 2.5,
+              }}
+            >
+              <Typography
+                variant="h6"
+                className="text-gradient-blue"
+                sx={{ fontWeight: 700 }}
+              >
+                {t('education.title')}
+              </Typography>
+
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5, flexGrow: 1 }}>
+                {educationItems.map((edu, index) => (
+                  <MotionBox
+                    key={index}
+                    whileHover={{ x: 4, transition: { duration: 0.2 } }}
+                    sx={{
+                      p: 2,
+                      borderRadius: 2,
+                      bgcolor: 'rgba(37, 99, 235, 0.05)',
+                      border: '1px solid rgba(37, 99, 235, 0.1)',
+                      display: 'flex',
+                      gap: 1.5,
+                      alignItems: 'flex-start',
+                      flexGrow: 1,
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        p: 0.75,
+                        borderRadius: 1.5,
+                        bgcolor: 'rgba(37, 99, 235, 0.12)',
+                        display: 'flex',
+                        flexShrink: 0,
+                        mt: 0.25,
+                      }}
+                    >
+                      <SchoolIcon sx={{ color: 'primary.light', fontSize: 18 }} />
+                    </Box>
+                    <Box sx={{ flexGrow: 1, minWidth: 0 }}>
+                      <Typography
+                        variant="subtitle2"
+                        sx={{ fontWeight: 700, lineHeight: 1.35 }}
+                      >
+                        {edu.degree}
+                      </Typography>
+                      <Typography
+                        variant="caption"
+                        color="primary.main"
+                        sx={{ fontWeight: 600, display: 'block', mt: 0.5 }}
+                      >
+                        {edu.institution}
+                      </Typography>
+                    </Box>
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        px: 1.5,
+                        py: 0.5,
+                        borderRadius: 1.5,
+                        bgcolor: 'rgba(37, 99, 235, 0.12)',
+                        color: 'primary.light',
+                        fontWeight: 700,
+                        whiteSpace: 'nowrap',
+                        flexShrink: 0,
+                        alignSelf: 'flex-start',
+                      }}
+                    >
+                      {edu.year}
+                    </Typography>
+                  </MotionBox>
+                ))}
+              </Box>
+            </Box>
+          </MotionBox>
+        </Box>
       </Container>
     </Box>
   );

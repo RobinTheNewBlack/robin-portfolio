@@ -33,14 +33,14 @@ export const socialLinks: SocialLink[] = [
 export const stats: StatItem[] = [
   {
     id: 'projects',
-    value: 11,
+    value: 10,
     labelKey: 'about.stats.projects',
     descKey: 'about.stats.projectsDesc',
     icon: 'code',
   },
   {
     id: 'certificates',
-    value: 7,
+    value: 20,
     labelKey: 'about.stats.certificates',
     descKey: 'about.stats.certificatesDesc',
     icon: 'certificate',
