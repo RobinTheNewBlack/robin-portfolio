@@ -66,26 +66,26 @@ const categoryConfig: Record<
   internal: {
     labelKey: 'categoryInternal',
     icon: <CodeIcon sx={{ fontSize: 16 }} />,
-    gradient: 'linear-gradient(135deg, #3b82f6, #8b5cf6)',
-    color: '#60a5fa',
-    bgColor: 'rgba(59, 130, 246, 0.15)',
-    borderColor: 'rgba(59, 130, 246, 0.3)',
+    gradient: 'linear-gradient(135deg, #a855f7, #c084fc)',
+    color: '#a855f7',
+    bgColor: 'rgba(168, 85, 247, 0.15)',
+    borderColor: 'rgba(168, 85, 247, 0.3)',
   },
   freelance: {
     labelKey: 'categoryFreelance',
     icon: <WorkIcon sx={{ fontSize: 16 }} />,
-    gradient: 'linear-gradient(135deg, #f97316, #ef4444)',
-    color: '#fb923c',
-    bgColor: 'rgba(249, 115, 22, 0.15)',
-    borderColor: 'rgba(249, 115, 22, 0.3)',
+    gradient: 'linear-gradient(135deg, #a855f7, #c084fc)',
+    color: '#a855f7',
+    bgColor: 'rgba(168, 85, 247, 0.15)',
+    borderColor: 'rgba(168, 85, 247, 0.3)',
   },
   personal: {
     labelKey: 'categoryPersonal',
     icon: <LightbulbIcon sx={{ fontSize: 16 }} />,
-    gradient: 'linear-gradient(135deg, #06b6d4, #8b5cf6)',
-    color: '#22d3ee',
-    bgColor: 'rgba(6, 182, 212, 0.15)',
-    borderColor: 'rgba(6, 182, 212, 0.3)',
+    gradient: 'linear-gradient(135deg, #a855f7, #c084fc)',
+    color: '#a855f7',
+    bgColor: 'rgba(168, 85, 247, 0.15)',
+    borderColor: 'rgba(168, 85, 247, 0.3)',
   },
 };
 
@@ -168,13 +168,12 @@ export default function ProjectDetailClient({
       {/* Dynamic Ambient Background Glow */}
       <Box
         sx={{
-          position: 'absolute',
-          top: '-10%',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          width: '100vw',
-          height: '80vh',
-          background: `radial-gradient(circle, ${alpha(catConfig.color, 0.15)} 0%, transparent 70%)`,
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: `radial-gradient(circle at top, ${alpha(catConfig.color, 0.15)} 0%, transparent 80%)`,
           pointerEvents: 'none',
           zIndex: 0,
         }}
