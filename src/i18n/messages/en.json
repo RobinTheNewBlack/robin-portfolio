@@ -31,6 +31,21 @@
             "certificatesDesc": "Professional skills validated",
             "experience": "Years of Experience",
             "experienceDesc": "journey of learning"
+        },
+        "education": {
+            "title": "Education Background",
+            "items": [
+                {
+                    "degree": "Bachelor's Degree of Industrial Engineering",
+                    "institution": "Kasetsart University (Bangkhen)",
+                    "year": "2015 - 2019"
+                },
+                {
+                    "degree": "Sciences-Mathematics Program",
+                    "institution": "Satriwittaya 2 School",
+                    "year": "2011 - 2014"
+                }
+            ]
         }
     },
     "projectSection": {

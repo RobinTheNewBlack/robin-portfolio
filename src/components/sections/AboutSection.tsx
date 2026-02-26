@@ -6,8 +6,6 @@ import { useTranslations } from 'next-intl';
 import DownloadIcon from '@mui/icons-material/Download';
 import CodeIcon from '@mui/icons-material/Code';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
-import StatCard from '@/components/ui/StatCard';
-import { stats } from '@/data/navigation';
 
 const MotionBox = motion.create(Box);
 const MotionTypography = motion.create(Typography);
@@ -206,32 +204,70 @@ export default function AboutSection() {
           </MotionBox>
         </Box>
 
-        {/* Stats Cards */}
+        {/* Education Background */}
         <MotionBox
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={staggerContainer}
           sx={{
-            display: 'grid',
-            gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' },
-            gap: 3,
             mt: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 4,
           }}
         >
-          {stats.map((stat, index) => (
+          <Typography
+            variant="h4"
+            className="text-gradient-blue"
+            sx={{ fontWeight: 700, textAlign: 'center' }}
+          >
+            {t('education.title')}
+          </Typography>
+
+          {(t.raw('education.items') as any[]).map((edu, index) => (
             <MotionBox
-              key={stat.id}
+              key={index}
               variants={scaleIn}
-              custom={index}
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              whileHover={{ y: -4, transition: { duration: 0.3 } }}
+              sx={{
+                p: 4,
+                borderRadius: 4,
+                bgcolor: 'rgba(37, 99, 235, 0.05)',
+                border: '1px solid',
+                borderColor: 'rgba(37, 99, 235, 0.2)',
+                display: 'flex',
+                flexDirection: { xs: 'column', md: 'row' },
+                justifyContent: 'space-between',
+                alignItems: { xs: 'flex-start', md: 'center' },
+                gap: 2,
+                backdropFilter: 'blur(10px)',
+              }}
             >
-              <StatCard
-                value={stat.value}
-                label={t(stat.labelKey.replace('about.', ''))}
-                description={t(stat.descKey.replace('about.', ''))}
-                icon={stat.icon}
-              />
+              <Box>
+                <Typography variant="h5" sx={{ fontWeight: 700, mb: 1, color: 'text.primary' }}>
+                  {edu.degree}
+                </Typography>
+                <Typography variant="h6" sx={{ color: 'primary.main', mb: 1 }}>
+                  {edu.institution}
+                </Typography>
+              </Box>
+              <Box sx={{ textAlign: { xs: 'left', md: 'right' } }}>
+                <Typography
+                  variant="subtitle1"
+                  sx={{
+                    fontWeight: 600,
+                    bgcolor: 'primary.main',
+                    color: 'white',
+                    px: 2,
+                    py: 0.5,
+                    borderRadius: 2,
+                    display: 'inline-block',
+                  }}
+                >
+                  {edu.year}
+                </Typography>
+              </Box>
             </MotionBox>
           ))}
         </MotionBox>

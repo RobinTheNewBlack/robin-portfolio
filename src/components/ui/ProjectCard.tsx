@@ -62,8 +62,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         >
           {t(project.descriptionKey)}
         </Typography>
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, mb: 2 }}>
-          {project.technologies.slice(0, 3).map((tech) => (
+        {/* <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, mb: 2 }}>
+          {project.technologies.map((tech) => (
             <Chip
               key={tech}
               label={tech}
@@ -75,7 +75,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               }}
             />
           ))}
-        </Box>
+        </Box> */}
         <Box sx={{ mt: 'auto', display: 'flex', gap: 2 }}>
           {project.githubUrl && (
             <MuiLink
