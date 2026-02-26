@@ -4,10 +4,12 @@ export interface Project {
   id: string;
   slug: string;
   titleKey: string;
+  subtitleKey?: string;
   descriptionKey: string;
   images: string[];
   technologies: string[];
   keyFeaturesKey: string;
+  responsibilitiesKey?: string;
   liveUrl?: string;
   githubUrl?: string;
   featured: boolean;

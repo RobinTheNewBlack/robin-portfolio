@@ -22,12 +22,27 @@ export default async function ProjectDetailPage({
   const project = projects[currentIndex];
   const t = await getTranslations();
 
+  // Resolve subtitle if exists
+  const subtitle = project.subtitleKey && t.has(project.subtitleKey)
+    ? t(project.subtitleKey)
+    : undefined;
+
   // Resolve key features
   const keyFeatures: string[] = [];
   let i = 0;
   while (t.has(`${project.keyFeaturesKey}.${i}`)) {
     keyFeatures.push(t(`${project.keyFeaturesKey}.${i}`));
     i++;
+  }
+
+  // Resolve responsibilities
+  const responsibilities: string[] = [];
+  if (project.responsibilitiesKey) {
+    let j = 0;
+    while (t.has(`${project.responsibilitiesKey}.${j}`)) {
+      responsibilities.push(t(`${project.responsibilitiesKey}.${j}`));
+      j++;
+    }
   }
 
   // Compute prev/next with circular wrap
@@ -39,10 +54,12 @@ export default async function ProjectDetailPage({
       project={{
         slug: project.slug,
         title: t(project.titleKey),
+        subtitle,
         description: t(project.descriptionKey),
         images: project.images,
         technologies: project.technologies,
         keyFeatures,
+        responsibilities,
         liveUrl: project.liveUrl,
         githubUrl: project.githubUrl,
         category: project.category,

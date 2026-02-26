@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useCallback, useEffect } from 'react';
-import { Box, Container, Typography, Button, Chip, IconButton } from '@mui/material';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Box, Container, Typography, Button, Chip, IconButton, alpha } from '@mui/material';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -15,6 +15,7 @@ import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import WorkIcon from '@mui/icons-material/Work';
 import LightbulbIcon from '@mui/icons-material/Lightbulb';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import { Link } from '@/i18n/navigation';
 import type { ProjectCategory } from '@/types';
 
@@ -23,38 +24,29 @@ const MotionTypography = motion.create(Typography);
 
 // --- Animation Variants ---
 
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
+const fadeIn: Variants = {
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: 'easeOut' as const },
+    transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] },
   },
 };
 
-const stagger = {
+const stagger: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.08, delayChildren: 0.15 },
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
   },
 };
 
-const slideUp = {
-  hidden: { opacity: 0, y: 40 },
+const slideUp: Variants = {
+  hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] as const },
-  },
-};
-
-const scaleIn = {
-  hidden: { opacity: 0, scale: 0.9 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.5, ease: 'easeOut' as const },
+    transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] },
   },
 };
 
@@ -75,25 +67,25 @@ const categoryConfig: Record<
     labelKey: 'categoryInternal',
     icon: <CodeIcon sx={{ fontSize: 16 }} />,
     gradient: 'linear-gradient(135deg, #3b82f6, #8b5cf6)',
-    color: '#3b82f6',
-    bgColor: 'rgba(59, 130, 246, 0.12)',
-    borderColor: 'rgba(59, 130, 246, 0.25)',
+    color: '#60a5fa',
+    bgColor: 'rgba(59, 130, 246, 0.15)',
+    borderColor: 'rgba(59, 130, 246, 0.3)',
   },
   freelance: {
     labelKey: 'categoryFreelance',
     icon: <WorkIcon sx={{ fontSize: 16 }} />,
     gradient: 'linear-gradient(135deg, #f97316, #ef4444)',
     color: '#fb923c',
-    bgColor: 'rgba(249, 115, 22, 0.12)',
-    borderColor: 'rgba(249, 115, 22, 0.25)',
+    bgColor: 'rgba(249, 115, 22, 0.15)',
+    borderColor: 'rgba(249, 115, 22, 0.3)',
   },
   personal: {
     labelKey: 'categoryPersonal',
     icon: <LightbulbIcon sx={{ fontSize: 16 }} />,
     gradient: 'linear-gradient(135deg, #06b6d4, #8b5cf6)',
     color: '#22d3ee',
-    bgColor: 'rgba(6, 182, 212, 0.12)',
-    borderColor: 'rgba(6, 182, 212, 0.25)',
+    bgColor: 'rgba(6, 182, 212, 0.15)',
+    borderColor: 'rgba(6, 182, 212, 0.3)',
   },
 };
 
@@ -103,10 +95,12 @@ interface ProjectDetailClientProps {
   project: {
     slug: string;
     title: string;
+    subtitle?: string;
     description: string;
     images: string[];
     technologies: string[];
     keyFeatures: string[];
+    responsibilities?: string[];
     liveUrl?: string;
     githubUrl?: string;
     category: ProjectCategory;
@@ -164,637 +158,523 @@ export default function ProjectDetailClient({
     <Box
       sx={{
         minHeight: '100vh',
-        background: 'linear-gradient(180deg, #060611 0%, #0a1628 40%, #060611 100%)',
-        pt: { xs: 10, md: 12 },
-        pb: 8,
+        background: '#030305',
+        position: 'relative',
+        overflow: 'hidden',
+        pt: { xs: 10, md: 14 },
+        pb: 10,
       }}
     >
-      <Container maxWidth="lg">
-        {/* ═══ Back Button ═══ */}
+      {/* Dynamic Ambient Background Glow */}
+      <Box
+        sx={{
+          position: 'absolute',
+          top: '-10%',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: '100vw',
+          height: '80vh',
+          background: `radial-gradient(circle, ${alpha(catConfig.color, 0.15)} 0%, transparent 70%)`,
+          pointerEvents: 'none',
+          zIndex: 0,
+        }}
+      />
+
+      <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
+
+        {/* Top Navigation Row */}
         <MotionBox
-          initial="hidden"
-          animate="visible"
-          variants={fadeIn}
-          sx={{ mb: 4 }}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          sx={{ mb: 6 }}
         >
           <Link
             href="/#projects"
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '6px',
-              color: '#a1a1aa',
+              gap: '8px',
+              color: '#94a3b8',
               textDecoration: 'none',
-              fontSize: '0.875rem',
-              padding: '8px 16px',
-              borderRadius: '12px',
-              background: 'rgba(255,255,255,0.04)',
-              border: '1px solid rgba(255,255,255,0.06)',
+              fontSize: '0.9rem',
+              fontWeight: 500,
+              padding: '10px 20px',
+              borderRadius: '24px',
+              background: 'rgba(255,255,255,0.03)',
+              border: '1px solid rgba(255,255,255,0.05)',
+              backdropFilter: 'blur(10px)',
               transition: 'all 0.3s ease',
             }}
           >
-            <ArrowBackIcon sx={{ fontSize: 16 }} />
+            <ArrowBackIcon sx={{ fontSize: 18 }} />
             {t('back')}
           </Link>
         </MotionBox>
 
-        {/* ═══ Hero Section: Image Carousel ═══ */}
-        <MotionBox
-          initial="hidden"
-          animate="visible"
-          variants={slideUp}
-          sx={{
-            position: 'relative',
-            borderRadius: 4,
-            overflow: 'hidden',
-            mb: 5,
-            border: '1px solid rgba(255,255,255,0.08)',
-            boxShadow: '0 20px 60px rgba(0,0,0,0.4), 0 0 100px rgba(37, 99, 235, 0.08)',
-          }}
-        >
-          {/* Main Image */}
-          <Box
-            sx={{
-              position: 'relative',
-              height: { xs: 300, md: 480, lg: 540 },
-              bgcolor: 'rgba(0,0,0,0.3)',
-              overflow: 'hidden',
-            }}
-          >
-            <AnimatePresence initial={false} custom={slideDirection} mode="popLayout">
-              <motion.img
-                key={currentImageIndex}
-                src={project.images[currentImageIndex]}
-                alt={`${project.title} - ${currentImageIndex + 1}`}
-                custom={slideDirection}
-                initial={{ x: slideDirection > 0 ? '100%' : '-100%', opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                exit={{ x: slideDirection > 0 ? '-100%' : '100%', opacity: 0 }}
-                transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'contain',
-                  display: 'block',
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                }}
-              />
-            </AnimatePresence>
-
-            {/* Navigation Arrows */}
-            {hasMultipleImages && (
-              <>
-                <IconButton
-                  onClick={goPrev}
-                  aria-label="Previous image"
-                  sx={{
-                    position: 'absolute',
-                    left: { xs: 8, md: 16 },
-                    top: '50%',
-                    transform: 'translateY(-50%)',
-                    bgcolor: 'rgba(0,0,0,0.55)',
-                    backdropFilter: 'blur(12px)',
-                    color: '#fff',
-                    width: { xs: 40, md: 48 },
-                    height: { xs: 40, md: 48 },
-                    border: '1px solid rgba(255,255,255,0.12)',
-                    transition: 'all 0.3s ease',
-                    '&:hover': {
-                      bgcolor: 'rgba(37, 99, 235, 0.6)',
-                      borderColor: 'rgba(37, 99, 235, 0.5)',
-                      transform: 'translateY(-50%) scale(1.08)',
-                    },
-                  }}
-                >
-                  <ChevronLeftIcon />
-                </IconButton>
-                <IconButton
-                  onClick={goNext}
-                  aria-label="Next image"
-                  sx={{
-                    position: 'absolute',
-                    right: { xs: 8, md: 16 },
-                    top: '50%',
-                    transform: 'translateY(-50%)',
-                    bgcolor: 'rgba(0,0,0,0.55)',
-                    backdropFilter: 'blur(12px)',
-                    color: '#fff',
-                    width: { xs: 40, md: 48 },
-                    height: { xs: 40, md: 48 },
-                    border: '1px solid rgba(255,255,255,0.12)',
-                    transition: 'all 0.3s ease',
-                    '&:hover': {
-                      bgcolor: 'rgba(37, 99, 235, 0.6)',
-                      borderColor: 'rgba(37, 99, 235, 0.5)',
-                      transform: 'translateY(-50%) scale(1.08)',
-                    },
-                  }}
-                >
-                  <ChevronRightIcon />
-                </IconButton>
-
-                {/* Dot Indicators */}
-                <Box
-                  sx={{
-                    position: 'absolute',
-                    bottom: 16,
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    display: 'flex',
-                    gap: 0.75,
-                    px: 2,
-                    py: 1,
-                    borderRadius: 5,
-                    bgcolor: 'rgba(0,0,0,0.5)',
-                    backdropFilter: 'blur(12px)',
-                    border: '1px solid rgba(255,255,255,0.08)',
-                  }}
-                >
-                  {project.images.map((_, index) => (
-                    <Box
-                      key={index}
-                      onClick={() => goToImage(index)}
-                      sx={{
-                        width: index === currentImageIndex ? 20 : 8,
-                        height: 8,
-                        borderRadius: 4,
-                        bgcolor:
-                          index === currentImageIndex
-                            ? '#fff'
-                            : 'rgba(255,255,255,0.3)',
-                        cursor: 'pointer',
-                        transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
-                        '&:hover': {
-                          bgcolor:
-                            index === currentImageIndex
-                              ? '#fff'
-                              : 'rgba(255,255,255,0.55)',
-                        },
-                      }}
-                    />
-                  ))}
-                </Box>
-
-                {/* Image Counter Badge */}
-                <Box
-                  sx={{
-                    position: 'absolute',
-                    top: 16,
-                    right: 16,
-                    px: 1.5,
-                    py: 0.5,
-                    borderRadius: 2,
-                    bgcolor: 'rgba(0,0,0,0.55)',
-                    backdropFilter: 'blur(12px)',
-                    border: '1px solid rgba(255,255,255,0.08)',
-                    color: 'rgba(255,255,255,0.75)',
-                    fontSize: '0.78rem',
-                    fontWeight: 600,
-                    fontFamily: 'var(--font-geist-mono)',
-                    letterSpacing: '0.05em',
-                  }}
-                >
-                  {currentImageIndex + 1} / {project.images.length}
-                </Box>
-              </>
-            )}
-          </Box>
-
-          {/* Thumbnail Strip */}
-          {hasMultipleImages && (
-            <Box
-              sx={{
-                display: 'flex',
-                gap: 1,
-                p: 1.5,
-                bgcolor: 'rgba(0,0,0,0.4)',
-                borderTop: '1px solid rgba(255,255,255,0.06)',
-                overflowX: 'auto',
-                '&::-webkit-scrollbar': { height: 4 },
-                '&::-webkit-scrollbar-thumb': {
-                  bgcolor: 'rgba(255,255,255,0.15)',
-                  borderRadius: 2,
-                },
-              }}
-            >
-              {project.images.map((img, index) => (
-                <Box
-                  key={index}
-                  onClick={() => goToImage(index)}
-                  sx={{
-                    flexShrink: 0,
-                    width: { xs: 80, md: 100 },
-                    height: { xs: 52, md: 64 },
-                    borderRadius: 1.5,
-                    overflow: 'hidden',
-                    cursor: 'pointer',
-                    border: index === currentImageIndex
-                      ? '2px solid rgba(59, 130, 246, 0.8)'
-                      : '2px solid transparent',
-                    opacity: index === currentImageIndex ? 1 : 0.5,
-                    transition: 'all 0.3s ease',
-                    '&:hover': {
-                      opacity: 1,
-                      border: index === currentImageIndex
-                        ? '2px solid rgba(59, 130, 246, 0.8)'
-                        : '2px solid rgba(255,255,255,0.25)',
-                    },
-                  }}
-                >
-                  <Box
-                    component="img"
-                    src={img}
-                    alt={`Thumbnail ${index + 1}`}
-                    sx={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                    }}
-                  />
-                </Box>
-              ))}
-            </Box>
-          )}
-        </MotionBox>
-
-        {/* ═══ Project Header: Badge + Title + Description + Actions ═══ */}
-        <MotionBox
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={stagger}
-          sx={{ mb: 6 }}
-        >
-          {/* Category Badge */}
-          <MotionBox variants={fadeIn} sx={{ mb: 2 }}>
-            <Chip
-              icon={catConfig.icon}
-              label={t(catConfig.labelKey)}
-              sx={{
-                bgcolor: catConfig.bgColor,
-                color: catConfig.color,
-                border: `1px solid ${catConfig.borderColor}`,
-                fontWeight: 600,
-                fontSize: '0.8rem',
-                px: 1,
-                '& .MuiChip-icon': { color: catConfig.color },
-              }}
-            />
-          </MotionBox>
-
-          <motion.h1
-            variants={fadeIn}
-            style={{
-              fontWeight: 800,
-              lineHeight: 1.1,
-              marginBottom: '24px',
-              background: 'linear-gradient(135deg, #e2e8f0, #fff, #93c5fd)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-            }}
-          >
-            <Typography
-              variant="h2"
-              component="span"
-              sx={{
-                fontWeight: 'inherit',
-                fontSize: { xs: '2rem', md: '2.75rem', lg: '3.5rem' },
-                lineHeight: 'inherit',
-                background: 'inherit',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-              }}
-            >
-              {project.title}
-            </Typography>
-          </motion.h1>
-
-          {/* Description */}
-          <MotionTypography
-            variants={fadeIn}
-            variant="body1"
-            sx={{
-              color: 'rgba(161, 161, 170, 0.9)',
-              lineHeight: 1.85,
-              fontSize: { xs: '0.95rem', md: '1.08rem' },
-              maxWidth: 720,
-              mb: 4,
-            }}
-          >
-            {project.description}
-          </MotionTypography>
-
-          {/* Action Buttons */}
-          <MotionBox variants={fadeIn} sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
-            {project.liveUrl && (
-              <Button
-                component="a"
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="contained"
-                endIcon={<LaunchIcon />}
-                sx={{
-                  px: 3.5,
-                  py: 1.2,
-                  borderRadius: 2.5,
-                  fontWeight: 600,
-                  fontSize: '0.9rem',
-                  background: catConfig.gradient,
-                  boxShadow: `0 4px 20px ${catConfig.bgColor}`,
-                  transition: 'all 0.3s ease',
-                  '&:hover': {
-                    transform: 'translateY(-2px)',
-                    boxShadow: `0 8px 30px ${catConfig.bgColor}`,
-                  },
-                }}
-              >
-                {t('liveDemo')}
-              </Button>
-            )}
-            {project.githubUrl && (
-              <Button
-                component="a"
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="outlined"
-                endIcon={<GitHubIcon />}
-                sx={{
-                  px: 3.5,
-                  py: 1.2,
-                  borderRadius: 2.5,
-                  fontWeight: 600,
-                  fontSize: '0.9rem',
-                  borderColor: 'rgba(255,255,255,0.15)',
-                  color: 'text.primary',
-                  backdropFilter: 'blur(8px)',
-                  transition: 'all 0.3s ease',
-                  '&:hover': {
-                    borderColor: catConfig.color,
-                    bgcolor: catConfig.bgColor,
-                    transform: 'translateY(-2px)',
-                  },
-                }}
-              >
-                {t('github')}
-              </Button>
-            )}
-          </MotionBox>
-        </MotionBox>
-
-
-
-        {/* ═══ Info Cards: Technologies + Key Features ═══ */}
+        {/* 2-Column Editorial Grid */}
         <Box
           sx={{
             display: 'grid',
-            gridTemplateColumns: { xs: '1fr', lg: '5fr 7fr' },
-            gap: { xs: 4, lg: 6 },
-            mb: 10,
+            gridTemplateColumns: { xs: '1fr', lg: '4fr 7fr' },
+            gap: { xs: 6, lg: 10 },
+            alignItems: 'start',
           }}
         >
-          {/* Left: Technologies */}
-          <MotionBox
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={slideUp}
+          {/* LEFT COLUMN: Sticky Project Metadata */}
+          <Box
             sx={{
-              position: 'relative',
-              p: { xs: 3, md: 4.5 },
-              borderRadius: '24px',
-              background: 'linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)',
-              border: '1px solid rgba(255,255,255,0.1)',
-              boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.05), 0 8px 32px rgba(0,0,0,0.3)',
-              backdropFilter: 'blur(24px)',
-              WebkitBackdropFilter: 'blur(24px)',
-              overflow: 'hidden',
+              position: { lg: 'sticky' },
+              top: { lg: 120 },
               display: 'flex',
               flexDirection: 'column',
-              '&::before': {
-                content: '""',
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                height: '1px',
-                background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)',
-              }
+              gap: 5,
             }}
           >
-            {/* Elegant Background Glow */}
-            <Box
-              sx={{
-                position: 'absolute',
-                top: '-20%',
-                left: '-10%',
-                width: '140%',
-                height: '140%',
-                background: 'radial-gradient(circle at top left, rgba(59,130,246,0.1), transparent 50%)',
-                pointerEvents: 'none',
-                zIndex: 0,
-              }}
-            />
-
-            {/* Section Header */}
-            <Box sx={{ position: 'relative', zIndex: 1, mb: 4, display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
-              <Box>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1 }}>
-                  <CodeIcon sx={{ color: '#93c5fd', fontSize: 24 }} />
-                  <Typography variant="h5" sx={{ fontWeight: 800, color: '#fff', letterSpacing: '-0.02em' }}>
-                    {t('technologiesUsed')}
-                  </Typography>
-                </Box>
-                <Typography variant="body2" sx={{ color: 'rgba(161,161,170,0.8)' }}>
-                  {project.technologies.length} {t('totalTechnologies').toLowerCase()}
-                </Typography>
-              </Box>
-            </Box>
-
-            {/* Tech Badges Grid */}
             <MotionBox
-              variants={stagger}
               initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              sx={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: 1.5,
-                position: 'relative',
-                zIndex: 1,
-              }}
+              animate="visible"
+              variants={stagger}
             >
-              {project.technologies.map((tech) => (
-                <MotionBox key={tech} variants={scaleIn}>
-                  <Box
+              <MotionBox variants={fadeIn} sx={{ mb: 3 }}>
+                <Chip
+                  icon={catConfig.icon}
+                  label={t(catConfig.labelKey)}
+                  sx={{
+                    bgcolor: catConfig.bgColor,
+                    color: catConfig.color,
+                    border: `1px solid ${catConfig.borderColor}`,
+                    fontWeight: 600,
+                    fontSize: '0.85rem',
+                    px: 1,
+                    py: 2.5,
+                    borderRadius: '16px',
+                    backdropFilter: 'blur(10px)',
+                    '& .MuiChip-icon': { color: catConfig.color },
+                  }}
+                />
+              </MotionBox>
+
+              <motion.h1
+                variants={fadeIn}
+                style={{
+                  margin: '0 0 24px 0',
+                }}
+              >
+                <Typography
+                  variant="h1"
+                  sx={{
+                    fontWeight: 800,
+                    fontSize: { xs: '2.5rem', md: '3.5rem', lg: '4rem' },
+                    lineHeight: 1.1,
+                    letterSpacing: '-0.03em',
+                    color: '#f8fafc',
+                  }}
+                >
+                  {project.title}
+                  {project.subtitle && (
+                    <Box
+                      component="span"
+                      sx={{
+                        display: 'block',
+                        fontSize: { xs: '1.5rem', md: '2rem', lg: '2.25rem' },
+                        color: '#cbd5e1',
+                        fontWeight: 600,
+                        mt: 1,
+                      }}
+                    >
+                      {project.subtitle}
+                    </Box>
+                  )}
+                </Typography>
+              </motion.h1>
+
+              <MotionTypography
+                variants={fadeIn}
+                variant="body1"
+                sx={{
+                  color: '#94a3b8',
+                  lineHeight: 1.8,
+                  fontSize: '1.1rem',
+                  mb: 4,
+                  fontWeight: 400,
+                }}
+              >
+                {project.description}
+              </MotionTypography>
+
+              {/* Action Buttons */}
+              <MotionBox variants={fadeIn} sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+                {project.liveUrl && (
+                  <Button
+                    component="a"
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    variant="contained"
+                    endIcon={<LaunchIcon />}
                     sx={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      px: 2.5,
-                      py: 1.2,
-                      borderRadius: '12px',
-                      background: 'linear-gradient(145deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.01) 100%)',
-                      border: '1px solid rgba(255,255,255,0.08)',
-                      boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.05)',
-                      color: '#e2e8f0',
-                      fontSize: '0.9rem',
-                      fontWeight: 500,
-                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                      px: 4,
+                      py: 1.5,
+                      borderRadius: '30px',
+                      fontWeight: 600,
+                      fontSize: '0.95rem',
+                      background: '#fff',
+                      color: '#0f172a',
+                      textTransform: 'none',
+                      transition: 'all 0.3s ease',
                       '&:hover': {
-                        background: 'linear-gradient(145deg, rgba(59,130,246,0.1) 0%, rgba(139,92,246,0.1) 100%)',
-                        borderColor: 'rgba(96,165,250,0.4)',
-                        color: '#fff',
-                        transform: 'translateY(-2px) scale(1.02)',
-                        boxShadow: '0 10px 20px rgba(0,0,0,0.2), inset 0 1px 1px rgba(255,255,255,0.15)',
-                      }
+                        transform: 'translateY(-2px)',
+                        background: '#f1f5f9',
+                        boxShadow: `0 10px 40px ${alpha('#fff', 0.2)}`,
+                      },
                     }}
                   >
-                    <Box sx={{ width: 6, height: 6, borderRadius: '50%', background: catConfig.gradient, mr: 1.5, boxShadow: `0 0 8px ${catConfig.color}` }} />
-                    {tech}
-                  </Box>
-                </MotionBox>
-              ))}
+                    {t('liveDemo')}
+                  </Button>
+                )}
+                {project.githubUrl && (
+                  <Button
+                    component="a"
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    variant="outlined"
+                    endIcon={<GitHubIcon />}
+                    sx={{
+                      px: 4,
+                      py: 1.5,
+                      borderRadius: '30px',
+                      fontWeight: 600,
+                      fontSize: '0.95rem',
+                      borderColor: 'rgba(255,255,255,0.2)',
+                      color: '#f8fafc',
+                      textTransform: 'none',
+                      transition: 'all 0.3s ease',
+                      '&:hover': {
+                        borderColor: '#fff',
+                        bgcolor: 'rgba(255,255,255,0.05)',
+                        transform: 'translateY(-2px)',
+                      },
+                    }}
+                  >
+                    {t('github')}
+                  </Button>
+                )}
+              </MotionBox>
             </MotionBox>
-          </MotionBox>
 
-          {/* Right: Key Features */}
-          <MotionBox
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={slideUp}
-            sx={{
-              position: 'relative',
-              p: { xs: 3, md: 4.5 },
-              borderRadius: '24px',
-              background: 'linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)',
-              border: '1px solid rgba(255,255,255,0.1)',
-              boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.05), 0 8px 32px rgba(0,0,0,0.3)',
-              backdropFilter: 'blur(24px)',
-              WebkitBackdropFilter: 'blur(24px)',
-              overflow: 'hidden',
-              display: 'flex',
-              flexDirection: 'column',
-              '&::before': {
-                content: '""',
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                height: '1px',
-                background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)',
-              }
-            }}
-          >
-            {/* Elegant Background Glow */}
-            <Box
-              sx={{
-                position: 'absolute',
-                top: '-20%',
-                right: '-10%',
-                width: '140%',
-                height: '140%',
-                background: 'radial-gradient(circle at top right, rgba(249,115,22,0.08), transparent 50%)',
-                pointerEvents: 'none',
-                zIndex: 0,
-              }}
-            />
-
-            {/* Section Header */}
-            <Box sx={{ position: 'relative', zIndex: 1, mb: 4, display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
-              <Box>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1 }}>
-                  <AutoAwesomeIcon sx={{ color: '#fdba74', fontSize: 24 }} />
-                  <Typography variant="h5" sx={{ fontWeight: 800, color: '#fff', letterSpacing: '-0.02em' }}>
-                    {t('keyFeatures')}
+            {/* Responsibilities Section */}
+            {project.responsibilities && project.responsibilities.length > 0 && (
+              <MotionBox
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={slideUp}
+                sx={{
+                  mt: 2,
+                  p: 4,
+                  borderRadius: '24px',
+                  background: 'rgba(255,255,255,0.02)',
+                  border: '1px solid rgba(255,255,255,0.05)',
+                  backdropFilter: 'blur(20px)',
+                }}
+              >
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 3 }}>
+                  <AssignmentTurnedInIcon sx={{ color: catConfig.color, fontSize: 24 }} />
+                  <Typography variant="h6" sx={{ fontWeight: 700, color: '#f8fafc' }}>
+                    {t('responsibilities')}
                   </Typography>
                 </Box>
-                <Typography variant="body2" sx={{ color: 'rgba(161,161,170,0.8)' }}>
-                  {project.keyFeatures.length} {t('keyFeaturesCount').toLowerCase()}
-                </Typography>
-              </Box>
-            </Box>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                  {project.responsibilities.map((resp, idx) => (
+                    <Box key={idx} sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
+                      <Box
+                        sx={{
+                          width: 6,
+                          height: 6,
+                          borderRadius: '50%',
+                          background: catConfig.gradient,
+                          mt: 1.2,
+                          flexShrink: 0,
+                          boxShadow: `0 0 10px ${catConfig.color}`,
+                        }}
+                      />
+                      <Typography sx={{ color: '#cbd5e1', lineHeight: 1.7, fontSize: '0.95rem' }}>
+                        {resp}
+                      </Typography>
+                    </Box>
+                  ))}
+                </Box>
+              </MotionBox>
+            )}
+          </Box>
 
-            {/* Features List */}
+          {/* RIGHT COLUMN: Scrollable Media & Tech Specs */}
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+
+            {/* Immersive Image Carousel */}
             <MotionBox
-              variants={stagger}
               initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              sx={{ display: 'flex', flexDirection: 'column', gap: 2, position: 'relative', zIndex: 1 }}
+              animate="visible"
+              variants={slideUp}
+              sx={{
+                position: 'relative',
+                borderRadius: '32px',
+                overflow: 'hidden',
+                bgcolor: '#0f172a',
+                border: '1px solid rgba(255,255,255,0.08)',
+                boxShadow: `0 30px 60px rgba(0,0,0,0.5), 0 0 120px ${alpha(catConfig.color, 0.1)}`,
+              }}
             >
-              {project.keyFeatures.map((feature, index) => (
-                <MotionBox
-                  key={index}
-                  variants={fadeIn}
-                  sx={{
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: 2.5,
-                    p: 3,
-                    borderRadius: '16px',
-                    background: 'rgba(255,255,255,0.02)',
-                    border: '1px solid rgba(255,255,255,0.04)',
-                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                    position: 'relative',
-                    overflow: 'hidden',
-                    '&::before': {
-                      content: '""',
+              <Box
+                sx={{
+                  position: 'relative',
+                  height: { xs: 350, md: 500, lg: 600 },
+                  width: '100%',
+                }}
+              >
+                <AnimatePresence initial={false} custom={slideDirection} mode="popLayout">
+                  <motion.img
+                    key={currentImageIndex}
+                    src={project.images[currentImageIndex]}
+                    alt={`${project.title} screenshot ${currentImageIndex + 1}`}
+                    custom={slideDirection}
+                    initial={{ x: slideDirection > 0 ? '100%' : '-100%', opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    exit={{ x: slideDirection > 0 ? '-100%' : '100%', opacity: 0 }}
+                    transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'contain',
                       position: 'absolute',
                       top: 0,
                       left: 0,
-                      width: '4px',
-                      height: '100%',
-                      background: catConfig.gradient,
-                      opacity: 0,
-                      transition: 'opacity 0.3s ease',
-                    },
-                    '&:hover': {
-                      background: 'rgba(255,255,255,0.04)',
-                      transform: 'translateX(6px)',
-                      borderColor: 'rgba(255,255,255,0.08)',
-                      boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
-                      '&::before': {
-                        opacity: 1,
-                      }
-                    }
-                  }}
-                >
+                    }}
+                  />
+                </AnimatePresence>
+
+                {/* Glassmorphic Arrows */}
+                {hasMultipleImages && (
+                  <>
+                    <IconButton
+                      onClick={goPrev}
+                      sx={{
+                        position: 'absolute',
+                        left: 20,
+                        top: '50%',
+                        transform: 'translateY(-50%)',
+                        bgcolor: 'rgba(15, 23, 42, 0.6) !important',
+                        backdropFilter: 'blur(12px)',
+                        color: '#fff',
+                        width: 56,
+                        height: 56,
+                        border: '1px solid rgba(255,255,255,0.1)',
+                        transition: 'all 0.3s ease',
+                        '&:hover': {
+                          bgcolor: `${alpha(catConfig.color, 0.8)} !important`,
+                          transform: 'translateY(-50%) scale(1.1)',
+                        },
+                      }}
+                    >
+                      <ChevronLeftIcon sx={{ fontSize: 28 }} />
+                    </IconButton>
+                    <IconButton
+                      onClick={goNext}
+                      sx={{
+                        position: 'absolute',
+                        right: 20,
+                        top: '50%',
+                        transform: 'translateY(-50%)',
+                        bgcolor: 'rgba(15, 23, 42, 0.6) !important',
+                        backdropFilter: 'blur(12px)',
+                        color: '#fff',
+                        width: 56,
+                        height: 56,
+                        border: '1px solid rgba(255,255,255,0.1)',
+                        transition: 'all 0.3s ease',
+                        '&:hover': {
+                          bgcolor: `${alpha(catConfig.color, 0.8)} !important`,
+                          transform: 'translateY(-50%) scale(1.1)',
+                        },
+                      }}
+                    >
+                      <ChevronRightIcon sx={{ fontSize: 28 }} />
+                    </IconButton>
+                  </>
+                )}
+
+                {/* Floating Thumbnail Strip */}
+                {hasMultipleImages && (
                   <Box
                     sx={{
-                      mt: 0.25,
+                      position: 'absolute',
+                      bottom: 24,
+                      left: '50%',
+                      transform: 'translateX(-50%)',
                       display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      width: 28,
-                      height: 28,
-                      borderRadius: '8px',
-                      background: catConfig.bgColor,
-                      color: catConfig.color,
-                      flexShrink: 0,
+                      gap: 1.5,
+                      p: 1.5,
+                      bgcolor: 'rgba(15, 23, 42, 0.7)',
+                      backdropFilter: 'blur(20px)',
+                      borderRadius: '20px',
+                      border: '1px solid rgba(255,255,255,0.1)',
+                      maxWidth: '90%',
+                      overflowX: 'auto',
+                      '&::-webkit-scrollbar': { display: 'none' },
                     }}
                   >
-                    <CheckCircleOutlineIcon sx={{ fontSize: 18 }} />
+                    {project.images.map((img, index) => (
+                      <Box
+                        key={index}
+                        onClick={() => goToImage(index)}
+                        sx={{
+                          flexShrink: 0,
+                          width: 80,
+                          height: 56,
+                          borderRadius: '12px',
+                          overflow: 'hidden',
+                          cursor: 'pointer',
+                          position: 'relative',
+                          border: index === currentImageIndex
+                            ? `2px solid ${catConfig.color}`
+                            : '2px solid transparent',
+                          transition: 'all 0.3s ease',
+                          opacity: index === currentImageIndex ? 1 : 0.5,
+                          '&:hover': { opacity: 1 },
+                        }}
+                      >
+                        <Box
+                          component="img"
+                          src={img}
+                          alt={`Thumbnail ${index + 1}`}
+                          sx={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                        />
+                      </Box>
+                    ))}
                   </Box>
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      color: '#e2e8f0',
-                      lineHeight: 1.6,
-                      fontSize: '0.95rem',
-                      fontWeight: 400,
-                    }}
-                  >
-                    {feature}
-                  </Typography>
-                </MotionBox>
-              ))}
+                )}
+              </Box>
             </MotionBox>
-          </MotionBox>
+
+            {/* Bento Grid layout for Tech & Features */}
+            <Box
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: { xs: '1fr', lg: '1fr 1fr' },
+                gap: 4,
+              }}
+            >
+              {/* Technologies Card */}
+              <MotionBox
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={slideUp}
+                sx={{
+                  p: 5,
+                  borderRadius: '32px',
+                  background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
+                  border: '1px solid rgba(255,255,255,0.05)',
+                  boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.05)',
+                  backdropFilter: 'blur(24px)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                }}
+              >
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 4 }}>
+                  <Box sx={{ p: 1.5, borderRadius: '14px', bgcolor: 'rgba(59, 130, 246, 0.1)', color: '#60a5fa' }}>
+                    <CodeIcon sx={{ fontSize: 24 }} />
+                  </Box>
+                  <Typography variant="h5" sx={{ fontWeight: 700, color: '#f8fafc' }}>
+                    {t('technologiesUsed')}
+                  </Typography>
+                </Box>
+
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.5 }}>
+                  {project.technologies.map((tech) => (
+                    <Box
+                      key={tech}
+                      sx={{
+                        px: 2.5,
+                        py: 1,
+                        borderRadius: '20px',
+                        background: 'rgba(255,255,255,0.04)',
+                        border: '1px solid rgba(255,255,255,0.05)',
+                        color: '#cbd5e1',
+                        fontSize: '0.9rem',
+                        fontWeight: 500,
+                        transition: 'all 0.3s ease',
+                        '&:hover': {
+                          background: 'rgba(255,255,255,0.08)',
+                          borderColor: catConfig.color,
+                          color: '#fff',
+                          transform: 'translateY(-2px)',
+                        },
+                      }}
+                    >
+                      {tech}
+                    </Box>
+                  ))}
+                </Box>
+              </MotionBox>
+
+              {/* Key Features Card */}
+              <MotionBox
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={slideUp}
+                sx={{
+                  p: 5,
+                  borderRadius: '32px',
+                  background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
+                  border: '1px solid rgba(255,255,255,0.05)',
+                  boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.05)',
+                  backdropFilter: 'blur(24px)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                }}
+              >
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 4 }}>
+                  <Box sx={{ p: 1.5, borderRadius: '14px', bgcolor: 'rgba(249, 115, 22, 0.1)', color: '#fb923c' }}>
+                    <AutoAwesomeIcon sx={{ fontSize: 24 }} />
+                  </Box>
+                  <Typography variant="h5" sx={{ fontWeight: 700, color: '#f8fafc' }}>
+                    {t('keyFeatures')}
+                  </Typography>
+                </Box>
+
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+                  {project.keyFeatures.map((feature, index) => (
+                    <Box key={index} sx={{ display: 'flex', alignItems: 'flex-start', gap: 2.5 }}>
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          width: 26,
+                          height: 26,
+                          borderRadius: '8px',
+                          background: 'rgba(255,255,255,0.05)',
+                          color: '#f8fafc',
+                          flexShrink: 0,
+                          mt: 0.2,
+                        }}
+                      >
+                        <CheckCircleOutlineIcon sx={{ fontSize: 16 }} />
+                      </Box>
+                      <Typography sx={{ color: '#cbd5e1', lineHeight: 1.6, fontSize: '0.95rem' }}>
+                        {feature}
+                      </Typography>
+                    </Box>
+                  ))}
+                </Box>
+              </MotionBox>
+
+            </Box>
+          </Box>
         </Box>
 
         {/* ═══ Project Navigation ═══ */}
@@ -807,75 +687,84 @@ export default function ProjectDetailClient({
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            pt: 4,
-            borderTop: '1px solid rgba(255,255,255,0.06)',
+            mt: 12,
+            pt: 5,
+            borderTop: '1px solid rgba(255,255,255,0.1)',
           }}
         >
-          {/* Previous */}
-          <Link
-            href={`/projects/${prevProject.slug}`}
-            style={{ textDecoration: 'none' }}
-          >
+          <Link href={`/projects/${prevProject.slug}`} style={{ textDecoration: 'none' }}>
             <Box
               sx={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: 1,
-                color: 'text.secondary',
-                transition: 'color 0.2s ease',
-                '&:hover': { color: 'text.primary' },
-                '&:hover .arrow': { transform: 'translateX(-3px)' },
+                gap: 1.5,
+                color: '#94a3b8',
+                transition: 'all 0.3s ease',
+                '&:hover': { color: '#fff', '& .icon': { transform: 'translateX(-4px)' } },
               }}
             >
-              <ArrowBackIcon className="arrow" sx={{ fontSize: 16, transition: 'transform 0.2s ease' }} />
-              <Typography variant="body2" sx={{ fontWeight: 500 }}>
-                {prevProject.title}
-              </Typography>
+              <ArrowBackIcon className="icon" sx={{ fontSize: 20, transition: 'transform 0.3s ease' }} />
+              <Box>
+                <Typography variant="caption" sx={{ display: 'block', color: '#64748b', mb: 0.5 }}>
+                  {t('previousProject')}
+                </Typography>
+                <Typography variant="body1" sx={{ fontWeight: 600 }}>
+                  {prevProject.title}
+                </Typography>
+              </Box>
             </Box>
           </Link>
 
-          {/* View All */}
-          <Link
-            href="/#projects"
-            style={{ textDecoration: 'none' }}
-          >
-            <Typography
-              variant="body2"
+          <Link href="/#projects" style={{ textDecoration: 'none' }}>
+            <Box
               sx={{
-                color: 'text.secondary',
-                fontWeight: 500,
-                transition: 'color 0.2s ease',
-                display: { xs: 'none', sm: 'block' },
-                '&:hover': { color: 'text.primary' },
+                width: 48,
+                height: 48,
+                borderRadius: '50%',
+                display: { xs: 'none', sm: 'flex' },
+                alignItems: 'center',
+                justifyContent: 'center',
+                border: '1px solid rgba(255,255,255,0.1)',
+                color: '#94a3b8',
+                transition: 'all 0.3s ease',
+                '&:hover': { bgcolor: 'rgba(255,255,255,0.05)', color: '#fff', transform: 'scale(1.1)' },
               }}
             >
-              {t('viewAllProjects')}
-            </Typography>
+              {/* 4 dots arranged in a 2x2 grid to represent "all projects" grid */}
+              <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px' }}>
+                <Box sx={{ width: 6, height: 6, bgcolor: 'currentColor', borderRadius: '2px' }} />
+                <Box sx={{ width: 6, height: 6, bgcolor: 'currentColor', borderRadius: '2px' }} />
+                <Box sx={{ width: 6, height: 6, bgcolor: 'currentColor', borderRadius: '2px' }} />
+                <Box sx={{ width: 6, height: 6, bgcolor: 'currentColor', borderRadius: '2px' }} />
+              </Box>
+            </Box>
           </Link>
 
-          {/* Next */}
-          <Link
-            href={`/projects/${nextProject.slug}`}
-            style={{ textDecoration: 'none' }}
-          >
+          <Link href={`/projects/${nextProject.slug}`} style={{ textDecoration: 'none' }}>
             <Box
               sx={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: 1,
-                color: 'text.secondary',
-                transition: 'color 0.2s ease',
-                '&:hover': { color: 'text.primary' },
-                '&:hover .arrow': { transform: 'translateX(3px)' },
+                gap: 1.5,
+                color: '#94a3b8',
+                textAlign: 'right',
+                transition: 'all 0.3s ease',
+                '&:hover': { color: '#fff', '& .icon': { transform: 'translateX(4px)' } },
               }}
             >
-              <Typography variant="body2" sx={{ fontWeight: 500 }}>
-                {nextProject.title}
-              </Typography>
-              <ArrowForwardIcon className="arrow" sx={{ fontSize: 16, transition: 'transform 0.2s ease' }} />
+              <Box>
+                <Typography variant="caption" sx={{ display: 'block', color: '#64748b', mb: 0.5 }}>
+                  {t('nextProject')}
+                </Typography>
+                <Typography variant="body1" sx={{ fontWeight: 600 }}>
+                  {nextProject.title}
+                </Typography>
+              </Box>
+              <ArrowForwardIcon className="icon" sx={{ fontSize: 20, transition: 'transform 0.3s ease' }} />
             </Box>
           </Link>
         </MotionBox>
+
       </Container>
     </Box>
   );
