@@ -407,6 +407,50 @@ export default function ProjectDetailClient({
                 </Box>
               </MotionBox>
             )}
+
+            {/* Key Features Section */}
+            {project.keyFeatures && project.keyFeatures.length > 0 && (
+              <MotionBox
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={slideUp}
+                sx={{
+                  mt: 2,
+                  pt: 4,
+                  borderTop: '1px solid rgba(255,255,255,0.05)',
+                }}
+              >
+                <Typography variant="h6" sx={{ fontWeight: 600, color: '#f8fafc', mb: 3, fontSize: '1.05rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  {t('keyFeatures')}
+                </Typography>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
+                  {project.keyFeatures.map((feature, idx) => (
+                    <Box key={idx} sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
+                      <Box
+                        sx={{
+                          width: 14,
+                          height: 14,
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          borderRadius: '50%',
+                          bgcolor: alpha(catConfig.color, 0.1),
+                          color: catConfig.color,
+                          mt: 0.5,
+                          flexShrink: 0,
+                        }}
+                      >
+                        <CheckCircleOutlineIcon sx={{ fontSize: 10 }} />
+                      </Box>
+                      <Typography sx={{ color: '#94a3b8', lineHeight: 1.6, fontSize: '0.95rem' }}>
+                        {feature}
+                      </Typography>
+                    </Box>
+                  ))}
+                </Box>
+              </MotionBox>
+            )}
           </Box>
 
           {/* RIGHT COLUMN: Scrollable Media & Tech Specs */}
@@ -557,51 +601,8 @@ export default function ProjectDetailClient({
               </Box>
             </MotionBox>
 
-            {/* Clean Tech & Features Layout */}
+            {/* Clean Media Details Layout */}
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 6, mt: 4 }}>
-
-              {/* Key Features (Clean Grid Stack) */}
-              <MotionBox
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={slideUp}
-              >
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 3 }}>
-                  <AutoAwesomeIcon sx={{ color: catConfig.color, fontSize: 20 }} />
-                  <Typography variant="h5" sx={{ fontWeight: 600, color: '#f8fafc' }}>
-                    {t('keyFeatures')}
-                  </Typography>
-                </Box>
-                <Box sx={{
-                  display: 'grid',
-                  gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
-                  gap: 3
-                }}>
-                  {project.keyFeatures.map((feature, index) => (
-                    <Box
-                      key={index}
-                      sx={{
-                        p: 3,
-                        borderRadius: '16px',
-                        bgcolor: 'rgba(255, 255, 255, 0.02)',
-                        border: '1px solid rgba(255, 255, 255, 0.05)',
-                        transition: 'all 0.3s ease',
-                        '&:hover': {
-                          bgcolor: 'rgba(255, 255, 255, 0.04)',
-                          borderColor: alpha(catConfig.color, 0.3),
-                          transform: 'translateY(-2px)',
-                        }
-                      }}
-                    >
-                      <Typography sx={{ color: '#cbd5e1', lineHeight: 1.6, fontSize: '0.95rem' }}>
-                        {feature}
-                      </Typography>
-                    </Box>
-                  ))}
-                </Box>
-              </MotionBox>
-
               {/* Responsibilities Section */}
               {project.responsibilities && project.responsibilities.length > 0 && (
                 <MotionBox
@@ -609,10 +610,6 @@ export default function ProjectDetailClient({
                   whileInView="visible"
                   viewport={{ once: true }}
                   variants={slideUp}
-                  sx={{
-                    pt: 6,
-                    borderTop: '1px solid rgba(255,255,255,0.05)'
-                  }}
                 >
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 3 }}>
                     <AssignmentTurnedInIcon sx={{ color: catConfig.color, fontSize: 20 }} />
@@ -620,28 +617,48 @@ export default function ProjectDetailClient({
                       {t('responsibilities')}
                     </Typography>
                   </Box>
-                  <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-                    {project.responsibilities.map((resp, idx) => (
-                      <Box key={idx} sx={{ display: 'flex', alignItems: 'flex-start', gap: 2.5 }}>
-                        <Box
-                          sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            width: 26,
-                            height: 26,
-                            borderRadius: '8px',
-                            background: 'rgba(255,255,255,0.05)',
-                            color: '#f8fafc',
-                            flexShrink: 0,
-                            mt: 0.2,
-                          }}
-                        >
-                          <CheckCircleOutlineIcon sx={{ fontSize: 16 }} />
+                  <Box sx={{
+                    display: 'grid',
+                    gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
+                    gap: 3
+                  }}>
+                    {project.responsibilities.map((resp, index) => (
+                      <Box
+                        key={index}
+                        sx={{
+                          p: 3,
+                          borderRadius: '16px',
+                          bgcolor: 'rgba(255, 255, 255, 0.02)',
+                          border: '1px solid rgba(255, 255, 255, 0.05)',
+                          transition: 'all 0.3s ease',
+                          '&:hover': {
+                            bgcolor: 'rgba(255, 255, 255, 0.04)',
+                            borderColor: alpha(catConfig.color, 0.3),
+                            transform: 'translateY(-2px)',
+                          }
+                        }}
+                      >
+                        <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2.5 }}>
+                          <Box
+                            sx={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              width: 26,
+                              height: 26,
+                              borderRadius: '8px',
+                              background: 'rgba(255,255,255,0.05)',
+                              color: '#f8fafc',
+                              flexShrink: 0,
+                              mt: 0.2,
+                            }}
+                          >
+                            <CheckCircleOutlineIcon sx={{ fontSize: 16 }} />
+                          </Box>
+                          <Typography sx={{ color: '#cbd5e1', lineHeight: 1.6, fontSize: '0.95rem' }}>
+                            {resp}
+                          </Typography>
                         </Box>
-                        <Typography sx={{ color: '#cbd5e1', lineHeight: 1.6, fontSize: '0.95rem' }}>
-                          {resp}
-                        </Typography>
                       </Box>
                     ))}
                   </Box>
