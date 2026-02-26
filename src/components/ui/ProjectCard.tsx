@@ -2,10 +2,10 @@
 
 import { Card, CardContent, CardMedia, Typography, Box, Chip, Link as MuiLink } from '@mui/material';
 import { useTranslations } from 'next-intl';
-import LaunchIcon from '@mui/icons-material/Launch';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Project } from '@/types';
-import { Link } from '@/i18n/navigation';
+import { Link, useRouter } from '@/i18n/navigation';
 
 interface ProjectCardProps {
   project: Project;
@@ -13,14 +13,22 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   const t = useTranslations();
+  const router = useRouter();
+
+  const handleCardClick = () => {
+    router.push(`/projects/${project.slug}`);
+  };
 
   return (
     <Card
+      onClick={handleCardClick}
       sx={{
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
         bgcolor: 'rgba(255,255,255,0.03)',
+        cursor: 'pointer',
+        transition: 'background-color 0.2s',
         '&:hover': {
           bgcolor: 'rgba(255,255,255,0.05)',
         },
@@ -69,11 +77,12 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           ))}
         </Box>
         <Box sx={{ mt: 'auto', display: 'flex', gap: 2 }}>
-          {project.liveUrl && (
+          {project.githubUrl && (
             <MuiLink
-              href={project.liveUrl}
+              href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
               sx={{
                 display: 'flex',
                 alignItems: 'center',
@@ -84,8 +93,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 '&:hover': { color: 'primary.main' },
               }}
             >
-              {t('projectSection.liveDemo')}
-              <LaunchIcon sx={{ fontSize: 16 }} />
+              <GitHubIcon sx={{ fontSize: 16 }} />
+              {t('projectDetail.github')}
             </MuiLink>
           )}
           <Link

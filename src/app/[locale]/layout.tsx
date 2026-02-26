@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nattakit K. | Frontend Developer",
+  title: "Nattakit Portfolio",
   description:
     "Portfolio website of Nattakit K. - Frontend Developer and Network & Telecom Student. Creating innovative, functional, and user-friendly websites for digital solutions.",
   keywords: [

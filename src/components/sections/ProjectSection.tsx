@@ -171,6 +171,7 @@ export default function ProjectSection() {
                 label={t(`tabs.${tab.key}`)}
                 id={`project-tab-${index}`}
                 aria-controls={`project-tabpanel-${index}`}
+                suppressHydrationWarning
               />
             ))}
           </Tabs>

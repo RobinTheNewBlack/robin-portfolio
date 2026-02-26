@@ -87,7 +87,15 @@
         "findMeOn": "Find me on",
         "ctaTitle": "Start a Conversation",
         "ctaDescription": "I'd love to hear about your project. Drop me a message and let's create something great together.",
-        "sendEmail": "Send me an Email"
+        "sendEmail": "Send me an Email",
+        "formName": "Your Name",
+        "formEmail": "Your Email",
+        "formSubject": "Title / Subject",
+        "formMessage": "Tell me about your project...",
+        "formSubmit": "SEND MESSAGE",
+        "formSending": "SENDING...",
+        "formSuccess": "Message sent successfully!",
+        "formError": "Failed to send message. Please try again."
     },
     "techStackSection": {
         "title": "Tech Stack",
