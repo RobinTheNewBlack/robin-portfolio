@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Box, Container, Typography, Tabs, Tab } from '@mui/material';
+import { Box, Container, Typography, Tabs, Tab, useMediaQuery, useTheme } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import CodeIcon from '@mui/icons-material/Code';
@@ -83,6 +83,8 @@ const certificateTabs: { key: CertificateCategory; icon: React.ReactElement }[] 
 export default function CertificatesSection() {
   const t = useTranslations('certificateSection');
   const [tabValue, setTabValue] = useState(0);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   const handleTabChange = (_event: React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue);
@@ -141,6 +143,7 @@ export default function CertificatesSection() {
             onChange={handleTabChange}
             variant="scrollable"
             scrollButtons="auto"
+            allowScrollButtonsMobile
             sx={{
               bgcolor: 'rgba(255,255,255,0.03)',
               backdropFilter: 'blur(12px)',
@@ -151,12 +154,22 @@ export default function CertificatesSection() {
               '& .MuiTabs-indicator': {
                 display: 'none',
               },
+              '& .MuiTabs-flexContainer': {
+                gap: 0.5,
+              },
+              '& .MuiTabs-scrollButtons': {
+                color: 'text.secondary',
+                '&.Mui-disabled': { opacity: 0.3 },
+              },
               '& .MuiTab-root': {
                 minHeight: 48,
-                px: 3,
+                px: isMobile ? 1.5 : 3,
+                py: isMobile ? 0.75 : 1,
                 borderRadius: 2,
                 color: 'text.secondary',
                 transition: 'all 0.3s ease',
+                minWidth: isMobile ? 'auto' : undefined,
+                whiteSpace: 'nowrap',
                 '&.Mui-selected': {
                   bgcolor: 'rgba(255,255,255,0.06)',
                   color: 'text.primary',
@@ -171,8 +184,8 @@ export default function CertificatesSection() {
               <Tab
                 key={tab.key}
                 icon={tab.icon}
-                iconPosition="start"
-                label={t(`tabs.${tab.key}`)}
+                iconPosition={isMobile && tabValue !== index ? 'top' : 'start'}
+                label={isMobile ? (tabValue === index ? t(`tabs.${tab.key}`) : undefined) : t(`tabs.${tab.key}`)}
                 id={`certificate-tab-${index}`}
                 aria-controls={`certificate-tabpanel-${index}`}
               />

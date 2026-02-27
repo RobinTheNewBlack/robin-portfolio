@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Box, Container, Typography, Tabs, Tab, Paper } from '@mui/material';
+import { Box, Container, Typography, Tabs, Tab, Paper, useMediaQuery, useTheme } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import CodeIcon from '@mui/icons-material/Code';
@@ -81,9 +81,9 @@ const largerIcons = new Set(['node', 'express', 'fastapi', 'langchain', 'langgra
 const techStackTabs: { key: TechStackCategory | 'all'; icon: React.ReactElement }[] = [
   { key: 'all', icon: <AppsIcon /> },
   { key: 'programming', icon: <CodeIcon /> },
-  { key: 'backend', icon: <StorageIcon /> },
+  { key: 'backend', icon: <DataObjectIcon /> },
   { key: 'frontend', icon: <WebIcon /> },
-  { key: 'database', icon: <DataObjectIcon /> },
+  { key: 'database', icon: <StorageIcon /> },
   { key: 'cloudDevops', icon: <CloudIcon /> },
   { key: 'ai', icon: <SmartToyIcon /> },
   { key: 'dataScience', icon: <BarChartIcon /> },
@@ -94,6 +94,8 @@ const techStackTabs: { key: TechStackCategory | 'all'; icon: React.ReactElement 
 export default function TechStackSection() {
   const t = useTranslations('techStackSection');
   const [tabValue, setTabValue] = useState(0);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   const handleTabChange = (_event: React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue);
@@ -150,9 +152,10 @@ export default function TechStackSection() {
           <Tabs
             value={tabValue}
             onChange={handleTabChange}
-            orientation="vertical"
+            orientation={isMobile ? 'horizontal' : 'vertical'}
             variant="scrollable"
             scrollButtons="auto"
+            allowScrollButtonsMobile
             sx={{
               bgcolor: 'rgba(255,255,255,0.03)',
               backdropFilter: 'blur(12px)',
@@ -165,15 +168,25 @@ export default function TechStackSection() {
               '& .MuiTabs-indicator': {
                 display: 'none',
               },
+              '& .MuiTabs-flexContainer': {
+                gap: 0.5,
+              },
+              '& .MuiTabs-scrollButtons': {
+                color: 'text.secondary',
+                '&.Mui-disabled': { opacity: 0.3 },
+              },
               '& .MuiTab-root': {
                 minHeight: 48,
-                px: 2,
+                px: isMobile ? 1.5 : 2,
+                py: isMobile ? 0.75 : 1,
                 borderRadius: 2,
                 color: 'text.secondary',
                 transition: 'all 0.3s ease',
                 alignItems: 'center',
-                justifyContent: 'flex-start',
+                justifyContent: isMobile ? 'center' : 'flex-start',
                 textAlign: 'center',
+                minWidth: isMobile ? 'auto' : undefined,
+                whiteSpace: 'nowrap',
                 '&.Mui-selected': {
                   bgcolor: 'rgba(255,255,255,0.06)',
                   color: 'text.primary',
@@ -188,8 +201,8 @@ export default function TechStackSection() {
               <Tab
                 key={tab.key}
                 icon={tab.icon}
-                iconPosition="start"
-                label={t(`tabs.${tab.key}`)}
+                iconPosition={isMobile && tabValue !== index ? 'top' : 'start'}
+                label={isMobile ? (tabValue === index ? t(`tabs.${tab.key}`) : undefined) : t(`tabs.${tab.key}`)}
                 id={`techstack-tab-${index}`}
                 aria-controls={`techstack-tabpanel-${index}`}
               />

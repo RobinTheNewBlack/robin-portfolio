@@ -3,9 +3,10 @@ import { NavLink, SocialLink, StatItem } from '@/types';
 export const navLinks: NavLink[] = [
   { id: 'home', labelKey: 'nav.home', href: '#home' },
   { id: 'about', labelKey: 'nav.about', href: '#about' },
+  { id: 'techStack', labelKey: 'nav.techStack', href: '#techstack' },
+  { id: 'experience', labelKey: 'nav.experience', href: '#experience' },
   { id: 'projects', labelKey: 'nav.projects', href: '#projects' },
   { id: 'certificates', labelKey: 'nav.certificates', href: '#certificates' },
-  { id: 'techStack', labelKey: 'nav.techStack', href: '#techStack' },
   { id: 'contact', labelKey: 'nav.contact', href: '#contact' },
 ];
 

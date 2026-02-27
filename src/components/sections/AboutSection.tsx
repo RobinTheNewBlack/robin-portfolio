@@ -26,10 +26,11 @@ const fadeInUp = {
 
 const glassBento = {
   borderRadius: 3,
-  bgcolor: 'rgba(37, 99, 235, 0.05)',
-  border: '1px solid',
-  borderColor: 'rgba(37, 99, 235, 0.15)',
+  bgcolor: 'rgba(255,255,255,0.02)',
+  border: '1px solid rgba(255,255,255,0.08)',
   backdropFilter: 'blur(12px)',
+  WebkitBackdropFilter: 'blur(12px)',
+  boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.04)',
   p: 3,
   height: '100%',
 };
@@ -284,43 +285,43 @@ export default function AboutSection() {
               </Typography>
 
               <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly', flexGrow: 1 }}>
-              {stats.map((stat, i) => (
-                <Box key={stat.id}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, py: 1.5 }}>
-                    <Box
-                      sx={{
-                        p: 1.25,
-                        borderRadius: 2,
-                        bgcolor: 'rgba(37, 99, 235, 0.12)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        flexShrink: 0,
-                      }}
-                    >
-                      {statIconMap[stat.icon]}
-                    </Box>
-                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexGrow: 1 }}>
-                      <Typography
-                        variant="caption"
-                        color="text.secondary"
-                        sx={{ display: 'block', mt: 0.25, fontSize: '0.9rem' }}
+                {stats.map((stat, i) => (
+                  <Box key={stat.id}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, py: 1.5 }}>
+                      <Box
+                        sx={{
+                          p: 1.25,
+                          borderRadius: 2,
+                          bgcolor: 'rgba(37, 99, 235, 0.12)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          flexShrink: 0,
+                        }}
                       >
-                        {statLabels[stat.id]?.label}
-                      </Typography>
-                      <Typography
-                        variant="h5"
-                        className="text-gradient-blue"
-                        sx={{ fontWeight: 800, lineHeight: 1, mr: 5 }}
-                      >
-                        {stat.value}
-                      </Typography>
+                        {statIconMap[stat.icon]}
+                      </Box>
+                      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexGrow: 1 }}>
+                        <Typography
+                          variant="caption"
+                          color="text.secondary"
+                          sx={{ display: 'block', mt: 0.25, fontSize: '0.9rem' }}
+                        >
+                          {statLabels[stat.id]?.label}
+                        </Typography>
+                        <Typography
+                          variant="h5"
+                          className="text-gradient-blue"
+                          sx={{ fontWeight: 800, lineHeight: 1, mr: 5 }}
+                        >
+                          {stat.value}
+                        </Typography>
+                      </Box>
                     </Box>
+                    {i < stats.length - 1 && (
+                      <Divider sx={{ borderColor: 'rgba(255,255,255,0.06)' }} />
+                    )}
                   </Box>
-                  {i < stats.length - 1 && (
-                    <Divider sx={{ borderColor: 'rgba(37, 99, 235, 0.1)' }} />
-                  )}
-                </Box>
-              ))}
+                ))}
               </Box>
             </Box>
           </MotionBox>
@@ -357,11 +358,11 @@ export default function AboutSection() {
                     sx={{
                       p: 2,
                       borderRadius: 2,
-                      bgcolor: 'rgba(37, 99, 235, 0.05)',
-                      border: '1px solid rgba(37, 99, 235, 0.1)',
+                      bgcolor: 'rgba(255,255,255,0.03)',
+                      border: '1px solid rgba(255,255,255,0.06)',
                       display: 'flex',
                       gap: 1.5,
-                      alignItems: 'flex-start',
+                      alignItems: 'center',
                       flexGrow: 1,
                     }}
                   >
@@ -403,7 +404,7 @@ export default function AboutSection() {
                         fontWeight: 700,
                         whiteSpace: 'nowrap',
                         flexShrink: 0,
-                        alignSelf: 'flex-start',
+                        alignSelf: 'center',
                       }}
                     >
                       {edu.year}

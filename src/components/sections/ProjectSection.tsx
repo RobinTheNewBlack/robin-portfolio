@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Box, Container, Typography, Tabs, Tab } from '@mui/material';
+import { Box, Container, Typography, Tabs, Tab, useMediaQuery, useTheme } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import CodeIcon from '@mui/icons-material/Code';
@@ -79,6 +79,8 @@ const projectTabs: { key: ProjectCategory; icon: React.ReactElement }[] = [
 export default function ProjectSection() {
   const t = useTranslations('projectSection');
   const [tabValue, setTabValue] = useState(0);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   const handleTabChange = (_event: React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue);
@@ -137,6 +139,7 @@ export default function ProjectSection() {
             onChange={handleTabChange}
             variant="scrollable"
             scrollButtons="auto"
+            allowScrollButtonsMobile
             sx={{
               bgcolor: 'rgba(255,255,255,0.03)',
               backdropFilter: 'blur(12px)',
@@ -147,12 +150,22 @@ export default function ProjectSection() {
               '& .MuiTabs-indicator': {
                 display: 'none',
               },
+              '& .MuiTabs-flexContainer': {
+                gap: 0.5,
+              },
+              '& .MuiTabs-scrollButtons': {
+                color: 'text.secondary',
+                '&.Mui-disabled': { opacity: 0.3 },
+              },
               '& .MuiTab-root': {
                 minHeight: 48,
-                px: 3,
+                px: isMobile ? 1.5 : 3,
+                py: isMobile ? 0.75 : 1,
                 borderRadius: 2,
                 color: 'text.secondary',
                 transition: 'all 0.3s ease',
+                minWidth: isMobile ? 'auto' : undefined,
+                whiteSpace: 'nowrap',
                 '&.Mui-selected': {
                   bgcolor: 'rgba(255,255,255,0.06)',
                   color: 'text.primary',
@@ -167,7 +180,7 @@ export default function ProjectSection() {
               <Tab
                 key={tab.key}
                 icon={tab.icon}
-                iconPosition="start"
+                iconPosition={isMobile ? 'top' : 'start'}
                 label={t(`tabs.${tab.key}`)}
                 id={`project-tab-${index}`}
                 aria-controls={`project-tabpanel-${index}`}

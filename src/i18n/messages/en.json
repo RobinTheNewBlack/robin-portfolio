@@ -5,6 +5,7 @@
         "projects": "Projects",
         "certificates": "Certificates",
         "techStack": "Tech Stack",
+        "experience": "Experience",
         "contact": "Contact"
     },
     "intro": {
@@ -53,9 +54,9 @@
         "title": "Projects",
         "subtitle": "Explore my development journey through various projects across different domains.",
         "tabs": {
-            "internal": "Internal Projects",
-            "freelance": "Freelance Projects",
-            "personal": "Personal Projects"
+            "internal": "Internal",
+            "freelance": "Freelance",
+            "personal": "Personal"
         },
         "liveDemo": "Live Demo",
         "details": "Details",
