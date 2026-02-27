@@ -144,13 +144,13 @@ export default function AboutSection() {
               >
                 {t('greeting')}
               </Typography>
-              <Typography variant="h3" sx={{ fontWeight: 800, lineHeight: 1.2 }}>
+              <Typography variant="h3" sx={{ fontWeight: 600, lineHeight: 1.2 }}>
                 {t('name')}
               </Typography>
               <Typography
                 variant="body1"
                 color="text.secondary"
-                sx={{ lineHeight: 1.85, textAlign: 'justify', flexGrow: 1 }}
+                sx={{ lineHeight: 1.85, textAlign: 'justify', flexGrow: 1, whiteSpace: 'pre-line' }}
               >
                 {t('bio')}
               </Typography>
@@ -161,20 +161,6 @@ export default function AboutSection() {
                   sx={{ px: 3, py: 1.2, fontWeight: 600 }}
                 >
                   {t('downloadCv')}
-                </Button>
-                <Button
-                  variant="outlined"
-                  startIcon={<CodeIcon />}
-                  onClick={() => scrollToSection('portfolio')}
-                  sx={{
-                    px: 3,
-                    py: 1.2,
-                    borderColor: 'primary.main',
-                    color: 'primary.main',
-                    '&:hover': { bgcolor: 'rgba(37, 99, 235, 0.1)' },
-                  }}
-                >
-                  {t('viewProjects')}
                 </Button>
               </Box>
             </Box>
@@ -286,9 +272,18 @@ export default function AboutSection() {
                 ...glassBento,
                 display: 'flex',
                 flexDirection: 'column',
-                justifyContent: 'space-evenly',
+                gap: 2.5,
               }}
             >
+              <Typography
+                variant="h6"
+                className="text-gradient-blue"
+                sx={{ fontWeight: 700 }}
+              >
+                {t('stats.title')}
+              </Typography>
+
+              <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly', flexGrow: 1 }}>
               {stats.map((stat, i) => (
                 <Box key={stat.id}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, py: 1.5 }}>
@@ -326,6 +321,7 @@ export default function AboutSection() {
                   )}
                 </Box>
               ))}
+              </Box>
             </Box>
           </MotionBox>
 

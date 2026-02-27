@@ -21,10 +21,11 @@
         "tagline": "Learning is my long-term investment.",
         "greeting": "Hello, I'm",
         "name": "Nattakit Kerdtalay (Max)",
-        "bio": "I have a deep passion for computer technology and a strong commitment to continuously developing new skills. Although my academic background is in Industrial Engineering, I made a deliberate and determined decision to transition into the field of software development. I aspire to apply all of my knowledge, capabilities, and available tools to create value, build efficient systems, and develop meaningful innovations that contribute positively to our society and country.",
+        "bio": "I have a deep passion for computer technology and a strong commitment to continuously developing new skills. Although my academic background is in Industrial Engineering, I made a deliberate and determined decision to transition into the field of software development.\n\nThis transition was driven not by circumstance, but by a genuine passion for technology and the endless possibilities it creates. I found myself always curious about how software thinks, how AI learns, how systems come alive — became a passion that desire to build them with my own hands. \n\nSo I committed myself to learning seriously — from the fundamentals to increasingly complex concepts. And even now, fully into this field, I never stop exploring new things and sharpening my skills. Because for me, there is always more to learn — and that's exactly what keeps me moving forward.",
         "downloadCv": "Download CV",
         "viewProjects": "View Projects",
         "stats": {
+            "title": "My Statistics",
             "projects": "Total Projects",
             "projectsDesc": "Innovative software solutions crafted",
             "certificates": "Certificates",

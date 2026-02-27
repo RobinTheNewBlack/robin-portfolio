@@ -13,19 +13,19 @@ export const socialLinks: SocialLink[] = [
   {
     id: 'github',
     platform: 'github',
-    url: 'https://github.com',
+    url: 'https://github.com/Robininyourarea',
     ariaLabel: 'GitHub Profile',
   },
   {
     id: 'linkedin',
     platform: 'linkedin',
-    url: 'https://linkedin.com',
+    url: 'https://www.linkedin.com/in/nattakit-k',
     ariaLabel: 'LinkedIn Profile',
   },
   {
     id: 'instagram',
     platform: 'instagram',
-    url: 'https://instagram.com',
+    url: 'https://www.instagram.com/mxnattha?igsh=MWVsMG4xZG8ycHMzYg%3D%3D&utm_source=qr',
     ariaLabel: 'Instagram Profile',
   },
 ];

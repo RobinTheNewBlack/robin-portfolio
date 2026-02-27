@@ -156,7 +156,7 @@ export default function IntroSection() {
                 variant="contained"
                 size="large"
                 endIcon={<LaunchIcon />}
-                onClick={() => scrollToSection('portfolio')}
+                onClick={() => scrollToSection('projects')}
                 sx={{
                   px: 4,
                   py: 1.5,
@@ -182,11 +182,6 @@ export default function IntroSection() {
               >
                 {t('contactBtn')}
               </Button>
-            </MotionBox>
-
-            {/* Social Links */}
-            <MotionBox variants={itemVariants}>
-              <SocialLinks />
             </MotionBox>
           </MotionBox>
 
