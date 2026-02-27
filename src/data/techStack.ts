@@ -18,8 +18,11 @@ export const techStack: TechStackItem[] = [
     // Backend
     { id: "nodejs", name: "Node.js", icon: "node", category: "backend" },
     { id: "express", name: "Express.js", icon: "express", category: "backend" },
+    { id: "nestjs", name: "NestJS", icon: "nest", category: "backend" },
     { id: "fastapi", name: "FastAPI", icon: "fastapi", category: "backend" },
     { id: "sequelize", name: "Sequelize", icon: "sequelize", category: "backend" },
+
+    { id: "keycloak", name: "Keycloak", icon: "keycloak", category: "authentication" },
 
     // Database
     { id: "mongodb", name: "MongoDB", icon: "mongodb", category: "database" },

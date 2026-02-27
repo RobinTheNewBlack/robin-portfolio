@@ -12,7 +12,7 @@
         "badge": "Ready to Innovate",
         "title": "AI & Fullstack",
         "titleHighlight": "Developer",
-        "subtitle": "Full-Stack Developer who goes beyond full-stack.",
+        "subtitle": "Full-Stack Developer who goes beyond web full-stack.",
         "description": "Software professional with 3+ years of experience working primarily as a Full-Stack Developer and AI Engineer, with earlier experience in System Analyst. My work mainly involves developing web applications and implementing AI/ML solutions.",
         "projectsBtn": "Projects",
         "contactBtn": "Contact"
@@ -28,11 +28,8 @@
         "stats": {
             "title": "My Statistics",
             "projects": "Total Projects",
-            "projectsDesc": "Innovative software solutions crafted",
             "certificates": "Certificates",
-            "certificatesDesc": "Professional skills validated",
-            "experience": "Years of Experience",
-            "experienceDesc": "journey of learning"
+            "experience": "Years of Experience"
         },
         "education": {
             "title": "Education Background",
@@ -58,7 +55,6 @@
             "freelance": "Freelance",
             "personal": "Personal"
         },
-        "liveDemo": "Live Demo",
         "details": "Details",
         "noProjects": "No projects to display"
     },
@@ -67,18 +63,13 @@
         "projects": "Projects",
         "technologiesUsed": "Technologies Used",
         "keyFeatures": "Key Features",
-        "totalTechnologies": "Total Technologies",
         "keyFeaturesCount": "Key Features",
-        "liveDemo": "Live Demo",
         "github": "Github",
         "categoryInternal": "Internal Project",
         "categoryFreelance": "Freelance Project",
-        "categorySide": "Side Project",
         "categoryPersonal": "Personal Project",
-        "projectOverview": "Project Overview",
         "previousProject": "Previous Project",
         "nextProject": "Next Project",
-        "viewAllProjects": "View All Projects",
         "responsibilities": "My Responsibilities"
     },
     "certificateSection": {
@@ -88,23 +79,16 @@
             "programming": "Programming",
             "ai": "AI",
             "computerFundamental": "Computer Fundamental",
-            "devops": "DevOps",
+            "devops": "Cloud & DevOps",
             "mathematics": "Mathematics"
         },
         "noCertificates": "No certificates to display"
     },
     "contactSection": {
         "title": "Get In Touch",
-        "subtitle": "Have a project in mind or want to collaborate? Feel free to reach out. I'm always open to new opportunities and interesting conversations.",
         "cardTitle": "Let's work together",
-        "cardDescription": "Whether you have a question, a project idea, or just want to say hello — my inbox is always open.",
-        "emailLabel": "Email",
-        "locationLabel": "Location",
-        "locationValue": "Bangkok, Thailand",
-        "findMeOn": "Find me on",
-        "ctaTitle": "Start a Conversation",
-        "ctaDescription": "I'd love to hear about your project. Drop me a message and let's create something great together.",
-        "sendEmail": "Send me an Email",
+        "sendEmail": "Send me an email",
+        "description": "Available for full-time roles. Drop me a message — I reply within 24 hours.",
         "formName": "Your Name",
         "formEmail": "Your Email",
         "formSubject": "Title / Subject",
@@ -122,6 +106,7 @@
             "programming": "Programming",
             "backend": "Backend",
             "frontend": "Frontend",
+            "authentication": "Authentication",
             "database": "Database",
             "cloudDevops": "Cloud & DevOps",
             "ai": "AI",
@@ -400,7 +385,7 @@
                     "Analyzed business requirements and translated them into system specifications",
                     "Designed and implemented internal enterprise systems",
                     "Replaced third-party systems with in-house solutions to reduce costs",
-                    "Design UX/UI and documentation for developed systems",
+                    "Design UX/UI and documentation",
                     "Work closely with developer team to ensure successful project delivery"
                 ],
                 "projects": [
@@ -478,7 +463,7 @@
                     {
                         "topic": "Sales Management System",
                         "bullets": [
-                            "Developed backend services using Node.js for Salesperson Check-in and Inventory Reconcile modules.",
+                            "Developed backend services for Salesperson Check-in and Inventory Reconcile modules.",
                             "Manage running containerized applications in Portainer."
                         ]
                     }
@@ -489,12 +474,12 @@
                 "company": "Genovation",
                 "year": "Sep 2024 - Present",
                 "responsibility": [
-                    "Developed web applications using Node.js and Next.js, mainly focusing on backend development with RESTful APIs and database management.",
+                    "Developed web applications using Express.js and Next.js, mainly focusing on backend development with RESTful APIs and database management.",
                     "Setup and implemented user authentication and authorization using JWT and OAuth2 with Keycloak.",
                     "Design API schemas and API endpoints for various web services and applications.",
                     "Design database schemas for both NoSQL and SQL databases including MongoDB and PostgreSQL.",
                     "Create CI/CD pipelines using GitHub Actions and Bitbucket Pipelines to automate testing, building, and deployment processes.",
-                    "Provisioning and managing cloud services and infrastructure on AWS using Infrastructure as Code (IaC) tools like CloudFormation.",
+                    "Contributed to design, provisioning, managing and deployment of AWS across various services, including IAM, VPC, EC2, ECS, Lambda (Serverless), S3, ECR, RDS, Aurora, Systems Manager, Secrets Manager, and CloudFormation.",
                     "Write unittest using Jest to ensure code quality and reliability with Test-Driven Development (TDD) approach to match coverage criteria.",
                     "Collaborate with cross-functional teams including designers, product owners and other developers to deliver high-quality software solutions."
                 ],
@@ -502,52 +487,31 @@
                     {
                         "topic": "Paw Care (Pet Nutrition Platform)",
                         "bullets": [
-                            "Provisioning and managing cloud infrastructure on AWS using CloudFormation.",
-                            "Design NoSQL database schema using MongoDB for flexible data storage.",
-                            "Design apis schemas and documentation for various backend services using API Dog.",
-                            "Developed core buisness logic in backend services using Node.js."
+                            "Help veterinarians calculate customized nutrition formulas for pets based on medical conditions, weight and dietary requirements."
                         ]
                     },
                     {
                         "topic": "Univa (Smart Medical Equipment Management System)",
                         "bullets": [
-                            "Developed user interface using Next.js web application.",
-                            "Setup and implemented user authentication and authorization using JWT and OAuth2 with Keycloak.",
-                            "Design AWS cloud architecture for scalable and reliable application deployment.",
-                            "Provisioning and managing cloud infrastructure on AWS using CloudFormation."
-                        ]
-                    },
-                    {
-                        "topic": "Genocore (AI Agent Chatbot Platform)",
-                        "bullets": [
-                            "Developed AI agent & Tools services using LangChain with Gemini.",
-                            "Tracking AI behavior using LangSmith.",
-                            "Developed user interface using React.js web application.",
-                            "Implement AI session & memory persistence in mongoDB database."
-                        ]
-                    },
-                    {
-                        "topic": "AI Meeting Summary Service",
-                        "bullets": [
-                            "Developed AI meeting summary service using various open-source model from HuggingFace.",
-                            "Developed AI speech-to-text service using Whisper model from OpenAI.",
-                            "Hyper-parameter tuning for open-source models to improve performance on specific domain data."
+                            "A centralized ultrasound utilization management platform designed to monitor machine usage across departments."
                         ]
                     },
                     {
                         "topic": "Orvia (Smart Operating Room Monitoring & Reservation System)",
                         "bullets": [
-                            "Developed core buisness logic in backend services using Node.js.",
-                            "Developed E-paper image generator service using FastAPI.",
-                            "Design SQL database schema using PostgreSQL for structured data storage.",
-                            "Design apis schemas and documentation for various backend services using API Dog."
+                            "Smart operating room scheduling system designed to streamline surgical booking and improve coordination across departments."
                         ]
                     },
                     {
-                        "topic": "optSense (HVAC Monitoring System)",
+                        "topic": "OptSense (HVAC Monitoring System)",
                         "bullets": [
-                            "Developed core buisness logic in backend services using Node.js.",
-                            "Deploy application to container orchestration services on Huawei Cloud."
+                            "Real-time HVAC and operating room equipment monitoring platform designed to ensure environmental control standards in surgical rooms."
+                        ]
+                    },
+                    {
+                        "topic": "AI Meeting Summary Service",
+                        "bullets": [
+                            "Developed a Proof of Concept for AI-driven Speech-to-Text conversion for meeting summaries, leveraging open-source models from Hugging Face."
                         ]
                     }
                 ]

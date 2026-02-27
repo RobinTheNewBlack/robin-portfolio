@@ -175,7 +175,7 @@ export default function ContactSection() {
                 maxWidth: '90%',
               }}
             >
-              Available for full-time roles. Drop me a message — I reply within 24 hours.
+              {t('description')}
             </Typography>
 
             {/* Contact Info (Email & Phone) */}

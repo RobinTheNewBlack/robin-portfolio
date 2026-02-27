@@ -14,6 +14,7 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 import BugReportIcon from '@mui/icons-material/BugReport';
 import BuildIcon from '@mui/icons-material/Build';
 import AppsIcon from '@mui/icons-material/Apps';
+import LockIcon from '@mui/icons-material/Lock';
 import { techStack } from '@/data/techStack';
 import { TechStackCategory } from '@/types';
 
@@ -83,6 +84,7 @@ const techStackTabs: { key: TechStackCategory | 'all'; icon: React.ReactElement 
   { key: 'programming', icon: <CodeIcon /> },
   { key: 'backend', icon: <DataObjectIcon /> },
   { key: 'frontend', icon: <WebIcon /> },
+  { key: 'authentication', icon: <LockIcon /> },
   { key: 'database', icon: <StorageIcon /> },
   { key: 'cloudDevops', icon: <CloudIcon /> },
   { key: 'ai', icon: <SmartToyIcon /> },

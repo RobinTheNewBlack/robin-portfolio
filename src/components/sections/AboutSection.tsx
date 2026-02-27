@@ -63,10 +63,10 @@ export default function AboutSection() {
     year: string;
   }>;
 
-  const statLabels: Record<string, { label: string; desc: string }> = {
-    projects: { label: t('stats.projects'), desc: t('stats.projectsDesc') },
-    certificates: { label: t('stats.certificates'), desc: t('stats.certificatesDesc') },
-    experience: { label: t('stats.experience'), desc: t('stats.experienceDesc') },
+  const statLabels: Record<string, { label: string }> = {
+    projects: { label: t('stats.projects') },
+    certificates: { label: t('stats.certificates') },
+    experience: { label: t('stats.experience') },
   };
 
   return (

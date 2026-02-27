@@ -32,6 +32,7 @@ export type TechStackCategory =
   | 'programming'
   | 'backend'
   | 'frontend'
+  | 'authentication'
   | 'database'
   | 'cloudDevops'
   | 'ai'
