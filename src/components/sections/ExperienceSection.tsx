@@ -404,7 +404,7 @@ export default function ExperienceSection() {
                 <MotionBox
                   initial="hidden"
                   whileInView="visible"
-                  viewport={{ once: true, amount: 0.5 }}
+                  viewport={{ once: true, amount: 0.1 }}
                   variants={{
                     hidden: { opacity: 0, x: 30 },
                     visible: {
