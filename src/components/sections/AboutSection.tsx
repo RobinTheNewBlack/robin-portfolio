@@ -381,14 +381,14 @@ export default function AboutSection() {
                     <Box sx={{ flexGrow: 1, minWidth: 0 }}>
                       <Typography
                         variant="subtitle2"
-                        sx={{ fontWeight: 700, lineHeight: 1.35 }}
+                        sx={{ fontSize: '1rem', fontWeight: 700, lineHeight: 1.35 }}
                       >
                         {edu.degree}
                       </Typography>
                       <Typography
                         variant="caption"
                         color="primary.main"
-                        sx={{ fontWeight: 600, display: 'block', mt: 0.5 }}
+                        sx={{ fontSize: '0.9rem', fontWeight: 600, display: 'block', mt: 0.5 }}
                       >
                         {edu.institution}
                       </Typography>

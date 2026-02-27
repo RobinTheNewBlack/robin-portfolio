@@ -42,19 +42,6 @@ export const projects: Project[] = [
     },
     {
         id: "4",
-        slug: "e-sign",
-        titleKey: "projects.eSign.title",
-        subtitleKey: "projects.eSign.subtitle",
-        descriptionKey: "projects.eSign.description",
-        images: ["/images/projects/eSign/eSign1.png", "/images/projects/eSign/eSign2.png"],
-        technologies: ["TypeScript", "Python", "FastAPI", "OpenCV", "React", "Express.js", "PostgreSQL", "Material-UI", "Keycloak", "AWS", "GCP"],
-        keyFeaturesKey: "projects.eSign.keyFeatures",
-        responsibilitiesKey: "projects.eSign.responsibilities",
-        featured: true,
-        category: "internal",
-    },
-    {
-        id: "5",
         slug: "univa",
         titleKey: "projects.univa.title",
         subtitleKey: "projects.univa.subtitle",
@@ -67,7 +54,7 @@ export const projects: Project[] = [
         category: "internal",
     },
     {
-        id: "6",
+        id: "5",
         slug: "sumi",
         titleKey: "projects.sumi.title",
         descriptionKey: "projects.sumi.description",
@@ -80,7 +67,7 @@ export const projects: Project[] = [
         category: "personal",
     },
     {
-        id: "7",
+        id: "6",
         slug: "zentrix",
         titleKey: "projects.zentrix.title",
         descriptionKey: "projects.zentrix.description",
@@ -98,7 +85,7 @@ export const projects: Project[] = [
         category: "personal",
     },
     {
-        id: "8",
+        id: "7",
         slug: "delph",
         titleKey: "projects.delph.title",
         descriptionKey: "projects.delph.description",
@@ -115,7 +102,7 @@ export const projects: Project[] = [
         category: "personal",
     },
     {
-        id: "9",
+        id: "8",
         slug: "gold-bread",
         titleKey: "projects.goldBread.title",
         descriptionKey: "projects.goldBread.description",
