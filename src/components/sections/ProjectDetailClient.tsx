@@ -254,7 +254,7 @@ export default function ProjectDetailClient({
                 />
               </MotionBox>
 
-              <motion.h1
+              <motion.div
                 variants={fadeIn}
                 style={{
                   margin: '0 0 24px 0',
@@ -286,7 +286,7 @@ export default function ProjectDetailClient({
                     </Box>
                   )}
                 </Typography>
-              </motion.h1>
+              </motion.div>
 
               <MotionTypography
                 variants={fadeIn}
