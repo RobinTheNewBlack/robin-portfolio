@@ -14,7 +14,7 @@ export const socialLinks: SocialLink[] = [
   {
     id: 'github',
     platform: 'github',
-    url: 'https://github.com/Robininyourarea',
+    url: 'https://github.com/RobinTheNewBlack',
     ariaLabel: 'GitHub Profile',
   },
   {
