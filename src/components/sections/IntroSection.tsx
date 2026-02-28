@@ -156,13 +156,13 @@ export default function IntroSection() {
                 variant="contained"
                 size="large"
                 endIcon={<LaunchIcon />}
-                onClick={() => scrollToSection('projects')}
+                onClick={() => window.open('/resume.pdf', '_blank')}
                 sx={{
                   px: 4,
                   py: 1.5,
                 }}
               >
-                {t('projectsBtn')}
+                {t('resumeBtn')}
               </Button>
               <Button
                 variant="outlined"

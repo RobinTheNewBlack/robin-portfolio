@@ -3,7 +3,7 @@
 import { Box, Container, Typography, Button, IconButton, Divider } from '@mui/material';
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import DownloadIcon from '@mui/icons-material/Download';
+import LaunchIcon from '@mui/icons-material/Launch';
 import CodeIcon from '@mui/icons-material/Code';
 import SchoolIcon from '@mui/icons-material/School';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
@@ -158,7 +158,8 @@ export default function AboutSection() {
               <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', mt: 1 }}>
                 <Button
                   variant="contained"
-                  startIcon={<DownloadIcon />}
+                  startIcon={<LaunchIcon />}
+                  onClick={() => window.open('/resume.pdf', '_blank')}
                   sx={{ px: 3, py: 1.2, fontWeight: 600 }}
                 >
                   {t('downloadCv')}
