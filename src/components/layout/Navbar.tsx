@@ -87,6 +87,7 @@ export default function Navbar() {
           <Button
             key={link.id}
             onClick={() => scrollToSection(link.href)}
+            suppressHydrationWarning
             sx={{
               color: 'rgba(255, 255, 255, 0.8)',
               fontSize: '0.9rem',
@@ -163,6 +164,7 @@ export default function Navbar() {
               <IconButton
                 onClick={() => scrollToSection(link.href)}
                 size="small"
+                suppressHydrationWarning
                 sx={{
                   width: 40,
                   height: 40,

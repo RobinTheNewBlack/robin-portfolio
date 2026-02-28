@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Box, Container, Typography, Dialog, IconButton, alpha } from '@mui/material';
+import { Box, Container, Typography, Dialog, IconButton, alpha, useMediaQuery, useTheme } from '@mui/material';
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import CloseIcon from '@mui/icons-material/Close';
@@ -36,6 +36,8 @@ const startupImages = [
 ];
 
 export default function StartupSection() {
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const t = useTranslations('startupSection');
     const [selectedImage, setSelectedImage] = useState<number | null>(null);
     const [activeIndex, setActiveIndex] = useState(0);
@@ -56,7 +58,7 @@ export default function StartupSection() {
 
     return (
         <Box
-            id="startup"
+            id={isMobile ? 'startup-mobile-carousel' : 'startup-carousel'}
             component="section"
             className="bg-about-gradient"
             sx={{
@@ -104,179 +106,250 @@ export default function StartupSection() {
                         {t('projectName')}
                     </Typography>
                     <Typography
-                        variant="body1"
-                        sx={{ maxWidth: 700, mx: 'auto', color: '#94a3b8', fontSize: '1.1rem', lineHeight: 1.8 }}
+                        variant="body2"
+                        sx={{
+                            maxWidth: 700,
+                            mx: 'auto',
+                            color: '#94a3b8',
+                            fontSize: { xs: '0.85rem', md: '0.9rem' },
+                            lineHeight: 1.7
+                        }}
                     >
                         {t('projectDescription')}
                     </Typography>
                 </MotionBox>
             </Container>
 
-            {/* 3D Coverflow Carousel Image Gallery */}
-            <MotionBox
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeInUp}
-                sx={{
-                    position: 'relative',
-                    pb: { xs: 8, md: 10 },
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    height: { xs: 350, sm: 450, md: 550, lg: 650 },
-                    overflow: 'hidden',
-                }}
-            >
-                {/* Left Navigation Arrow */}
-                <IconButton
-                    onClick={() => setActiveIndex(prev => prev === 0 ? startupImages.length - 1 : prev - 1)}
-                    sx={{
-                        position: 'absolute',
-                        left: { xs: 8, md: 32 },
-                        zIndex: 20,
-                        color: 'white',
-                        bgcolor: 'rgba(255,255,255,0.1)',
-                        '&:hover': { bgcolor: 'rgba(255,255,255,0.2)' },
-                        display: { xs: 'none', sm: 'flex' }
-                    }}
-                >
-                    <ChevronLeftIcon fontSize="large" />
-                </IconButton>
-
-                <Box sx={{ position: 'relative', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    {startupImages.map((src, index) => {
-                        let offset = index - activeIndex;
-                        if (offset < -Math.floor(startupImages.length / 2)) offset += startupImages.length;
-                        else if (offset > Math.floor(startupImages.length / 2)) offset -= startupImages.length;
-
-                        const isActive = offset === 0;
-                        const isPrev = offset === -1;
-                        const isNext = offset === 1;
-                        const isPrev2 = offset === -2;
-                        const isNext2 = offset === 2;
-
-                        let scale = 0.4;
-                        let x = offset < 0 ? '-180%' : '180%';
-                        let zIndex = 1;
-                        let opacity = 0;
-
-                        if (isActive) {
-                            scale = 1; x = '0%'; zIndex = 10; opacity = 1;
-                        } else if (isPrev) {
-                            scale = 0.75; x = '-30%'; zIndex = 9; opacity = 0.7;
-                        } else if (isNext) {
-                            scale = 0.75; x = '30%'; zIndex = 9; opacity = 0.7;
-                        } else if (isPrev2) {
-                            scale = 0.55; x = '-50%'; zIndex = 8; opacity = 0.3;
-                        } else if (isNext2) {
-                            scale = 0.55; x = '50%'; zIndex = 8; opacity = 0.3;
-                        } else {
-                            zIndex = 7;
-                        }
-
-                        // Reflection Effect overlay
-                        return (
-                            <MotionBox
-                                key={index}
-                                initial={false}
-                                animate={{
-                                    scale,
-                                    x,
-                                    opacity,
-                                    zIndex,
-                                    filter: isActive ? 'blur(0px)' : 'blur(2px)'
-                                }}
-                                transition={{ duration: 0.5, ease: 'easeOut' }}
-                                onClick={() => {
-                                    if (isActive) setSelectedImage(index);
-                                    else setActiveIndex(index);
-                                }}
-                                sx={{
-                                    position: 'absolute',
-                                    width: { xs: '65%', sm: '55%', md: '45%', lg: '40%' },
-                                    cursor: isActive ? 'zoom-in' : 'pointer',
-                                    borderRadius: '16px',
-                                    overflow: 'hidden',
-                                    boxShadow: isActive ? '0 25px 50px -12px rgba(0,0,0,0.7)' : '0 10px 30px rgba(0,0,0,0.5)',
-                                    border: '1px solid',
-                                    borderColor: isActive ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,0.1)',
-                                    pointerEvents: opacity === 0 ? 'none' : 'auto',
-                                }}
-                            >
-                                <Box
-                                    component="img"
-                                    src={src}
-                                    alt={`${t('projectName')} screenshot ${index + 1}`}
-                                    loading="lazy"
-                                    sx={{
-                                        width: '100%',
-                                        display: 'block',
-                                    }}
-                                />
-                                {!isActive && (
-                                    <Box
-                                        sx={{
-                                            position: 'absolute',
-                                            inset: 0,
-                                            bgcolor: 'rgba(0,0,0,0.4)',
-                                            transition: 'background-color 0.3s',
-                                            '&:hover': { bgcolor: 'rgba(0,0,0,0.1)' }
-                                        }}
-                                    />
-                                )}
-                            </MotionBox>
-                        );
-                    })}
-                </Box>
-
-                {/* Right Navigation Arrow */}
-                <IconButton
-                    onClick={() => setActiveIndex(prev => prev === startupImages.length - 1 ? 0 : prev + 1)}
-                    sx={{
-                        position: 'absolute',
-                        right: { xs: 8, md: 32 },
-                        zIndex: 20,
-                        color: 'white',
-                        bgcolor: 'rgba(255,255,255,0.1)',
-                        '&:hover': { bgcolor: 'rgba(255,255,255,0.2)' },
-                        display: { xs: 'none', sm: 'flex' }
-                    }}
-                >
-                    <ChevronRightIcon fontSize="large" />
-                </IconButton>
-
-                {/* Pagination Dots */}
+            {/* Carousel Image Gallery */}
+            {isMobile ? (
+                // Mobile: Standard Swipeable Horizontal Carousel
                 <Box
+                    id="startup-mobile-carousel-container"
                     sx={{
-                        position: 'absolute',
-                        bottom: { xs: 16, md: 32 },
-                        left: '50%',
-                        transform: 'translateX(-50%)',
                         display: 'flex',
-                        gap: 1.5,
-                        zIndex: 20,
+                        overflowX: 'auto',
+                        scrollSnapType: 'x mandatory',
+                        scrollBehavior: 'smooth',
+                        gap: 2,
+                        px: 2,
+                        pb: 8,
+                        scrollbarWidth: 'none',
+                        '&::-webkit-scrollbar': { display: 'none' },
+                    }}
+                    onScroll={(e) => {
+                        const target = e.target as HTMLElement;
+                        const scrollPosition = target.scrollLeft;
+                        const itemWidth = target.scrollWidth / startupImages.length;
+                        const newActiveIndex = Math.round(scrollPosition / itemWidth);
+                        if (newActiveIndex !== activeIndex) {
+                            setActiveIndex(newActiveIndex);
+                        }
                     }}
                 >
-                    {startupImages.map((_, index) => (
+                    {startupImages.map((src, index) => (
                         <Box
                             key={index}
-                            onClick={() => setActiveIndex(index)}
+                            onClick={() => setSelectedImage(index)}
                             sx={{
-                                width: activeIndex === index ? 32 : 8,
-                                height: 8,
-                                borderRadius: 4,
-                                bgcolor: activeIndex === index ? '#38bdf8' : 'rgba(255,255,255,0.2)',
+                                flex: '0 0 auto',
+                                width: '85%',
+                                scrollSnapAlign: 'center',
+                                borderRadius: '16px',
+                                overflow: 'hidden',
                                 cursor: 'pointer',
-                                transition: 'all 0.3s ease',
-                                '&:hover': {
-                                    bgcolor: activeIndex === index ? '#38bdf8' : 'rgba(255,255,255,0.4)',
-                                }
+                                border: '1px solid rgba(255, 255, 255, 0.1)',
+                                position: 'relative',
                             }}
-                        />
+                        >
+                            <Box
+                                component="img"
+                                src={src}
+                                alt={`${t('projectName')} screenshot ${index + 1}`}
+                                loading="lazy"
+                                sx={{
+                                    width: '100%',
+                                    display: 'block',
+                                }}
+                            />
+                        </Box>
                     ))}
                 </Box>
-            </MotionBox>
+            ) : (
+                // Desktop: 3D Coverflow Carousel
+                <MotionBox
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={fadeInUp}
+                    sx={{
+                        position: 'relative',
+                        pb: { xs: 8, md: 10 },
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        height: { xs: 350, sm: 450, md: 550, lg: 650 },
+                        overflow: 'hidden',
+                    }}
+                >
+                    {/* Left Navigation Arrow */}
+                    <IconButton
+                        onClick={() => setActiveIndex(prev => prev === 0 ? startupImages.length - 1 : prev - 1)}
+                        sx={{
+                            position: 'absolute',
+                            left: { xs: 8, md: 32 },
+                            zIndex: 20,
+                            color: 'white',
+                            bgcolor: 'rgba(255,255,255,0.1)',
+                            '&:hover': { bgcolor: 'rgba(255,255,255,0.2)' },
+                            display: { xs: 'none', sm: 'flex' }
+                        }}
+                    >
+                        <ChevronLeftIcon fontSize="large" />
+                    </IconButton>
+
+                    <Box sx={{ position: 'relative', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        {startupImages.map((src, index) => {
+                            let offset = index - activeIndex;
+                            if (offset < -Math.floor(startupImages.length / 2)) offset += startupImages.length;
+                            else if (offset > Math.floor(startupImages.length / 2)) offset -= startupImages.length;
+
+                            const isActive = offset === 0;
+                            const isPrev = offset === -1;
+                            const isNext = offset === 1;
+                            const isPrev2 = offset === -2;
+                            const isNext2 = offset === 2;
+
+                            let scale = 0.4;
+                            let x = offset < 0 ? '-180%' : '180%';
+                            let zIndex = 1;
+                            let opacity = 0;
+
+                            if (isActive) {
+                                scale = 1; x = '0%'; zIndex = 10; opacity = 1;
+                            } else if (isPrev) {
+                                scale = 0.75; x = '-30%'; zIndex = 9; opacity = 0.7;
+                            } else if (isNext) {
+                                scale = 0.75; x = '30%'; zIndex = 9; opacity = 0.7;
+                            } else if (isPrev2) {
+                                scale = 0.55; x = '-50%'; zIndex = 8; opacity = 0.3;
+                            } else if (isNext2) {
+                                scale = 0.55; x = '50%'; zIndex = 8; opacity = 0.3;
+                            } else {
+                                zIndex = 7;
+                            }
+
+                            // Reflection Effect overlay
+                            return (
+                                <MotionBox
+                                    key={index}
+                                    initial={false}
+                                    animate={{
+                                        scale,
+                                        x,
+                                        opacity,
+                                        zIndex,
+                                        filter: isActive ? 'blur(0px)' : 'blur(2px)'
+                                    }}
+                                    transition={{ duration: 0.5, ease: 'easeOut' }}
+                                    onClick={() => {
+                                        if (isActive) setSelectedImage(index);
+                                        else setActiveIndex(index);
+                                    }}
+                                    sx={{
+                                        position: 'absolute',
+                                        width: { xs: '65%', sm: '55%', md: '45%', lg: '40%' },
+                                        cursor: isActive ? 'zoom-in' : 'pointer',
+                                        borderRadius: '16px',
+                                        overflow: 'hidden',
+                                        boxShadow: isActive ? '0 25px 50px -12px rgba(0,0,0,0.7)' : '0 10px 30px rgba(0,0,0,0.5)',
+                                        border: '1px solid',
+                                        borderColor: isActive ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,0.1)',
+                                        pointerEvents: opacity === 0 ? 'none' : 'auto',
+                                    }}
+                                >
+                                    <Box
+                                        component="img"
+                                        src={src}
+                                        alt={`${t('projectName')} screenshot ${index + 1}`}
+                                        loading="lazy"
+                                        sx={{
+                                            width: '100%',
+                                            display: 'block',
+                                        }}
+                                    />
+                                    {!isActive && (
+                                        <Box
+                                            sx={{
+                                                position: 'absolute',
+                                                inset: 0,
+                                                bgcolor: 'rgba(0,0,0,0.4)',
+                                                transition: 'background-color 0.3s',
+                                                '&:hover': { bgcolor: 'rgba(0,0,0,0.1)' }
+                                            }}
+                                        />
+                                    )}
+                                </MotionBox>
+                            );
+                        })}
+                    </Box>
+
+                    {/* Right Navigation Arrow */}
+                    <IconButton
+                        onClick={() => setActiveIndex(prev => prev === startupImages.length - 1 ? 0 : prev + 1)}
+                        sx={{
+                            position: 'absolute',
+                            right: { xs: 8, md: 32 },
+                            zIndex: 20,
+                            color: 'white',
+                            bgcolor: 'rgba(255,255,255,0.1)',
+                            '&:hover': { bgcolor: 'rgba(255,255,255,0.2)' },
+                            display: { xs: 'none', sm: 'flex' }
+                        }}
+                    >
+                        <ChevronRightIcon fontSize="large" />
+                    </IconButton>
+                </MotionBox>
+            )}
+
+            {/* Pagination Dots */}
+            <Box
+                sx={{
+                    position: 'absolute',
+                    bottom: { xs: 16, md: 32 },
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    display: 'flex',
+                    gap: 1.5,
+                    zIndex: 20,
+                }}
+            >
+                {startupImages.map((_, index) => (
+                    <Box
+                        key={index}
+                        onClick={() => {
+                            setActiveIndex(index);
+                            if (isMobile) {
+                                const container = document.getElementById('startup-mobile-carousel-container');
+                                if (container) {
+                                    const itemWidth = container.scrollWidth / startupImages.length;
+                                    container.scrollTo({ left: itemWidth * index, behavior: 'smooth' });
+                                }
+                            }
+                        }}
+                        sx={{
+                            width: activeIndex === index ? 32 : 8,
+                            height: 8,
+                            borderRadius: 4,
+                            bgcolor: activeIndex === index ? '#38bdf8' : 'rgba(255,255,255,0.2)',
+                            cursor: 'pointer',
+                            transition: 'all 0.3s ease',
+                            '&:hover': {
+                                bgcolor: activeIndex === index ? '#38bdf8' : 'rgba(255,255,255,0.4)',
+                            }
+                        }}
+                    />
+                ))}
+            </Box>
 
             {/* Lightbox Dialog */}
             <Dialog

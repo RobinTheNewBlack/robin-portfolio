@@ -116,10 +116,10 @@
         }
     },
     "startupSection": {
-        "title": "Startup Experience",
+        "title": "Startup Pitching Experience",
         "subtitle": "Showcasing my journey and contributions in the startup ecosystem.",
         "projectName": "Pettopia",
-        "projectDescription": "Pettopia is Startup Project Idea for Pet Care & Social Ecosystem designed to bridge the gap between pet management and community engagement. The core Product Idea revolves around an Interactive Feed where pet owners can share updates, exchange insights, and build a vibrant Pet Community. Beyond social networking, the Platform integrates essential Features for holistic pet care, including digital health Profiles, vaccination tracking, and a seamless Marketplace for booking Professional Services like veterinary clinics and Grooming sessions.",
+        "projectDescription": "Pettopia is Startup Project Idea for Pet Care & Social Ecosystem designed to bridge the gap between pet management and community. The core product Idea revolves around an Interactive feed where pet owners can share updates, exchange insights, and build a vibrant pet community. Beyond social networking, the platform integrates essential features for holistic pet care, including digital pet health and a seamless marketplace for booking services like veterinary clinic, grooming, pet shop, traveling and more.",
         "viewDemo": "View Gallery"
     },
     "projects": {

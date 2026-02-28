@@ -58,7 +58,7 @@ export default function LanguageSwitcher() {
       }}
     >
       {locales.map((locale) => (
-        <ToggleButton key={locale.code} value={locale.code}>
+        <ToggleButton key={locale.code} value={locale.code} suppressHydrationWarning>
           {locale.label}
         </ToggleButton>
       ))}
