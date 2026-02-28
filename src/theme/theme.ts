@@ -58,6 +58,16 @@ export const darkTheme = createTheme({
     },
   },
   components: {
+    MuiButtonBase: {
+      defaultProps: {
+        suppressHydrationWarning: true,
+      } as any,
+    },
+    MuiInputBase: {
+      defaultProps: {
+        suppressHydrationWarning: true,
+      } as any,
+    },
     MuiButton: {
       styleOverrides: {
         root: {

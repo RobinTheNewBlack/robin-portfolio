@@ -21,7 +21,7 @@ const timelineLineVariants = {
   hidden: { scaleY: 0 },
   visible: {
     scaleY: 1,
-    transition: { duration: 1.2, ease: 'easeOut' as const },
+    transition: { duration: 7, ease: 'easeOut' as const },
   },
 };
 
@@ -109,11 +109,7 @@ export default function ExperienceSection() {
           }}
         >
           {/* Vertical Timeline Line - Desktop */}
-          <MotionBox
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            variants={timelineLineVariants}
+          <Box
             sx={{
               display: { xs: 'none', md: 'block' },
               position: 'absolute',
@@ -122,30 +118,51 @@ export default function ExperienceSection() {
               top: 0,
               bottom: 0,
               width: 3,
-              background: 'linear-gradient(180deg, rgba(37, 99, 235, 0.8) 0%, rgba(6, 182, 212, 0.8) 100%)',
               borderRadius: 2,
-              transformOrigin: 'top',
+              zIndex: 0,
             }}
-          />
+          >
+            <MotionBox
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.1 }}
+              variants={timelineLineVariants}
+              sx={{
+                width: '100%',
+                height: '100%',
+                background: 'linear-gradient(180deg, rgba(37, 99, 235, 0.8) 0%, rgba(6, 182, 212, 0.8) 100%)',
+                transformOrigin: 'top center',
+              }}
+            />
+          </Box>
 
           {/* Vertical Timeline Line - Mobile */}
-          <MotionBox
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            variants={timelineLineVariants}
+          <Box
             sx={{
               display: { xs: 'block', md: 'none' },
               position: 'absolute',
-              left: 20,
+              left: 24,
+              transform: 'translateX(-50%)',
               top: 0,
               bottom: 0,
               width: 3,
-              background: 'linear-gradient(180deg, rgba(37, 99, 235, 0.8) 0%, rgba(6, 182, 212, 0.8) 100%)',
               borderRadius: 2,
-              transformOrigin: 'top',
+              zIndex: 0,
             }}
-          />
+          >
+            <MotionBox
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.1 }}
+              variants={timelineLineVariants}
+              sx={{
+                width: '100%',
+                height: '100%',
+                background: 'linear-gradient(180deg, rgba(37, 99, 235, 0.8) 0%, rgba(6, 182, 212, 0.8) 100%)',
+                transformOrigin: 'top center',
+              }}
+            />
+          </Box>
 
           {/* Experience Items */}
           {experiences.map((exp, index) => {
@@ -207,67 +224,74 @@ export default function ExperienceSection() {
                   </Box>
                 </MotionBox>
 
+                {/* Timeline Spacer - Desktop */}
+                <Box sx={{ display: { xs: 'none', md: 'block' }, width: 40, flexShrink: 0 }} />
+
                 {/* Timeline Dot - Desktop */}
-                <MotionBox
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.5 }}
-                  variants={dotVariants}
-                  transition={{ delay: index * 0.2 }}
+                <Box
                   sx={{
                     display: { xs: 'none', md: 'flex' },
-                    position: 'relative',
-                    width: 40,
-                    alignItems: 'flex-start',
-                    justifyContent: 'center',
-                    pt: 1,
+                    position: 'absolute',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    top: 8,
+                    zIndex: 2,
                   }}
                 >
-                  <Box
-                    sx={{
-                      width: 16,
-                      height: 16,
-                      borderRadius: '50%',
-                      bgcolor: 'primary.main',
-                      border: '3px solid',
-                      borderColor: 'background.default',
-                      boxShadow: '0 0 10px rgba(37, 99, 235, 0.5)',
-                      zIndex: 1,
-                    }}
-                  />
-                </MotionBox>
+                  <MotionBox
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.5 }}
+                    variants={dotVariants}
+                    transition={{ delay: index * 0.2 }}
+                    style={{ originX: 0.5, originY: 0.5 }}
+                  >
+                    <Box
+                      sx={{
+                        width: 16,
+                        height: 16,
+                        borderRadius: '50%',
+                        bgcolor: 'primary.main',
+                        border: '3px solid',
+                        borderColor: 'background.default',
+                        boxShadow: '0 0 10px rgba(37, 99, 235, 0.5)',
+                      }}
+                    />
+                  </MotionBox>
+                </Box>
 
                 {/* Timeline Dot - Mobile */}
-                <MotionBox
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.5 }}
-                  variants={dotVariants}
-                  transition={{ delay: index * 0.2 }}
+                <Box
                   sx={{
                     display: { xs: 'flex', md: 'none' },
                     position: 'absolute',
-                    left: 12,
-                    top: 4,
-                    width: 20,
-                    height: 20,
-                    alignItems: 'center',
-                    justifyContent: 'center',
+                    left: 24,
+                    transform: 'translateX(-50%)',
+                    top: 7,
+                    zIndex: 2,
                   }}
                 >
-                  <Box
-                    sx={{
-                      width: 14,
-                      height: 14,
-                      borderRadius: '50%',
-                      bgcolor: 'primary.main',
-                      border: '3px solid',
-                      borderColor: 'background.default',
-                      boxShadow: '0 0 10px rgba(37, 99, 235, 0.5)',
-                      zIndex: 1,
-                    }}
-                  />
-                </MotionBox>
+                  <MotionBox
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.5 }}
+                    variants={dotVariants}
+                    transition={{ delay: index * 0.2 }}
+                    style={{ originX: 0.5, originY: 0.5 }}
+                  >
+                    <Box
+                      sx={{
+                        width: 14,
+                        height: 14,
+                        borderRadius: '50%',
+                        bgcolor: 'primary.main',
+                        border: '3px solid',
+                        borderColor: 'background.default',
+                        boxShadow: '0 0 10px rgba(37, 99, 235, 0.5)',
+                      }}
+                    />
+                  </MotionBox>
+                </Box>
 
                 {/* Right/Left Content - Description */}
                 <MotionBox
