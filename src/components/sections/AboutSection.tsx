@@ -362,8 +362,8 @@ export default function AboutSection() {
                       bgcolor: 'rgba(255,255,255,0.03)',
                       border: '1px solid rgba(255,255,255,0.06)',
                       display: 'flex',
-                      gap: 1.5,
-                      alignItems: 'center',
+                      gap: { xs: 1.5, sm: 2 },
+                      alignItems: { xs: 'flex-start', sm: 'center' },
                       flexGrow: 1,
                     }}
                   >
@@ -374,42 +374,53 @@ export default function AboutSection() {
                         bgcolor: 'rgba(37, 99, 235, 0.12)',
                         display: 'flex',
                         flexShrink: 0,
-                        mt: 0.25,
+                        mt: { xs: 0.25, sm: 0 },
                       }}
                     >
                       <SchoolIcon sx={{ color: 'primary.light', fontSize: 18 }} />
                     </Box>
-                    <Box sx={{ flexGrow: 1, minWidth: 0 }}>
-                      <Typography
-                        variant="subtitle2"
-                        sx={{ fontSize: '1rem', fontWeight: 700, lineHeight: 1.35 }}
-                      >
-                        {edu.degree}
-                      </Typography>
-                      <Typography
-                        variant="caption"
-                        color="primary.main"
-                        sx={{ fontSize: '0.9rem', fontWeight: 600, display: 'block', mt: 0.5 }}
-                      >
-                        {edu.institution}
-                      </Typography>
-                    </Box>
-                    <Typography
-                      variant="caption"
+                    <Box
                       sx={{
-                        px: 1.5,
-                        py: 0.5,
-                        borderRadius: 1.5,
-                        bgcolor: 'rgba(37, 99, 235, 0.12)',
-                        color: 'primary.light',
-                        fontWeight: 700,
-                        whiteSpace: 'nowrap',
-                        flexShrink: 0,
-                        alignSelf: 'center',
+                        display: 'flex',
+                        flexDirection: { xs: 'column', sm: 'row' },
+                        gap: { xs: 1.5, sm: 2 },
+                        alignItems: { xs: 'flex-start', sm: 'center' },
+                        flexGrow: 1,
+                        minWidth: 0,
+                        justifyContent: 'space-between',
                       }}
                     >
-                      {edu.year}
-                    </Typography>
+                      <Box sx={{ flexGrow: 1, minWidth: 0 }}>
+                        <Typography
+                          variant="subtitle2"
+                          sx={{ fontSize: '1rem', fontWeight: 700, lineHeight: 1.35 }}
+                        >
+                          {edu.degree}
+                        </Typography>
+                        <Typography
+                          variant="caption"
+                          color="primary.main"
+                          sx={{ fontSize: '0.9rem', fontWeight: 600, display: 'block', mt: 0.5 }}
+                        >
+                          {edu.institution}
+                        </Typography>
+                      </Box>
+                      <Typography
+                        variant="caption"
+                        sx={{
+                          px: 1.5,
+                          py: 0.5,
+                          borderRadius: 1.5,
+                          bgcolor: 'rgba(37, 99, 235, 0.12)',
+                          color: 'primary.light',
+                          fontWeight: 700,
+                          whiteSpace: 'nowrap',
+                          flexShrink: 0,
+                        }}
+                      >
+                        {edu.year}
+                      </Typography>
+                    </Box>
                   </MotionBox>
                 ))}
               </Box>
