@@ -115,6 +115,13 @@
             "tools": "เครื่องมือ"
         }
     },
+    "startupSection": {
+        "title": "ประสบการณ์สตาร์ทอัพ",
+        "subtitle": "ผลงานและประสบการณ์ในการสร้างสรรค์แพลตฟอร์มสำหรับสตาร์ทอัพ",
+        "projectName": "Pettopia",
+        "projectDescription": "Pettopia คือ Startup Product Idea สำหรับ Pet Care & Social Ecosystem ที่ตั้งใจเชื่อมโยงการจัดการดูแลสัตว์เลี้ยงเข้ากับพลังของคอมมูนิตี้ โดยหัวใจหลักของตัว Product คือ Interactive Feed ที่ให้เจ้าของสัตว์เลี้ยงได้ Post อัปเดต แชร์เทคนิค และสร้าง Pet Community ที่เข้มแข็งร่วมกัน นอกจากด้าน Social แล้ว ตัว Platform ยังมี Feature การบริหารจัดการสัตว์เลี้ยงแบบครบวงจร ทั้งการทำ Digital Profile สุขภาพ, ระบบติดตามการฉีดวัคซีน และ Marketplace ที่เชื่อมต่อกับ Service ระดับมืออาชีพ ทั้งการนัดหมายสัตวแพทย์และจองคิว Grooming ได้อย่างเบ็ดเสร็จในที่เดียว",
+        "viewDemo": "ดูแกลเลอรี"
+    },
     "projects": {
         "pawCare": {
             "title": "Paw Care",
