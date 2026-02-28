@@ -20,12 +20,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Nattakit Portfolio",
   description:
-    "Portfolio website of Nattakit K. - Frontend Developer and Network & Telecom Student. Creating innovative, functional, and user-friendly websites for digital solutions.",
+    "Portfolio website of Nattakit K. - AI & Fullstack Developer.",
   keywords: [
-    "Frontend Developer",
-    "Web Developer",
-    "React",
-    "Next.js",
+    "Fullstack Developer",
+    "AI Engineer",
     "Portfolio",
   ],
 };
