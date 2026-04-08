@@ -26,6 +26,9 @@ export const metadata: Metadata = {
     "AI Engineer",
     "Portfolio",
   ],
+  icons: {
+    icon: "/port-icon.png",
+  }
 };
 
 export function generateStaticParams() {
