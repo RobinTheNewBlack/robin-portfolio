@@ -173,69 +173,72 @@ export default function PortfolioSection() {
 
         {/* Tab Panels */}
         <AnimatePresence mode="wait">
-          <TabPanel value={tabValue} index={0}>
-            <MotionBox
-              key="projects"
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              variants={staggerContainer}
-              sx={{
-                display: 'grid',
-                gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' },
-                gap: 3,
-              }}
-            >
-              {projects.map((project, index) => (
-                <MotionBox
-                  key={project.id}
-                  variants={cardVariants}
-                  custom={index}
-                  whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                >
-                  <ProjectCard project={project} />
-                </MotionBox>
-              ))}
-            </MotionBox>
-          </TabPanel>
+          {tabValue === 0 && (
+            <TabPanel key="projects" value={0} index={0}>
+              <MotionBox
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                variants={staggerContainer}
+                sx={{
+                  display: 'grid',
+                  gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' },
+                  gap: 3,
+                }}
+              >
+                {projects.map((project, index) => (
+                  <MotionBox
+                    key={project.id}
+                    variants={cardVariants}
+                    custom={index}
+                    whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                  >
+                    <ProjectCard project={project} />
+                  </MotionBox>
+                ))}
+              </MotionBox>
+            </TabPanel>
+          )}
 
-          <TabPanel value={tabValue} index={1}>
-            <MotionBox
-              key="certificates"
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              variants={staggerContainer}
-              sx={{
-                display: 'grid',
-                gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' },
-                gap: 3,
-              }}
-            >
-              {certificates.map((certificate, index) => (
-                <MotionBox
-                  key={certificate.id}
-                  variants={cardVariants}
-                  custom={index}
-                  whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                >
-                  <CertificateCard certificate={certificate} />
-                </MotionBox>
-              ))}
-            </MotionBox>
-          </TabPanel>
+          {tabValue === 1 && (
+            <TabPanel key="certificates" value={1} index={1}>
+              <MotionBox
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                variants={staggerContainer}
+                sx={{
+                  display: 'grid',
+                  gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' },
+                  gap: 3,
+                }}
+              >
+                {certificates.map((certificate, index) => (
+                  <MotionBox
+                    key={certificate.id}
+                    variants={cardVariants}
+                    custom={index}
+                    whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                  >
+                    <CertificateCard certificate={certificate} />
+                  </MotionBox>
+                ))}
+              </MotionBox>
+            </TabPanel>
+          )}
 
-          <TabPanel value={tabValue} index={2}>
-            <MotionBox
-              key="techstack"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.4 }}
-            >
-              <TechStackGrid />
-            </MotionBox>
-          </TabPanel>
+          {tabValue === 2 && (
+            <TabPanel key="techstack" value={2} index={2}>
+              <MotionBox
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.4 }}
+              >
+                <TechStackGrid />
+              </MotionBox>
+            </TabPanel>
+          )}
         </AnimatePresence>
       </Container>
     </Box>

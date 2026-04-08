@@ -77,7 +77,7 @@ function TabPanel(props: TabPanelProps) {
   );
 }
 
-const largerIcons = new Set(['node', 'express', 'fastapi', 'langchain', 'langgraph', 'langsmith', 'pandas', 'numpy', 'cypress']);
+const largerIcons = new Set(['node', 'express', 'fastapi', 'langchain', 'langgraph', 'langsmith', 'pandas', 'numpy', 'cypress', 'prisma']);
 
 const techStackTabs: { key: TechStackCategory | 'all'; icon: React.ReactElement }[] = [
   { key: 'all', icon: <AppsIcon /> },
@@ -213,12 +213,12 @@ export default function TechStackSection() {
 
           <Box sx={{ flexGrow: 1 }}>
             <AnimatePresence mode="wait">
-              {techStackTabs.map((tab, index) => {
+              {techStackTabs.filter((_, index) => index === tabValue).map((tab) => {
                 const items = tab.key === 'all' ? techStack : getTechByCategory(tab.key as TechStackCategory);
                 const isAllTab = tab.key === 'all';
 
                 return (
-                  <TabPanel key={tab.key} value={tabValue} index={index}>
+                  <TabPanel key={tab.key} value={tabValue} index={tabValue}>
                     <Box
                       sx={{
                         ...(isAllTab && {

@@ -194,8 +194,8 @@ export default function CertificatesSection() {
         </MotionBox>
 
         <AnimatePresence mode="wait">
-          {certificateTabs.map((tab, index) => (
-            <TabPanel key={tab.key} value={tabValue} index={index}>
+          {certificateTabs.filter((_, index) => index === tabValue).map((tab) => (
+            <TabPanel key={tab.key} value={tabValue} index={tabValue}>
               <MotionBox
                 key={`certificates-${tab.key}`}
                 initial="hidden"

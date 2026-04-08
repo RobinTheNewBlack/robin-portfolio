@@ -127,12 +127,7 @@
             "title": "Paw Care",
             "subtitle": "(Pet Personalized Nutrition System)",
             "description": "A web-based application designed to help veterinarians calculate customized nutrition formulas for pets based on medical conditions, weight and dietary requirements.",
-            "keyFeatures": [
-                "Nutition Formula Calculator",
-                "Patient Records",
-                "Order Management",
-                "Queue Management"
-            ],
+            "keyFeatures": ["Nutition Formula Calculator", "Patient Records", "Order Management", "Queue Management"],
             "responsibilities": [
                 "Provisioned and managed cloud infrastructure on AWS using CloudFormation.",
                 "Designed NoSQL database schema using MongoDB for flexible data storage.",
@@ -190,6 +185,25 @@
                 "Setup and implemented user authentication and authorization using JWT and OAuth2 with Keycloak.",
                 "Designed AWS cloud architecture for scalable and reliable application deployment.",
                 "Provisioned and managed cloud infrastructure on AWS using CloudFormation."
+            ]
+        },
+        "coda": {
+            "title": "Coda.ai",
+            "description": "Coda.ai is an AI-powered CI/CD orchestration system that automates software development workflows using Claude AI agents. The platform connects Jira for task management and Bitbucket for version control, enabling an autonomous multi-agent pipeline to handle the full development lifecycle — from reading a sprint ticket to opening a pull request — while keeping a human in the loop via an approval gate.",
+            "keyFeatures": [
+                "Multi-Agent Pipeline Orchestration",
+                "Human-in-the-Loop Approval Gate",
+                "Real-Time Terminal Streaming via SSE",
+                "Jira Kanban Board Integration",
+                "Automated Pull Request Generation"
+            ],
+            "responsibilities": [
+                "Built a NestJS orchestration engine that spawns Claude AI subprocesses and manages sequential multi-agent pipelines from Jira sprint data.",
+                "Implemented a human-in-the-loop approval for reviewing planned agent sequences and branch details before execution.",
+                "Built a real-time Server-Sent Events (SSE) system to streaming live agent logs, pipeline step.",
+                "Integrated Jira REST API v3 and Bitbucket API v2.0 for sprint task fetching, automated PR creation, and diff rendering.",
+                "Developed a Next.js live dashboard with a Kanban board, agent terminal cards, pipeline visualizations, and a PR diff viewer.",
+                "Designed a file-based sub-agent definition system where each Claude agent is configured via a Markdown file with YAML frontmatter."
             ]
         },
         "zentrix": {
@@ -382,15 +396,11 @@
                 "projects": [
                     {
                         "topic": "Supply Chain Management",
-                        "bullets": [
-                            "Improve supply chain performance"
-                        ]
+                        "bullets": ["Improve supply chain performance"]
                     },
                     {
                         "topic": "Robotic Process Automation",
-                        "bullets": [
-                            "Implement RPA to internal department processes"
-                        ]
+                        "bullets": ["Implement RPA to internal department processes"]
                     }
                 ]
             },
@@ -461,9 +471,7 @@
                     },
                     {
                         "topic": "OCR",
-                        "bullets": [
-                            "Use OCR model to read product code from products automatically."
-                        ]
+                        "bullets": ["Use OCR model to read product code from products automatically."]
                     }
                 ]
             },
@@ -491,14 +499,16 @@
                 "company": "Genovation",
                 "year": "Sep 2024 - Present",
                 "responsibility": [
-                    "Developed web applications using Express.js and Next.js, mainly focusing on backend development with RESTful APIs and database management.",
-                    "Setup and implemented user authentication and authorization using JWT and OAuth2 with Keycloak.",
-                    "Design API schemas and API endpoints for various web services and applications.",
-                    "Design database schemas for both NoSQL and SQL databases including MongoDB and PostgreSQL.",
-                    "Create CI/CD pipelines using GitHub Actions and Bitbucket Pipelines to automate testing, building, and deployment processes.",
-                    "Contributed to design, provisioning, managing and deployment of AWS across various services, including IAM, VPC, EC2, ECS, Lambda (Serverless), S3, ECR, RDS, Aurora, Systems Manager, Secrets Manager, and CloudFormation.",
-                    "Write unittest using Jest to ensure code quality and reliability with Test-Driven Development (TDD) approach to match coverage criteria.",
-                    "Collaborate with cross-functional teams including designers, product owners and other developers to deliver high-quality software solutions."
+                    "Architected AI-driven agents to automate development workflows, optimizing productivity and maintaining high standards of code quality across software development life cycle.",
+                    "Developed web applications using Express.js, React.js and Next.js, primarily focusing on backend REST APIs and database management.",
+                    "Configured OAuth 2.0 and OIDC within Keycloak, implementing JWT-based authentication, Role-Based Access Control (RBAC), Attributes-Based Access Control (ABAC)",
+                    "Designed API schemas and endpoints including comprehensive documentations using API Dog  to ensure seamless team collaboration.",
+                    "Designed NoSQL and SQL database schemas using MongoDB and PostgreSQL, optimizing for data integrity and query performance.",
+                    "Wrote comprehensive unit tests using Jest to ensure code quality and reliability to match coverage criteria.",
+                    "Leveraged Docker for microservices containerization, managing multi-container architectures and monitoring containers health.",
+                    "Built and maintained CI/CD pipelines using GitHub Actions and Bitbucket Pipelines to automate testing, building, and deployment processes.",
+                    "Collaborated on Cloud Architecture design, provisioning, managing and deployment of AWS across various services.",
+                    "Managed end-to-end production deployments to ensure high availability, seamlessly migrating applications from staging to cloud production environments."
                 ],
                 "projects": [
                     {

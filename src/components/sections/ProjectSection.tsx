@@ -191,8 +191,8 @@ export default function ProjectSection() {
         </MotionBox>
 
         <AnimatePresence mode="wait">
-          {projectTabs.map((tab, index) => (
-            <TabPanel key={tab.key} value={tabValue} index={index}>
+          {projectTabs.filter((_, index) => index === tabValue).map((tab) => (
+            <TabPanel key={tab.key} value={tabValue} index={tabValue}>
               <MotionBox
                 key={`projects-${tab.key}`}
                 initial="hidden"

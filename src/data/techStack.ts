@@ -20,13 +20,14 @@ export const techStack: TechStackItem[] = [
     { id: "express", name: "Express.js", icon: "express", category: "backend" },
     { id: "nestjs", name: "NestJS", icon: "nest", category: "backend" },
     { id: "fastapi", name: "FastAPI", icon: "fastapi", category: "backend" },
-    { id: "sequelize", name: "Sequelize", icon: "sequelize", category: "backend" },
 
     { id: "keycloak", name: "Keycloak", icon: "keycloak", category: "authentication" },
 
     // Database
     { id: "mongodb", name: "MongoDB", icon: "mongodb", category: "database" },
     { id: "postgresql", name: "PostgreSQL", icon: "postgresql", category: "database" },
+    { id: "sequelize", name: "Sequelize", icon: "sequelize", category: "database" },
+    { id: "prisma", name: "Prisma", icon: "prisma", category: "database" },
     { id: "redis", name: "Redis", icon: "redis", category: "database" },
     { id: "chroma", name: "Chroma", icon: "chroma", category: "database" },
     { id: "faiss", name: "Faiss", icon: "meta", category: "database" },
@@ -40,7 +41,6 @@ export const techStack: TechStackItem[] = [
     { id: "aws", name: "AWS", icon: "aws", category: "cloudDevops" },
     { id: "gcp", name: "GCP", icon: "gcp", category: "cloudDevops" },
     { id: "huaweiCloud", name: "Huawei Cloud", icon: "huawei", category: "cloudDevops" },
-
 
     // AI
     { id: "tensorflow", name: "TensorFlow", icon: "tensorflow", category: "ai" },

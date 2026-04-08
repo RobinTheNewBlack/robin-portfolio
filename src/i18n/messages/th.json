@@ -127,12 +127,7 @@
             "title": "Paw Care",
             "subtitle": "(Pet Personalized Nutrition System)",
             "description": "แอปพลิเคชันบนเว็บที่ออกแบบมาเพื่อช่วยสัตวแพทย์คำนวณสูตรโภชนาการสำหรับสัตว์เลี้ยงที่ปรับแต่งตามสภาพทางการแพทย์ น้ำหนัก และความต้องการด้านโภชนาการ",
-            "keyFeatures": [
-                "เครื่องคำนวณสูตรโภชนาการ",
-                "บันทึกประวัติผู้ป่วย",
-                "การจัดการคำสั่งซื้อ",
-                "การจัดการคิว"
-            ],
+            "keyFeatures": ["เครื่องคำนวณสูตรโภชนาการ", "บันทึกประวัติผู้ป่วย", "การจัดการคำสั่งซื้อ", "การจัดการคิว"],
             "responsibilities": [
                 "จัดเตรียมและจัดการโครงสร้างพื้นฐานคลาวด์บน AWS โดยใช้ CloudFormation",
                 "ออกแบบโครงสร้างฐานข้อมูล NoSQL โดยใช้ MongoDB เพื่อการจัดเก็บข้อมูลที่ยืดหยุ่น",
@@ -190,6 +185,25 @@
                 "ติดตั้งและออกแบบสถาปัตยกรรมการยืนยันตัวตนและการอนุญาตสิทธิ์การเข้าถึง โดยใช้ JWT และ OAuth2 ด้วย Keycloak",
                 "ออกแบบสถาปัตยกรรมคลาวด์บน AWS สำหรับการนำไปปรับใช้งานด้วยประสิทธิภาพสูงสุด",
                 "จัดเตรียมและจัดการโครงสร้างพื้นฐานคลาวด์บน AWS โดยใช้ CloudFormation"
+            ]
+        },
+        "coda": {
+            "title": "Coda.ai",
+            "description": "Coda.ai คือระบบ CI/CD Orchestration ที่ขับเคลื่อนด้วย AI Agent โดยใช้ Claude AI ในการ automate workflow การพัฒนาซอฟต์แวร์ตั้งแต่ต้นจนจบ ระบบเชื่อมต่อกับ Jira สำหรับจัดการ Task และ Bitbucket สำหรับ Version Control เพื่อให้ AI Agent ทำงานได้แบบ Autonomous ตั้งแต่อ่าน Sprint Ticket ไปจนถึงการเปิด Pull Request โดยมี Human-in-the-Loop Approval Gate คอยควบคุมทุกขั้นตอน",
+            "keyFeatures": [
+                "Multi-Agent Pipeline Orchestration",
+                "Human-in-the-Loop Approval Gate",
+                "Real-Time Terminal Streaming ผ่าน SSE",
+                "เชื่อมต่อ Jira Kanban Board",
+                "สร้าง Pull Request อัตโนมัติบน Bitbucket"
+            ],
+            "responsibilities": [
+                "พัฒนา Orchestration Engine ด้วย NestJS สำหรับ Spawn Claude AI Subprocess และจัดการ Multi-Agent Pipeline แบบลำดับขั้นตอนจาก Jira Sprint Data",
+                "พัฒนาระบบ Human-in-the-Loop Approval สำหรับให้ผู้ใช้ Review ลำดับ Agent และชื่อ Branch ก่อนเริ่มการทำงาน",
+                "สร้างระบบ Real-Time Streaming ด้วย Server-Sent Events (SSE) เพื่อ Stream Agent Log และ Pipeline Step มายัง Frontend แบบ Live",
+                "เชื่อมต่อ Jira REST API v3 และ Bitbucket API v2.0 สำหรับดึง Sprint Task สร้าง Pull Request อัตโนมัติ และแสดง Diff บน Dashboard",
+                "พัฒนา Live Dashboard ด้วย Next.js ที่ประกอบด้วย Kanban Board, Agent Terminal Card, Pipeline Visualization และ PR Diff Viewer",
+                "ออกแบบระบบ Sub-Agent Definition แบบ File-Based โดย Configure แต่ละ Claude Agent ผ่านไฟล์ Markdown ที่มี YAML Frontmatter"
             ]
         },
         "zentrix": {
@@ -382,15 +396,11 @@
                 "projects": [
                     {
                         "topic": "การจัดการซัพพลายเชน (Supply Chain Management)",
-                        "bullets": [
-                            "ปรับปรุงประสิทธิภาพซัพพลายเชนให้ทำงานได้ดีขึ้น"
-                        ]
+                        "bullets": ["ปรับปรุงประสิทธิภาพซัพพลายเชนให้ทำงานได้ดีขึ้น"]
                     },
                     {
                         "topic": "Robotic Process Automation",
-                        "bullets": [
-                            "นำระบบ RPA มาปรับใช้กับการทำงานแผนกภายใน"
-                        ]
+                        "bullets": ["นำระบบ RPA มาปรับใช้กับการทำงานแผนกภายใน"]
                     }
                 ]
             },
@@ -416,15 +426,11 @@
                     },
                     {
                         "topic": "ระบบ Sales Management",
-                        "bullets": [
-                            "ติดตั้งทดแทนระบบที่เป็นใช้กับเซลส์แมน และเปลี่ยนระบบเซลส์บุคคลที่สาม"
-                        ]
+                        "bullets": ["ติดตั้งทดแทนระบบที่เป็นใช้กับเซลส์แมน และเปลี่ยนระบบเซลส์บุคคลที่สาม"]
                     },
                     {
                         "topic": "ระบบเครื่อจุดขาย (POS)",
-                        "bullets": [
-                            "พัฒนาระบบการรับเพื่อการจัดการและจัดการทดแทนระบบที่สาม (POS)"
-                        ]
+                        "bullets": ["พัฒนาระบบการรับเพื่อการจัดการและจัดการทดแทนระบบที่สาม (POS)"]
                     }
                 ]
             },
@@ -491,14 +497,16 @@
                 "company": "Genovation",
                 "year": "ก.ย. 2024 - ปัจจุบัน",
                 "responsibility": [
-                    "พัฒนา Web Applications ด้วย Express.js และ Next.js โดยเน้นการพัฒนา Backend ในส่วนของ RESTful APIs และการบริหารจัดการฐานข้อมูล (Database Management)",
-                    "Setup และ Implement ระบบยืนยันตัวตน (Authentication) และกำหนดสิทธิ์ (Authorization) ด้วยมาตรฐาน OAuth2 และ JWT โดยใช้ Keycloak เป็น Identity Provider",
-                    "ออกแบบ API Schemas และ API Endpoints สำหรับ Web Services และแอปพลิเคชันที่หลากหลาย เพื่อรองรับการเชื่อมต่อข้อมูลที่มีประสิทธิภาพ",
-                    "ออกแบบ Database Schemas ทั้งในรูปแบบ SQL และ NoSQL โดยมีความเชี่ยวชาญในการจัดการ PostgreSQL และ MongoDB เพื่อรองรับโครงสร้างข้อมูลที่หลากหลาย",
-                    "ออกแบบและสร้าง CI/CD Pipelines ด้วย GitHub Actions และ Bitbucket Pipelines เพื่อทำให้ขั้นตอนการ Test, Build และ Deploy เป็นไปอย่างอัตโนมัติ",
-                    "มีส่วนร่วมในการออกแบบ สร้าง จัดการ และ Deploy ระบบบน AWS ผ่านบริการที่หลากหลาย อาทิ IAM, VPC, EC2, ECS, Lambda (Serverless), S3, ECR, RDS, Aurora, Systems Manager, Secrets Manager และ CloudFormation",
-                    "เขียน Unit Test ด้วย Jest เพื่อรักษาคุณภาพและความน่าเชื่อถือของโค้ด โดยใช้แนวทาง Test-Driven Development (TDD) เพื่อให้บรรลุเป้าหมายตาม Coverage Criteria ที่กำหนด",
-                    "ประสานงานร่วมกับทีม Cross-functional ทั้ง Designer, Product Owner และทีม Developer เพื่อส่งมอบซอฟต์แวร์โซลูชันที่มีคุณภาพสูง"
+                    "วางโครงสร้าง AI-driven agents เพื่อบริหารจัดการ workflow ในการพัฒนาซอฟต์แวร์แบบอัตโนมัติ ช่วยเพิ่มประสิทธิภาพการทำงานและรักษามาตรฐานคุณภาพโค้ดในทุกขั้นตอนของ Software Development Life Cycle (SDLC)",
+                    "พัฒนา Web Application ด้วย Express.js, React.js และ Next.js โดยเน้นการพัฒนา Backend REST APIs และการบริหารจัดการฐานข้อมูลเป็นหลัก",
+                    "จัดการระบบ OAuth 2.0 และ OIDC ภายใน Keycloak พร้อมติดตั้งระบบยืนยันตัวตนด้วย JWT และจัดการสิทธิ์การเข้าถึงรูปแบบ RBAC และ ABAC",
+                    "ออกแบบ API Schema และ Endpoint พร้อมจัดทำเอกสารประกอบ (Documentation) อย่างครบถ้วนด้วย API Dog เพื่อเสริมสร้างการทำงานร่วมกันภายในทีมอย่างราบรื่น",
+                    "ออกแบบโครงสร้างฐานข้อมูลทั้งแบบ NoSQL (MongoDB) และ SQL (PostgreSQL) โดยมุ่งเน้นประสิทธิภาพการค้นหาข้อมูล และความถูกต้องของข้อมูล",
+                    "เขียน Unit Test ด้วย Jest อย่างครอบคลุม เพื่อการันตีคุณภาพและความน่าเชื่อถือของโค้ดให้เป็นไปตามเกณฑ์ Code Coverage ที่กำหนด",
+                    "ประยุกต์ใช้ Docker ในการทำ Containerization สำหรับระบบ Microservices พร้อมบริหารจัดการสถาปัตยกรรมแบบ Multi-container และเฝ้าระวังสถานะความพร้อมใช้งาน ของ Container",
+                    "สร้างและดูแลระบบ CI/CD Pipeline ด้วย GitHub Actions และ Bitbucket Pipelines เพื่อทำให้ขั้นตอนการทดสอบ (Testing), การบิลด์ (Building) และการ Deploy เป็นไปอย่างอัตโนมัติ",
+                    "ร่วมออกแบบโครงสร้าง Cloud Architecture รวมถึงการจัดเตรียม (Provisioning), บริหารจัดการ และติดตั้งระบบบนบริการต่าง ๆ ของ AWS",
+                    "บริหารจัดการการ Deployment บน Production แบบครบวงจร (End-to-End) เพื่อให้ระบบพร้อมใช้งานได้ตลอดเวลา และดูแลการย้ายแอปพลิเคชันจาก Staging ไปยัง Cloud Production อย่างราบรื่น"
                 ],
                 "projects": [
                     {
